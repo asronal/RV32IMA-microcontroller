@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimal RV32IMA MCU — Visual Chip Architecture & Pipeline Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #080c14;
+      --panel-bg: rgba(18, 26, 44, 0.75);
+      --panel-border: rgba(0, 240, 255, 0.15);
+      --panel-border-bright: rgba(0, 240, 255, 0.4);
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --cyan: #00f0ff;
+      --cyan-dim: rgba(0, 240, 255, 0.15);
+      --emerald: #10b981;
+      --emerald-dim: rgba(16, 185, 129, 0.15);
+      --amber: #f59e0b;
+      --amber-dim: rgba(245, 158, 11, 0.15);
+      --rose: #f43f5e;
+      --purple: #a855f7;
+      --blue: #3b82f6;
+      --mono-font: 'Fira Code', monospace;
+      --sans-font: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 40%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+      color: var(--text-main);
+      font-family: var(--sans-font);
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 50px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(11, 17, 32, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--panel-border);
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .chip-badge {
+      background: linear-gradient(135deg, #00f0ff, #3b82f6);
+      color: #000;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+    }
+
+    h1 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .sub-title {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--mono-font);
+    }
+
+    .header-metrics {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .metric-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .metric-lbl {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .metric-val {
+      font-family: var(--mono-font);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--cyan);
+    }
+
+    /* Container Grid */
+    .container {
+      max-width: 1750px;
+      margin: 20px auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Controls Bar */
+    .controls-card {
+      background: var(--panel-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      padding: 16px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .controls-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    button {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-family: var(--sans-font);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      background: rgba(0, 240, 255, 0.15);
+      border-color: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+    }
+
+    button.primary {
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(59, 130, 246, 0.3));
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    button.primary:hover {
+      background: var(--cyan);
+      color: #000;
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.6);
+    }
+
+    .speed-select {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-main);
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-family: var(--mono-font);
+      font-size: 12px;
+      outline: none;
+    }
+
+    .scrubber-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .scrubber {
+      flex: 1;
+      accent-color: var(--cyan);
+      cursor: pointer;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+
+    .bookmarks-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .bm-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .bm-chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      color: #cbd5e1;
+      cursor: pointer;
+      font-family: var(--mono-font);
+      transition: all 0.15s;
+    }
+
+    .bm-chip:hover {
+      background: rgba(0, 240, 255, 0.12);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* Pipeline 5-Stages Grid */
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--cyan);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pipeline-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .stage-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .stage-card:hover {
+      border-color: var(--panel-border-bright);
+      box-shadow: 0 4px 20px rgba(0, 240, 255, 0.1);
+    }
+
+    .stage-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .stage-name {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #fff;
+    }
+
+    .stage-badge {
+      font-size: 10px;
+      font-family: var(--mono-font);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .badge-normal { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+    .badge-stall { background: rgba(245, 158, 11, 0.25); color: #fcd34d; }
+    .badge-flush { background: rgba(244, 63, 94, 0.25); color: #fda4af; }
+    .badge-fwd { background: rgba(16, 185, 129, 0.25); color: #6ee7b7; }
+
+    .stage-field {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .field-lbl {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .field-val {
+      font-family: var(--mono-font);
+      font-size: 12px;
+      color: #e2e8f0;
+      word-break: break-all;
+    }
+
+    .field-val.highlight {
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    .field-val.instruction {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 6px 8px;
+      border-radius: 4px;
+      color: #38bdf8;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* Main Dashboard Layout */
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 2fr 1.3fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 1200px) {
+      .pipeline-grid { grid-template-columns: 1fr; }
+      .dashboard-layout { grid-template-columns: 1fr; }
+    }
+
+    /* Panels */
+    .panel {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Register File Grid */
+    .rf-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .reg-cell {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      padding: 6px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s;
+    }
+
+    .reg-cell.updated {
+      background: rgba(16, 185, 129, 0.18);
+      border-color: var(--emerald);
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+      transform: scale(1.02);
+    }
+
+    .reg-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .reg-name {
+      font-size: 10px;
+      font-weight: 700;
+      color: #94a3b8;
+    }
+
+    .reg-abi {
+      font-size: 11px;
+      font-family: var(--mono-font);
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    .reg-val {
+      font-family: var(--mono-font);
+      font-size: 12px;
+      font-weight: 600;
+      color: #f1f5f9;
+    }
+
+    /* Peripherals Row */
+    .peripherals-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    /* Terminal */
+    .terminal-box {
+      background: #020617;
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 8px;
+      padding: 14px;
+      font-family: var(--mono-font);
+      font-size: 13px;
+      min-height: 120px;
+      max-height: 160px;
+      overflow-y: auto;
+      color: #22c55e;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .terminal-header {
+      font-size: 11px;
+      color: #64748b;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 4px;
+    }
+
+    .term-body {
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 14px;
+      background: #22c55e;
+      vertical-align: middle;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+
+    /* GPIO LED Bar */
+    .gpio-box {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .gpio-leds {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 12px 0;
+    }
+
+    .led-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .led-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #1e293b;
+      border: 2px solid #334155;
+      transition: all 0.2s;
+    }
+
+    .led-dot.on {
+      background: #22c55e;
+      border-color: #86efac;
+      box-shadow: 0 0 16px rgba(34, 197, 94, 0.8);
+    }
+
+    .led-num {
+      font-size: 10px;
+      font-family: var(--mono-font);
+      color: #64748b;
+    }
+
+    .gpio-stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: var(--mono-font);
+    }
+
+    /* Memory / Disassembly Table */
+    .mem-table-container {
+      max-height: 380px;
+      overflow-y: auto;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--mono-font);
+      font-size: 12px;
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 8px 12px;
+      text-align: left;
+      font-size: 11px;
+      color: var(--text-muted);
+      position: sticky;
+      top: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    td {
+      padding: 6px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: #cbd5e1;
+    }
+
+    tr.active-pc {
+      background: rgba(0, 240, 255, 0.15);
+      border-left: 3px solid var(--cyan);
+    }
+
+    tr.active-pc td {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    /* Bus Status Indicator */
+    .bus-indicator {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .bus-chip {
+      flex: 1;
+      padding: 8px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      text-align: center;
+      font-size: 11px;
+      font-family: var(--mono-font);
+      color: #64748b;
+      transition: all 0.2s;
+    }
+
+    .bus-chip.active {
+      border-color: var(--cyan);
+      background: rgba(0, 240, 255, 0.12);
+      color: var(--cyan);
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+    }
+
+    /* Footer Info */
+    .info-footer {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header>
+    <div class="brand">
+      <span class="chip-badge">RV32IMA SoC</span>
+      <div>
+        <h1>Minimal RISC-V Microcontroller Simulator</h1>
+        <span class="sub-title">5-Stage Pipeline Core &middot; IEEE 1800-2017 RTL &middot; SAED PDK Target</span>
+      </div>
+    </div>
+
+    <div class="header-metrics">
+      <div class="metric-pill">
+        <span class="metric-lbl">Clock Target</span>
+        <span class="metric-val" id="metric-clock">10.0 MHz</span>
+      </div>
+      <div class="metric-pill">
+        <span class="metric-lbl">Current Cycle</span>
+        <span class="metric-val" id="metric-cycle">0 / 2270</span>
+      </div>
+      <div class="metric-pill">
+        <span class="metric-lbl">Sim Time</span>
+        <span class="metric-val" id="metric-time">0.00 &mu;s</span>
+      </div>
+      <div class="metric-pill">
+        <span class="metric-lbl">IPC Metric</span>
+        <span class="metric-val" id="metric-ipc">0.86</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Controls & Timeline -->
+    <div class="controls-card">
+      <div class="controls-top">
+        <div class="btn-group">
+          <button id="btn-first" title="Reset to Cycle 1">|&#9664;</button>
+          <button id="btn-prev" title="Step Backward (Left Arrow)">&#9664; Prev</button>
+          <button id="btn-play" class="primary">&#9654; Play</button>
+          <button id="btn-next" title="Step Forward (Right Arrow)">Next &#9654;</button>
+          <button id="btn-last" title="Jump to End">&#9654;|</button>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 12px; color: var(--text-muted); font-weight: 600;">Speed:</span>
+          <select id="speed-select" class="speed-select">
+            <option value="1">1x (Slow)</option>
+            <option value="5" selected>5x (Normal)</option>
+            <option value="20">20x (Fast)</option>
+            <option value="100">100x (Hyper)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="scrubber-row">
+        <span style="font-family: var(--mono-font); font-size: 12px; color: var(--cyan); width: 60px;" id="lbl-cycle">C: 1</span>
+        <input type="range" id="cycle-slider" class="scrubber" min="1" max="2270" value="1">
+        <span style="font-family: var(--mono-font); font-size: 12px; color: var(--text-muted); width: 70px;" id="lbl-max-cycle">/ 2270</span>
+      </div>
+
+      <!-- Quick Jump Bookmarks -->
+      <div class="bookmarks-bar">
+        <span class="bm-label">Jump Events:</span>
+        <span class="bm-chip" onclick="jumpTo(1)">&#9679; Reset / Boot</span>
+        <span class="bm-chip" onclick="jumpTo(13)">&#9679; Stack Init (0x10008000)</span>
+        <span class="bm-chip" onclick="jumpTo(37)">&#9679; Jump to main()</span>
+        <span class="bm-chip" onclick="jumpTo(65)">&#9679; UART 'H' TX</span>
+        <span class="bm-chip" onclick="jumpTo(225)">&#9679; UART 'e' TX</span>
+        <span class="bm-chip" onclick="jumpTo(385)">&#9679; UART 'l' TX</span>
+        <span class="bm-chip" onclick="jumpTo(2200)">&#9679; GPIO Vector 0xAB</span>
+      </div>
+    </div>
+
+    <!-- 5-Stage Pipeline Row -->
+    <div>
+      <div class="section-title">
+        <span>&#9889; 5-Stage RISC-V Pipeline Execution</span>
+        <span style="font-size: 11px; color: var(--text-muted); font-weight: 400;">(IF &rarr; ID &rarr; EX &rarr; MEM &rarr; WB with Data Forwarding & Hazard Unit)</span>
+      </div>
+
+      <div class="pipeline-grid">
+        <!-- IF Stage -->
+        <div class="stage-card" id="card-if">
+          <div class="stage-header">
+            <span class="stage-name">1. IF (Fetch)</span>
+            <span class="stage-badge badge-normal" id="badge-if">ACTIVE</span>
+          </div>
+          <div class="stage-field">
+            <span class="field-lbl">Fetch PC</span>
+            <span class="field-val highlight" id="if-pc">0x0000_0000</span>
+          </div>
+          <div class="stage-field">
+            <span class="field-lbl">Instruction Word</span>
+            <span class="field-val instruction" id="if-asm">csrw mie, zero</span>
+          </div>
+          <div class="stage-field">
+            <span class="field-lbl">Machine Code</span>
+            <span class="field-val" id="if-hex">0x3040_1073</span>
+          </div>
+        </div>
+
+        <!-- ID Stage -->
+        <div class="stage-card" id="card-id">
+          <div class="stage-header">
+            <span class="stage-name">2. ID (Decode)</span>
+            <span class="stage-badge badge-normal" id="badge-id">DECODING</span>
+          </div>
+          <div class="stage-field">
+            <span class="field-lbl">Decode PC</span>
+            <span class="field-val highlight" id="id-pc">0x0000_0000</span>
+          </div>
+          <div class="stage-field">
+            <span class="field-lbl">Instruction</span>
+            <span class="field-val instruction" id="id-asm">nop</span>
+          </div>
+          <div class="stage-field">
+            <span class="field-lbl">Registers</span>
+            <span class="field-val" id="id-regs">rs1: x0 &middot; rs2: x0 &middot; rd: x0</span>
+          </div>
+        </div>
+
+        <!-- EX Stage -->
+        <div class="stage-card" id="card-ex">
+          <div class="stage-header">
+            <span class="stage-name">3. EX (Execute)</span>
+            <span class="stage-badge badge-normal" id="badge-ex">ALU OP</span>
+          </div>
+          <div class="stage-field">
+            <span class="field-lbl">Execute PC</span>
+            <span class="field-val highlight" id="ex-pc">0x0000_0000</span>
+          </div>
+          <div class="stage-field">
+            <span class="field-lbl">Operation</span>
+            <span class="field-val instruction" id="ex-asm">nop</span>
+          </div>
+          <div class="stage-field">
+            <span class="field-lbl">ALU Result / Fwd</span>
+            <span class="field-val" id="ex-res">0x0000_0000 (Fwd: None)</span>
+          </div>
+        </div>
+
+        <!-- MEM Stage -->
+        <div class="stage-card" id="card-mem">
+          <div class="stage-header">
+            <span class="stage-name">4. MEM (Memory)</span>
+            <span class="stage-badge badge-normal" id="badge-mem">IDLE</span>
+          </div>
+          <div class="stage-field">
+            <span class="field-lbl">Memory PC</span>
+            <span class="field-val highlight" id="mem-pc">0x0000_0000</span>
+          </div>
+          <div class="stage-field">
+            <span class="field-lbl">Bus Target</span>
+            <span class="field-val instruction" id="mem-target">No Access</span>
+          </div>
+          <div class="stage-field">
+            <span class="field-lbl">Addr / Data</span>
+            <span class="field-val" id="mem-data">A: - &middot; D: -</span>
+          </div>
+        </div>
+
+        <!-- WB Stage -->
+        <div class="stage-card" id="card-wb">
+          <div class="stage-header">
+            <span class="stage-name">5. WB (Writeback)</span>
+            <span class="stage-badge badge-normal" id="badge-wb">COMMIT</span>
+          </div>
+          <div class="stage-field">
+            <span class="field-lbl">Target Register</span>
+            <span class="field-val highlight" id="wb-reg">x0 (zero)</span>
+          </div>
+          <div class="stage-field">
+            <span class="field-lbl">Commit Data</span>
+            <span class="field-val instruction" id="wb-val">0x0000_0000</span>
+          </div>
+          <div class="stage-field">
+            <span class="field-lbl">RegWrite Enable</span>
+            <span class="field-val" id="wb-we">WE = 0 (No Write)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Bus Decoder Status -->
+    <div class="bus-indicator">
+      <div class="bus-chip" id="chip-rom">&#128190; Boot ROM (0x0000_0000)</div>
+      <div class="bus-chip" id="chip-ram">&#128452; SRAM 32KB (0x1000_0000)</div>
+      <div class="bus-chip" id="chip-uart">&#128225; UART MMIO (0x2000_0000)</div>
+      <div class="bus-chip" id="chip-gpio">&#128161; GPIO MMIO (0x2000_1000)</div>
+    </div>
+
+    <!-- Main Dashboard Split Layout -->
+    <div class="dashboard-layout">
+      
+      <!-- Left Column: Register File -->
+      <div class="panel">
+        <div class="section-title" style="justify-content: space-between;">
+          <span>&#128193; Architectural Register File (x0 - x31)</span>
+          <span style="font-size: 11px; color: var(--text-muted); font-family: var(--mono-font);" id="reg-write-summary">Last Write: None</span>
+        </div>
+        <div class="rf-grid" id="rf-grid">
+          <!-- Populated dynamically by JS -->
+        </div>
+
+        <!-- Peripherals (UART Terminal & GPIO LED array) -->
+        <div class="peripherals-grid">
+          <!-- Live UART Terminal -->
+          <div class="terminal-box">
+            <div class="terminal-header">
+              <span>&#128187; UART 8N1 SERIAL OUTPUT (625,000 BAUD)</span>
+              <span id="uart-tx-status">TX READY</span>
+            </div>
+            <div class="term-body">
+              <span id="term-text"></span><span class="cursor"></span>
+            </div>
+          </div>
+
+          <!-- GPIO LED Bar -->
+          <div class="gpio-box">
+            <div class="terminal-header">
+              <span>&#128161; 8-BIT GPIO OUTPUT PINS</span>
+              <span id="gpio-hex">OUT: 0x00</span>
+            </div>
+            <div class="gpio-leds" id="gpio-leds">
+              <!-- 8 LEDs generated by JS -->
+            </div>
+            <div class="gpio-stats">
+              <span>DIR: <span id="gpio-dir">0x00</span> (All In)</span>
+              <span>INPUT EXT: <span id="gpio-in-val">0xAB</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Disassembly & Program Memory -->
+      <div class="panel">
+        <div class="section-title">
+          <span>&#128220; Firmware Code Execution (Boot ROM)</span>
+        </div>
+        <div class="mem-table-container">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 25px;"></th>
+                <th>Address</th>
+                <th>Machine Code</th>
+                <th>Disassembly</th>
+              </tr>
+            </thead>
+            <tbody id="disasm-tbody">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Information Bar -->
+    <div class="info-footer">
+      <div>
+        <strong>System Architecture:</strong> RV32IMA base integer + Multiply/Divide + Atomics + CSRs &middot; 32 KB ROM &middot; 32 KB SRAM
+      </div>
+      <div>
+        <strong>Waveforms Generated:</strong> <code>mcu_waves.vcd</code> (2.8 MB) &mdash; View with <code>gtkwave mcu_waves.vcd</code>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Simulation Data Script -->
+  <script src="data.js"></script>
+  <script>
+    // Visualizer Logic
+    let currentIdx = 0;
+    let isPlaying = false;
+    let playInterval = null;
+
+    const data = window.SIM_DATA || { cycles: [], summary: {}, disassembly: {}, events: [] };
+    const cycles = data.cycles || [];
+    const totalCycles = cycles.length;
+
+    // Elements
+    const slider = document.getElementById('cycle-slider');
+    const lblCycle = document.getElementById('lbl-cycle');
+    const lblMax = document.getElementById('lbl-max-cycle');
+    const metricCycle = document.getElementById('metric-cycle');
+    const metricTime = document.getElementById('metric-time');
+    const speedSelect = document.getElementById('speed-select');
+    const btnPlay = document.getElementById('btn-play');
+
+    slider.max = totalCycles;
+    lblMax.innerText = `/ ${totalCycles}`;
+
+    // Initialize Register File Grid
+    const rfGrid = document.getElementById('rf-grid');
+    for (let r = 0; r < 32; r++) {
+      const cell = document.createElement('div');
+      cell.className = 'reg-cell';
+      cell.id = `reg-${r}`;
+      cell.innerHTML = `
+        <div class="reg-info">
+          <span class="reg-name">x${r}</span>
+          <span class="reg-abi">${data.summary.abi_names ? data.summary.abi_names[r] : ''}</span>
+        </div>
+        <span class="reg-val" id="reg-val-${r}">00000000</span>
+      `;
+      rfGrid.appendChild(cell);
+    }
+
+    // Initialize GPIO LEDs
+    const gpioLedsContainer = document.getElementById('gpio-leds');
+    for (let b = 7; b >= 0; b--) {
+      const col = document.createElement('div');
+      col.className = 'led-col';
+      col.innerHTML = `
+        <div class="led-dot" id="led-${b}"></div>
+        <span class="led-num">P${b}</span>
+      `;
+      gpioLedsContainer.appendChild(col);
+    }
+
+    // Initialize Disassembly Table
+    const disasmTbody = document.getElementById('disasm-tbody');
+    const sortedAddrs = Object.keys(data.disassembly).sort((a, b) => parseInt(a, 16) - parseInt(b, 16));
+    sortedAddrs.forEach(addr => {
+      const item = data.disassembly[addr];
+      const row = document.createElement('tr');
+      row.id = `code-${addr}`;
+      row.innerHTML = `
+        <td class="pc-arrow" id="arrow-${addr}"></td>
+        <td style="color: var(--cyan); font-weight:600;">0x${addr}</td>
+        <td style="color: #94a3b8;">${item.hex}</td>
+        <td style="color: #e2e8f0;">${item.asm}</td>
+      `;
+      disasmTbody.appendChild(row);
+    });
+
+    let prevActiveCodeRow = null;
+
+    function renderCycle(idx) {
+      if (idx < 0 || idx >= totalCycles) return;
+      currentIdx = idx;
+      const c = cycles[idx];
+
+      // Update Header & Controls
+      slider.value = c.c;
+      lblCycle.innerText = `C: ${c.c}`;
+      metricCycle.innerText = `${c.c} / ${totalCycles}`;
+      metricTime.innerText = `${(c.t / 1000).toFixed(2)} \u03BCs`;
+
+      // 1. IF Stage
+      document.getElementById('if-pc').innerText = `0x${c.if.pc}`;
+      document.getElementById('if-asm').innerText = c.if.asm;
+      document.getElementById('if-hex').innerText = `0x${c.if.raw}`;
+
+      // 2. ID Stage
+      document.getElementById('id-pc').innerText = `0x${c.id.pc}`;
+      document.getElementById('id-asm').innerText = c.id.asm;
+      document.getElementById('id-regs').innerText = `rs1: x${c.id.rs1} · rs2: x${c.id.rs2} · rd: x${c.id.rd}`;
+
+      // 3. EX Stage
+      document.getElementById('ex-pc').innerText = `0x${c.ex.pc}`;
+      document.getElementById('ex-asm').innerText = c.ex.asm;
+      let fwdText = (c.ex.fwd_a ? `FwdA:${c.ex.fwd_a} ` : '') + (c.ex.fwd_b ? `FwdB:${c.ex.fwd_b}` : '');
+      document.getElementById('ex-res').innerText = `ALU: 0x${c.ex.alu} ${fwdText ? '(' + fwdText + ')' : ''}`;
+
+      // 4. MEM Stage
+      document.getElementById('mem-pc').innerText = `0x${c.mem.pc}`;
+      let memTarget = 'Idle';
+      if (c.bus.uart) memTarget = 'UART Peripheral';
+      else if (c.bus.gpio) memTarget = 'GPIO Peripheral';
+      else if (c.bus.ram) memTarget = 'SRAM Data Access';
+      else if (c.bus.rom) memTarget = 'Boot ROM Access';
+      document.getElementById('mem-target').innerText = memTarget;
+      let memOp = c.mem.we ? `WRITE [${c.mem.wdata}]` : (c.mem.re ? `READ [${c.mem.rdata}]` : 'None');
+      document.getElementById('mem-data').innerText = `A: 0x${c.mem.addr} · ${memOp}`;
+
+      // 5. WB Stage
+      document.getElementById('wb-reg').innerText = `x${c.wb.rd} (${data.summary.abi_names[c.wb.rd]})`;
+      document.getElementById('wb-val').innerText = `0x${c.wb.data}`;
+      document.getElementById('wb-we').innerText = c.wb.we ? `WE = 1 (Committed to x${c.wb.rd})` : 'WE = 0 (No Write)';
+
+      // Hazards Badges
+      const badgeIf = document.getElementById('badge-if');
+      const badgeId = document.getElementById('badge-id');
+      if (c.hz.stall) {
+        badgeIf.className = 'stage-badge badge-stall'; badgeIf.innerText = 'STALLED';
+        badgeId.className = 'stage-badge badge-stall'; badgeId.innerText = 'STALLED';
+      } else {
+        badgeIf.className = 'stage-badge badge-normal'; badgeIf.innerText = 'ACTIVE';
+        badgeId.className = 'stage-badge badge-normal'; badgeId.innerText = 'DECODING';
+      }
+      if (c.hz.flush) {
+        badgeId.className = 'stage-badge badge-flush'; badgeId.innerText = 'FLUSHED';
+      }
+
+      // Bus Indicator
+      document.getElementById('chip-rom').className = `bus-chip ${c.bus.rom ? 'active' : ''}`;
+      document.getElementById('chip-ram').className = `bus-chip ${c.bus.ram ? 'active' : ''}`;
+      document.getElementById('chip-uart').className = `bus-chip ${c.bus.uart ? 'active' : ''}`;
+      document.getElementById('chip-gpio').className = `bus-chip ${c.bus.gpio ? 'active' : ''}`;
+
+      // Register updates
+      for (let r = 0; r < 32; r++) {
+        const valEl = document.getElementById(`reg-val-${r}`);
+        const cellEl = document.getElementById(`reg-${r}`);
+        valEl.innerText = c.regs[r];
+        cellEl.className = 'reg-cell';
+      }
+      if (c.diff_regs && c.diff_regs.length > 0) {
+        c.diff_regs.forEach(d => {
+          const cellEl = document.getElementById(`reg-${d.reg}`);
+          if (cellEl) cellEl.className = 'reg-cell updated';
+        });
+        document.getElementById('reg-write-summary').innerText = `Last Write: x${c.diff_regs[0].reg} (${c.diff_regs[0].name}) \u2190 0x${c.diff_regs[0].new}`;
+      }
+
+      // UART Output
+      document.getElementById('term-text').innerText = c.uart.term;
+      document.getElementById('uart-tx-status').innerText = c.uart.ready ? 'TX READY' : 'TX TRANSMITTING...';
+
+      // GPIO
+      const outVal = parseInt(c.gpio.out, 16);
+      document.getElementById('gpio-hex').innerText = `OUT: 0x${c.gpio.out.toUpperCase()}`;
+      document.getElementById('gpio-dir').innerText = `0x${c.gpio.oe.toUpperCase()}`;
+      document.getElementById('gpio-in-val').innerText = `0x${c.gpio.in.toUpperCase()}`;
+      for (let b = 0; b < 8; b++) {
+        const dot = document.getElementById(`led-${b}`);
+        if ((outVal >> b) & 1) dot.className = 'led-dot on';
+        else dot.className = 'led-dot';
+      }
+
+      // Disassembly pointer
+      if (prevActiveCodeRow) {
+        prevActiveCodeRow.className = '';
+        const prevArrow = prevActiveCodeRow.querySelector('.pc-arrow');
+        if (prevArrow) prevArrow.innerHTML = '';
+      }
+      const activeRow = document.getElementById(`code-${c.if.pc.toLowerCase()}`);
+      if (activeRow) {
+        activeRow.className = 'active-pc';
+        activeRow.querySelector('.pc-arrow').innerHTML = '&#9654;';
+        prevActiveCodeRow = activeRow;
+        activeRow.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    // Playback Controls
+    function togglePlay() {
+      if (isPlaying) {
+        pause();
+      } else {
+        play();
+      }
+    }
+
+    function play() {
+      isPlaying = true;
+      btnPlay.innerHTML = '&#10074;&#10074; Pause';
+      btnPlay.className = 'primary';
+      const speed = parseInt(speedSelect.value) || 5;
+      const intervalMs = Math.max(16, Math.floor(100 / speed));
+      playInterval = setInterval(() => {
+        if (currentIdx < totalCycles - 1) {
+          renderCycle(currentIdx + 1);
+        } else {
+          pause();
+        }
+      }, intervalMs);
+    }
+
+    function pause() {
+      isPlaying = false;
+      btnPlay.innerHTML = '&#9654; Play';
+      if (playInterval) clearInterval(playInterval);
+    }
+
+    btnPlay.addEventListener('click', togglePlay);
+    document.getElementById('btn-next').addEventListener('click', () => { pause(); renderCycle(currentIdx + 1); });
+    document.getElementById('btn-prev').addEventListener('click', () => { pause(); renderCycle(currentIdx - 1); });
+    document.getElementById('btn-first').addEventListener('click', () => { pause(); renderCycle(0); });
+    document.getElementById('btn-last').addEventListener('click', () => { pause(); renderCycle(totalCycles - 1); });
+    slider.addEventListener('input', (e) => { pause(); renderCycle(parseInt(e.target.value) - 1); });
+
+    speedSelect.addEventListener('change', () => {
+      if (isPlaying) { pause(); play(); }
+    });
+
+    function jumpTo(cycleNum) {
+      pause();
+      renderCycle(Math.max(0, Math.min(totalCycles - 1, cycleNum - 1)));
+    }
+
+    // Keyboard Shortcuts
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { pause(); renderCycle(currentIdx + 1); }
+      else if (e.key === 'ArrowLeft') { pause(); renderCycle(currentIdx - 1); }
+      else if (e.key === ' ') { e.preventDefault(); togglePlay(); }
+    });
+
+    // Initial render
+    renderCycle(0);
+  </script>
+</body>
+</html>
