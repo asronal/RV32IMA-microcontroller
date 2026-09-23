@@ -1,0 +1,105 @@
+Loading db file '/home/rithicks/ultra_syn/minimal_mcu/pdk/saed32rvt_ss0p75v125c.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : rv32ima_mcu
+Version: V-2023.12-SP5-3
+Date   : Sat Sep  5 01:38:54 2026
+****************************************
+
+
+Library(s) Used:
+
+    saed32rvt_ss0p75v125c (File: /home/rithicks/ultra_syn/minimal_mcu/pdk/saed32rvt_ss0p75v125c.db)
+
+
+Operating Conditions: ss0p75v125c   Library: saed32rvt_ss0p75v125c
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+rv32ima_mcu            4000000           saed32rvt_ss0p75v125c
+rv32_core              35000             saed32rvt_ss0p75v125c
+bus_decoder            8000              saed32rvt_ss0p75v125c
+memory_wrapper_ROM_BYTES32768_RAM_BYTES32768_BOOT_HEX
+                       4000000           saed32rvt_ss0p75v125c
+uart_CLK_HZ50000000_DEFAULT_BAUD115200
+                       8000              saed32rvt_ss0p75v125c
+gpio_GPIO_WIDTH8       8000              saed32rvt_ss0p75v125c
+pc_reg_00000000        8000              saed32rvt_ss0p75v125c
+if_id                  8000              saed32rvt_ss0p75v125c
+decoder                8000              saed32rvt_ss0p75v125c
+regfile                16000             saed32rvt_ss0p75v125c
+immediate_gen          ForQA             saed32rvt_ss0p75v125c
+hazard_unit            ForQA             saed32rvt_ss0p75v125c
+id_ex                  8000              saed32rvt_ss0p75v125c
+forwarding_unit        ForQA             saed32rvt_ss0p75v125c
+alu                    8000              saed32rvt_ss0p75v125c
+branch_unit            8000              saed32rvt_ss0p75v125c
+ex_mem                 8000              saed32rvt_ss0p75v125c
+mem_wb                 8000              saed32rvt_ss0p75v125c
+rom_ROM_BYTES32768_INIT_HEX
+                       ForQA             saed32rvt_ss0p75v125c
+ram_RAM_BYTES32768     4000000           saed32rvt_ss0p75v125c
+uart_CLK_HZ50000000_DEFAULT_BAUD115200_DW01_inc_0_DW01_inc_2
+                       ForQA             saed32rvt_ss0p75v125c
+uart_CLK_HZ50000000_DEFAULT_BAUD115200_DW01_inc_1_DW01_inc_3
+                       ForQA             saed32rvt_ss0p75v125c
+uart_CLK_HZ50000000_DEFAULT_BAUD115200_DW01_dec_0
+                       ForQA             saed32rvt_ss0p75v125c
+branch_unit_DW01_add_0 ForQA             saed32rvt_ss0p75v125c
+branch_unit_DW01_add_1 ForQA             saed32rvt_ss0p75v125c
+branch_unit_DW01_cmp6_0_DW01_cmp6_2
+                       8000              saed32rvt_ss0p75v125c
+alu_DW_rash_0          8000              saed32rvt_ss0p75v125c
+alu_DW_rash_1          8000              saed32rvt_ss0p75v125c
+alu_DW01_ash_0_DW01_ash_1
+                       8000              saed32rvt_ss0p75v125c
+alu_DW01_sub_0         ForQA             saed32rvt_ss0p75v125c
+alu_DW01_add_0_DW01_add_2
+                       ForQA             saed32rvt_ss0p75v125c
+pc_reg_00000000_DW01_add_0_DW01_add_3
+                       8000              saed32rvt_ss0p75v125c
+uart_CLK_HZ50000000_DEFAULT_BAUD115200_DW01_dec_1
+                       ForQA             saed32rvt_ss0p75v125c
+
+
+Global Operating Voltage = 0.75 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+Attributes
+----------
+i - Including register clock pin internal power
+
+
+  Cell Internal Power  =  43.8265 mW  (100%)
+  Net Switching Power  =   3.2194 uW    (0%)
+                         ---------
+Total Dynamic Power    =  43.8297 mW  (100%)
+
+Cell Leakage Power     =  59.9531 mW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network  4.3943e+04            0.0000            0.0000        4.3943e+04  (  42.29%)  i
+register           6.8828            0.2190        4.2528e+10        4.2535e+04  (  40.94%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational      1.5018            3.0004        1.7425e+10        1.7429e+04  (  16.77%)
+--------------------------------------------------------------------------------------------------
+Total          4.3951e+04 uW         3.2194 uW     5.9953e+10 pW     1.0391e+05 uW
+1

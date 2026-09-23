@@ -1,0 +1,1169 @@
+Information: Updating design information... (UID-85)
+Warning: Design 'rv32ima_mcu' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 10
+Design : rv32ima_mcu
+Version: V-2023.12-SP5-3
+Date   : Sat Sep  5 01:38:23 2026
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: ss0p75v125c   Library: saed32rvt_ss0p75v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]
+              (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_if_id/id_pc_reg[15]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  rv32ima_mcu        4000000               saed32rvt_ss0p75v125c
+  rv32_core          35000                 saed32rvt_ss0p75v125c
+  forwarding_unit    ForQA                 saed32rvt_ss0p75v125c
+  branch_unit        8000                  saed32rvt_ss0p75v125c
+  hazard_unit        ForQA                 saed32rvt_ss0p75v125c
+  if_id              8000                  saed32rvt_ss0p75v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/CLK (DFFARX1_RVT)
+                                                          0.00 #     0.00 r
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/Q (DFFARX1_RVT)
+                                                          0.40       0.40 r
+  u_rv32_core/u_ex_mem/mem_rd_addr[2] (ex_mem)            0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/mem_rd_addr[2] (forwarding_unit)
+                                                          0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/U32/Y (INVX0_RVT)         0.08       0.47 f
+  u_rv32_core/u_forwarding_unit/U12/Y (XOR2X1_RVT)        0.24       0.71 r
+  u_rv32_core/u_forwarding_unit/U9/Y (AND3X1_RVT)         0.12       0.83 r
+  u_rv32_core/u_forwarding_unit/U8/Y (NAND4X0_RVT)        0.16       0.99 f
+  u_rv32_core/u_forwarding_unit/U7/Y (NAND2X0_RVT)        0.15       1.13 r
+  u_rv32_core/u_forwarding_unit/U5/Y (NOR4X0_RVT)         0.22       1.36 f
+  u_rv32_core/u_forwarding_unit/forward_b[0] (forwarding_unit)
+                                                          0.00       1.36 f
+  u_rv32_core/U15/Y (INVX1_RVT)                           0.06       1.42 r
+  u_rv32_core/U295/Y (AND2X1_RVT)                         0.11       1.53 r
+  u_rv32_core/U293/Y (AND2X1_RVT)                         0.14       1.68 r
+  u_rv32_core/U330/Y (INVX1_RVT)                          0.06       1.74 f
+  u_rv32_core/U334/Y (INVX2_RVT)                          0.13       1.86 r
+  u_rv32_core/U292/Y (AO22X1_RVT)                         0.17       2.03 r
+  u_rv32_core/U291/Y (AO221X1_RVT)                        0.17       2.20 r
+  u_rv32_core/u_branch_unit/op_b[0] (branch_unit)         0.00       2.20 r
+  u_rv32_core/u_branch_unit/U85/Y (AND2X1_RVT)            0.12       2.32 r
+  u_rv32_core/u_branch_unit/U86/Y (AND2X1_RVT)            0.09       2.41 r
+  u_rv32_core/u_branch_unit/U87/Y (OA222X1_RVT)           0.16       2.57 r
+  u_rv32_core/u_branch_unit/U88/Y (AO221X1_RVT)           0.14       2.72 r
+  u_rv32_core/u_branch_unit/U89/Y (OA221X1_RVT)           0.13       2.85 r
+  u_rv32_core/u_branch_unit/U90/Y (AO221X1_RVT)           0.14       2.99 r
+  u_rv32_core/u_branch_unit/U91/Y (OA221X1_RVT)           0.13       3.12 r
+  u_rv32_core/u_branch_unit/U92/Y (AO221X1_RVT)           0.14       3.27 r
+  u_rv32_core/u_branch_unit/U93/Y (OA221X1_RVT)           0.13       3.40 r
+  u_rv32_core/u_branch_unit/U94/Y (AO221X1_RVT)           0.14       3.54 r
+  u_rv32_core/u_branch_unit/U95/Y (OA221X1_RVT)           0.13       3.67 r
+  u_rv32_core/u_branch_unit/U96/Y (AO221X1_RVT)           0.14       3.81 r
+  u_rv32_core/u_branch_unit/U97/Y (OA221X1_RVT)           0.13       3.95 r
+  u_rv32_core/u_branch_unit/U98/Y (AO221X1_RVT)           0.14       4.09 r
+  u_rv32_core/u_branch_unit/U99/Y (OA221X1_RVT)           0.13       4.22 r
+  u_rv32_core/u_branch_unit/U100/Y (AO221X1_RVT)          0.14       4.36 r
+  u_rv32_core/u_branch_unit/U101/Y (OA221X1_RVT)          0.13       4.49 r
+  u_rv32_core/u_branch_unit/U102/Y (AO221X1_RVT)          0.14       4.63 r
+  u_rv32_core/u_branch_unit/U103/Y (OA221X1_RVT)          0.13       4.77 r
+  u_rv32_core/u_branch_unit/U104/Y (AO221X1_RVT)          0.14       4.91 r
+  u_rv32_core/u_branch_unit/U105/Y (OA221X1_RVT)          0.13       5.04 r
+  u_rv32_core/u_branch_unit/U106/Y (AO221X1_RVT)          0.14       5.18 r
+  u_rv32_core/u_branch_unit/U107/Y (OA221X1_RVT)          0.13       5.32 r
+  u_rv32_core/u_branch_unit/U108/Y (AO221X1_RVT)          0.14       5.46 r
+  u_rv32_core/u_branch_unit/U109/Y (OA221X1_RVT)          0.13       5.59 r
+  u_rv32_core/u_branch_unit/U110/Y (AO221X1_RVT)          0.14       5.73 r
+  u_rv32_core/u_branch_unit/U111/Y (OA221X1_RVT)          0.13       5.86 r
+  u_rv32_core/u_branch_unit/U112/Y (AO221X1_RVT)          0.14       6.00 r
+  u_rv32_core/u_branch_unit/U113/Y (OA221X1_RVT)          0.13       6.14 r
+  u_rv32_core/u_branch_unit/U114/Y (AO221X1_RVT)          0.14       6.28 r
+  u_rv32_core/u_branch_unit/U115/Y (OA221X1_RVT)          0.13       6.41 r
+  u_rv32_core/u_branch_unit/U116/Y (AO21X1_RVT)           0.09       6.50 r
+  u_rv32_core/u_branch_unit/U118/Y (AO22X1_RVT)           0.13       6.63 r
+  u_rv32_core/u_branch_unit/U76/Y (INVX1_RVT)             0.04       6.67 f
+  u_rv32_core/u_branch_unit/U51/Y (AO22X1_RVT)            0.10       6.76 f
+  u_rv32_core/u_branch_unit/U49/Y (AO22X1_RVT)            0.14       6.91 f
+  u_rv32_core/u_branch_unit/U48/Y (AO221X1_RVT)           0.18       7.09 f
+  u_rv32_core/u_branch_unit/U80/Y (NBUFFX2_RVT)           0.12       7.21 f
+  u_rv32_core/u_branch_unit/branch_taken (branch_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/branch_taken (hazard_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/U3/Y (INVX1_RVT)              0.07       7.28 r
+  u_rv32_core/u_hazard_unit/U6/Y (NAND4X0_RVT)            0.16       7.44 f
+  u_rv32_core/u_hazard_unit/U4/Y (INVX0_RVT)              0.13       7.56 r
+  u_rv32_core/u_hazard_unit/stall_if_id (hazard_unit)     0.00       7.56 r
+  u_rv32_core/u_if_id/stall (if_id)                       0.00       7.56 r
+  u_rv32_core/u_if_id/U101/Y (NOR2X0_RVT)                 0.23       7.79 f
+  u_rv32_core/u_if_id/U108/Y (INVX0_RVT)                  0.09       7.88 r
+  u_rv32_core/u_if_id/U111/Y (INVX1_RVT)                  0.13       8.00 f
+  u_rv32_core/u_if_id/U110/Y (NBUFFX2_RVT)                0.20       8.20 f
+  u_rv32_core/u_if_id/U120/Y (NBUFFX2_RVT)                0.17       8.37 f
+  u_rv32_core/u_if_id/U109/Y (NOR2X0_RVT)                 0.21       8.57 r
+  u_rv32_core/u_if_id/U119/Y (NBUFFX2_RVT)                0.16       8.74 r
+  u_rv32_core/u_if_id/U112/Y (NBUFFX2_RVT)                0.17       8.90 r
+  u_rv32_core/u_if_id/U82/Y (AO22X1_RVT)                  0.18       9.08 r
+  u_rv32_core/u_if_id/id_pc_reg[15]/D (DFFARX1_RVT)       0.00       9.08 r
+  data arrival time                                                  9.08
+
+  clock CLK (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_rv32_core/u_if_id/id_pc_reg[15]/CLK (DFFARX1_RVT)     0.00      19.50 r
+  library setup time                                     -0.11      19.39
+  data required time                                                19.39
+  --------------------------------------------------------------------------
+  data required time                                                19.39
+  data arrival time                                                 -9.08
+  --------------------------------------------------------------------------
+  slack (MET)                                                       10.31
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]
+              (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_if_id/id_pc_reg[14]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  rv32ima_mcu        4000000               saed32rvt_ss0p75v125c
+  rv32_core          35000                 saed32rvt_ss0p75v125c
+  forwarding_unit    ForQA                 saed32rvt_ss0p75v125c
+  branch_unit        8000                  saed32rvt_ss0p75v125c
+  hazard_unit        ForQA                 saed32rvt_ss0p75v125c
+  if_id              8000                  saed32rvt_ss0p75v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/CLK (DFFARX1_RVT)
+                                                          0.00 #     0.00 r
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/Q (DFFARX1_RVT)
+                                                          0.40       0.40 r
+  u_rv32_core/u_ex_mem/mem_rd_addr[2] (ex_mem)            0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/mem_rd_addr[2] (forwarding_unit)
+                                                          0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/U32/Y (INVX0_RVT)         0.08       0.47 f
+  u_rv32_core/u_forwarding_unit/U12/Y (XOR2X1_RVT)        0.24       0.71 r
+  u_rv32_core/u_forwarding_unit/U9/Y (AND3X1_RVT)         0.12       0.83 r
+  u_rv32_core/u_forwarding_unit/U8/Y (NAND4X0_RVT)        0.16       0.99 f
+  u_rv32_core/u_forwarding_unit/U7/Y (NAND2X0_RVT)        0.15       1.13 r
+  u_rv32_core/u_forwarding_unit/U5/Y (NOR4X0_RVT)         0.22       1.36 f
+  u_rv32_core/u_forwarding_unit/forward_b[0] (forwarding_unit)
+                                                          0.00       1.36 f
+  u_rv32_core/U15/Y (INVX1_RVT)                           0.06       1.42 r
+  u_rv32_core/U295/Y (AND2X1_RVT)                         0.11       1.53 r
+  u_rv32_core/U293/Y (AND2X1_RVT)                         0.14       1.68 r
+  u_rv32_core/U330/Y (INVX1_RVT)                          0.06       1.74 f
+  u_rv32_core/U334/Y (INVX2_RVT)                          0.13       1.86 r
+  u_rv32_core/U292/Y (AO22X1_RVT)                         0.17       2.03 r
+  u_rv32_core/U291/Y (AO221X1_RVT)                        0.17       2.20 r
+  u_rv32_core/u_branch_unit/op_b[0] (branch_unit)         0.00       2.20 r
+  u_rv32_core/u_branch_unit/U85/Y (AND2X1_RVT)            0.12       2.32 r
+  u_rv32_core/u_branch_unit/U86/Y (AND2X1_RVT)            0.09       2.41 r
+  u_rv32_core/u_branch_unit/U87/Y (OA222X1_RVT)           0.16       2.57 r
+  u_rv32_core/u_branch_unit/U88/Y (AO221X1_RVT)           0.14       2.72 r
+  u_rv32_core/u_branch_unit/U89/Y (OA221X1_RVT)           0.13       2.85 r
+  u_rv32_core/u_branch_unit/U90/Y (AO221X1_RVT)           0.14       2.99 r
+  u_rv32_core/u_branch_unit/U91/Y (OA221X1_RVT)           0.13       3.12 r
+  u_rv32_core/u_branch_unit/U92/Y (AO221X1_RVT)           0.14       3.27 r
+  u_rv32_core/u_branch_unit/U93/Y (OA221X1_RVT)           0.13       3.40 r
+  u_rv32_core/u_branch_unit/U94/Y (AO221X1_RVT)           0.14       3.54 r
+  u_rv32_core/u_branch_unit/U95/Y (OA221X1_RVT)           0.13       3.67 r
+  u_rv32_core/u_branch_unit/U96/Y (AO221X1_RVT)           0.14       3.81 r
+  u_rv32_core/u_branch_unit/U97/Y (OA221X1_RVT)           0.13       3.95 r
+  u_rv32_core/u_branch_unit/U98/Y (AO221X1_RVT)           0.14       4.09 r
+  u_rv32_core/u_branch_unit/U99/Y (OA221X1_RVT)           0.13       4.22 r
+  u_rv32_core/u_branch_unit/U100/Y (AO221X1_RVT)          0.14       4.36 r
+  u_rv32_core/u_branch_unit/U101/Y (OA221X1_RVT)          0.13       4.49 r
+  u_rv32_core/u_branch_unit/U102/Y (AO221X1_RVT)          0.14       4.63 r
+  u_rv32_core/u_branch_unit/U103/Y (OA221X1_RVT)          0.13       4.77 r
+  u_rv32_core/u_branch_unit/U104/Y (AO221X1_RVT)          0.14       4.91 r
+  u_rv32_core/u_branch_unit/U105/Y (OA221X1_RVT)          0.13       5.04 r
+  u_rv32_core/u_branch_unit/U106/Y (AO221X1_RVT)          0.14       5.18 r
+  u_rv32_core/u_branch_unit/U107/Y (OA221X1_RVT)          0.13       5.32 r
+  u_rv32_core/u_branch_unit/U108/Y (AO221X1_RVT)          0.14       5.46 r
+  u_rv32_core/u_branch_unit/U109/Y (OA221X1_RVT)          0.13       5.59 r
+  u_rv32_core/u_branch_unit/U110/Y (AO221X1_RVT)          0.14       5.73 r
+  u_rv32_core/u_branch_unit/U111/Y (OA221X1_RVT)          0.13       5.86 r
+  u_rv32_core/u_branch_unit/U112/Y (AO221X1_RVT)          0.14       6.00 r
+  u_rv32_core/u_branch_unit/U113/Y (OA221X1_RVT)          0.13       6.14 r
+  u_rv32_core/u_branch_unit/U114/Y (AO221X1_RVT)          0.14       6.28 r
+  u_rv32_core/u_branch_unit/U115/Y (OA221X1_RVT)          0.13       6.41 r
+  u_rv32_core/u_branch_unit/U116/Y (AO21X1_RVT)           0.09       6.50 r
+  u_rv32_core/u_branch_unit/U118/Y (AO22X1_RVT)           0.13       6.63 r
+  u_rv32_core/u_branch_unit/U76/Y (INVX1_RVT)             0.04       6.67 f
+  u_rv32_core/u_branch_unit/U51/Y (AO22X1_RVT)            0.10       6.76 f
+  u_rv32_core/u_branch_unit/U49/Y (AO22X1_RVT)            0.14       6.91 f
+  u_rv32_core/u_branch_unit/U48/Y (AO221X1_RVT)           0.18       7.09 f
+  u_rv32_core/u_branch_unit/U80/Y (NBUFFX2_RVT)           0.12       7.21 f
+  u_rv32_core/u_branch_unit/branch_taken (branch_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/branch_taken (hazard_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/U3/Y (INVX1_RVT)              0.07       7.28 r
+  u_rv32_core/u_hazard_unit/U6/Y (NAND4X0_RVT)            0.16       7.44 f
+  u_rv32_core/u_hazard_unit/U4/Y (INVX0_RVT)              0.13       7.56 r
+  u_rv32_core/u_hazard_unit/stall_if_id (hazard_unit)     0.00       7.56 r
+  u_rv32_core/u_if_id/stall (if_id)                       0.00       7.56 r
+  u_rv32_core/u_if_id/U101/Y (NOR2X0_RVT)                 0.23       7.79 f
+  u_rv32_core/u_if_id/U108/Y (INVX0_RVT)                  0.09       7.88 r
+  u_rv32_core/u_if_id/U111/Y (INVX1_RVT)                  0.13       8.00 f
+  u_rv32_core/u_if_id/U110/Y (NBUFFX2_RVT)                0.20       8.20 f
+  u_rv32_core/u_if_id/U120/Y (NBUFFX2_RVT)                0.17       8.37 f
+  u_rv32_core/u_if_id/U109/Y (NOR2X0_RVT)                 0.21       8.57 r
+  u_rv32_core/u_if_id/U119/Y (NBUFFX2_RVT)                0.16       8.74 r
+  u_rv32_core/u_if_id/U112/Y (NBUFFX2_RVT)                0.17       8.90 r
+  u_rv32_core/u_if_id/U81/Y (AO22X1_RVT)                  0.18       9.08 r
+  u_rv32_core/u_if_id/id_pc_reg[14]/D (DFFARX1_RVT)       0.00       9.08 r
+  data arrival time                                                  9.08
+
+  clock CLK (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_rv32_core/u_if_id/id_pc_reg[14]/CLK (DFFARX1_RVT)     0.00      19.50 r
+  library setup time                                     -0.11      19.39
+  data required time                                                19.39
+  --------------------------------------------------------------------------
+  data required time                                                19.39
+  data arrival time                                                 -9.08
+  --------------------------------------------------------------------------
+  slack (MET)                                                       10.31
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]
+              (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_if_id/id_pc_reg[13]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  rv32ima_mcu        4000000               saed32rvt_ss0p75v125c
+  rv32_core          35000                 saed32rvt_ss0p75v125c
+  forwarding_unit    ForQA                 saed32rvt_ss0p75v125c
+  branch_unit        8000                  saed32rvt_ss0p75v125c
+  hazard_unit        ForQA                 saed32rvt_ss0p75v125c
+  if_id              8000                  saed32rvt_ss0p75v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/CLK (DFFARX1_RVT)
+                                                          0.00 #     0.00 r
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/Q (DFFARX1_RVT)
+                                                          0.40       0.40 r
+  u_rv32_core/u_ex_mem/mem_rd_addr[2] (ex_mem)            0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/mem_rd_addr[2] (forwarding_unit)
+                                                          0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/U32/Y (INVX0_RVT)         0.08       0.47 f
+  u_rv32_core/u_forwarding_unit/U12/Y (XOR2X1_RVT)        0.24       0.71 r
+  u_rv32_core/u_forwarding_unit/U9/Y (AND3X1_RVT)         0.12       0.83 r
+  u_rv32_core/u_forwarding_unit/U8/Y (NAND4X0_RVT)        0.16       0.99 f
+  u_rv32_core/u_forwarding_unit/U7/Y (NAND2X0_RVT)        0.15       1.13 r
+  u_rv32_core/u_forwarding_unit/U5/Y (NOR4X0_RVT)         0.22       1.36 f
+  u_rv32_core/u_forwarding_unit/forward_b[0] (forwarding_unit)
+                                                          0.00       1.36 f
+  u_rv32_core/U15/Y (INVX1_RVT)                           0.06       1.42 r
+  u_rv32_core/U295/Y (AND2X1_RVT)                         0.11       1.53 r
+  u_rv32_core/U293/Y (AND2X1_RVT)                         0.14       1.68 r
+  u_rv32_core/U330/Y (INVX1_RVT)                          0.06       1.74 f
+  u_rv32_core/U334/Y (INVX2_RVT)                          0.13       1.86 r
+  u_rv32_core/U292/Y (AO22X1_RVT)                         0.17       2.03 r
+  u_rv32_core/U291/Y (AO221X1_RVT)                        0.17       2.20 r
+  u_rv32_core/u_branch_unit/op_b[0] (branch_unit)         0.00       2.20 r
+  u_rv32_core/u_branch_unit/U85/Y (AND2X1_RVT)            0.12       2.32 r
+  u_rv32_core/u_branch_unit/U86/Y (AND2X1_RVT)            0.09       2.41 r
+  u_rv32_core/u_branch_unit/U87/Y (OA222X1_RVT)           0.16       2.57 r
+  u_rv32_core/u_branch_unit/U88/Y (AO221X1_RVT)           0.14       2.72 r
+  u_rv32_core/u_branch_unit/U89/Y (OA221X1_RVT)           0.13       2.85 r
+  u_rv32_core/u_branch_unit/U90/Y (AO221X1_RVT)           0.14       2.99 r
+  u_rv32_core/u_branch_unit/U91/Y (OA221X1_RVT)           0.13       3.12 r
+  u_rv32_core/u_branch_unit/U92/Y (AO221X1_RVT)           0.14       3.27 r
+  u_rv32_core/u_branch_unit/U93/Y (OA221X1_RVT)           0.13       3.40 r
+  u_rv32_core/u_branch_unit/U94/Y (AO221X1_RVT)           0.14       3.54 r
+  u_rv32_core/u_branch_unit/U95/Y (OA221X1_RVT)           0.13       3.67 r
+  u_rv32_core/u_branch_unit/U96/Y (AO221X1_RVT)           0.14       3.81 r
+  u_rv32_core/u_branch_unit/U97/Y (OA221X1_RVT)           0.13       3.95 r
+  u_rv32_core/u_branch_unit/U98/Y (AO221X1_RVT)           0.14       4.09 r
+  u_rv32_core/u_branch_unit/U99/Y (OA221X1_RVT)           0.13       4.22 r
+  u_rv32_core/u_branch_unit/U100/Y (AO221X1_RVT)          0.14       4.36 r
+  u_rv32_core/u_branch_unit/U101/Y (OA221X1_RVT)          0.13       4.49 r
+  u_rv32_core/u_branch_unit/U102/Y (AO221X1_RVT)          0.14       4.63 r
+  u_rv32_core/u_branch_unit/U103/Y (OA221X1_RVT)          0.13       4.77 r
+  u_rv32_core/u_branch_unit/U104/Y (AO221X1_RVT)          0.14       4.91 r
+  u_rv32_core/u_branch_unit/U105/Y (OA221X1_RVT)          0.13       5.04 r
+  u_rv32_core/u_branch_unit/U106/Y (AO221X1_RVT)          0.14       5.18 r
+  u_rv32_core/u_branch_unit/U107/Y (OA221X1_RVT)          0.13       5.32 r
+  u_rv32_core/u_branch_unit/U108/Y (AO221X1_RVT)          0.14       5.46 r
+  u_rv32_core/u_branch_unit/U109/Y (OA221X1_RVT)          0.13       5.59 r
+  u_rv32_core/u_branch_unit/U110/Y (AO221X1_RVT)          0.14       5.73 r
+  u_rv32_core/u_branch_unit/U111/Y (OA221X1_RVT)          0.13       5.86 r
+  u_rv32_core/u_branch_unit/U112/Y (AO221X1_RVT)          0.14       6.00 r
+  u_rv32_core/u_branch_unit/U113/Y (OA221X1_RVT)          0.13       6.14 r
+  u_rv32_core/u_branch_unit/U114/Y (AO221X1_RVT)          0.14       6.28 r
+  u_rv32_core/u_branch_unit/U115/Y (OA221X1_RVT)          0.13       6.41 r
+  u_rv32_core/u_branch_unit/U116/Y (AO21X1_RVT)           0.09       6.50 r
+  u_rv32_core/u_branch_unit/U118/Y (AO22X1_RVT)           0.13       6.63 r
+  u_rv32_core/u_branch_unit/U76/Y (INVX1_RVT)             0.04       6.67 f
+  u_rv32_core/u_branch_unit/U51/Y (AO22X1_RVT)            0.10       6.76 f
+  u_rv32_core/u_branch_unit/U49/Y (AO22X1_RVT)            0.14       6.91 f
+  u_rv32_core/u_branch_unit/U48/Y (AO221X1_RVT)           0.18       7.09 f
+  u_rv32_core/u_branch_unit/U80/Y (NBUFFX2_RVT)           0.12       7.21 f
+  u_rv32_core/u_branch_unit/branch_taken (branch_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/branch_taken (hazard_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/U3/Y (INVX1_RVT)              0.07       7.28 r
+  u_rv32_core/u_hazard_unit/U6/Y (NAND4X0_RVT)            0.16       7.44 f
+  u_rv32_core/u_hazard_unit/U4/Y (INVX0_RVT)              0.13       7.56 r
+  u_rv32_core/u_hazard_unit/stall_if_id (hazard_unit)     0.00       7.56 r
+  u_rv32_core/u_if_id/stall (if_id)                       0.00       7.56 r
+  u_rv32_core/u_if_id/U101/Y (NOR2X0_RVT)                 0.23       7.79 f
+  u_rv32_core/u_if_id/U108/Y (INVX0_RVT)                  0.09       7.88 r
+  u_rv32_core/u_if_id/U111/Y (INVX1_RVT)                  0.13       8.00 f
+  u_rv32_core/u_if_id/U110/Y (NBUFFX2_RVT)                0.20       8.20 f
+  u_rv32_core/u_if_id/U120/Y (NBUFFX2_RVT)                0.17       8.37 f
+  u_rv32_core/u_if_id/U109/Y (NOR2X0_RVT)                 0.21       8.57 r
+  u_rv32_core/u_if_id/U119/Y (NBUFFX2_RVT)                0.16       8.74 r
+  u_rv32_core/u_if_id/U112/Y (NBUFFX2_RVT)                0.17       8.90 r
+  u_rv32_core/u_if_id/U80/Y (AO22X1_RVT)                  0.18       9.08 r
+  u_rv32_core/u_if_id/id_pc_reg[13]/D (DFFARX1_RVT)       0.00       9.08 r
+  data arrival time                                                  9.08
+
+  clock CLK (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_rv32_core/u_if_id/id_pc_reg[13]/CLK (DFFARX1_RVT)     0.00      19.50 r
+  library setup time                                     -0.11      19.39
+  data required time                                                19.39
+  --------------------------------------------------------------------------
+  data required time                                                19.39
+  data arrival time                                                 -9.08
+  --------------------------------------------------------------------------
+  slack (MET)                                                       10.31
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]
+              (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_if_id/id_pc_reg[12]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  rv32ima_mcu        4000000               saed32rvt_ss0p75v125c
+  rv32_core          35000                 saed32rvt_ss0p75v125c
+  forwarding_unit    ForQA                 saed32rvt_ss0p75v125c
+  branch_unit        8000                  saed32rvt_ss0p75v125c
+  hazard_unit        ForQA                 saed32rvt_ss0p75v125c
+  if_id              8000                  saed32rvt_ss0p75v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/CLK (DFFARX1_RVT)
+                                                          0.00 #     0.00 r
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/Q (DFFARX1_RVT)
+                                                          0.40       0.40 r
+  u_rv32_core/u_ex_mem/mem_rd_addr[2] (ex_mem)            0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/mem_rd_addr[2] (forwarding_unit)
+                                                          0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/U32/Y (INVX0_RVT)         0.08       0.47 f
+  u_rv32_core/u_forwarding_unit/U12/Y (XOR2X1_RVT)        0.24       0.71 r
+  u_rv32_core/u_forwarding_unit/U9/Y (AND3X1_RVT)         0.12       0.83 r
+  u_rv32_core/u_forwarding_unit/U8/Y (NAND4X0_RVT)        0.16       0.99 f
+  u_rv32_core/u_forwarding_unit/U7/Y (NAND2X0_RVT)        0.15       1.13 r
+  u_rv32_core/u_forwarding_unit/U5/Y (NOR4X0_RVT)         0.22       1.36 f
+  u_rv32_core/u_forwarding_unit/forward_b[0] (forwarding_unit)
+                                                          0.00       1.36 f
+  u_rv32_core/U15/Y (INVX1_RVT)                           0.06       1.42 r
+  u_rv32_core/U295/Y (AND2X1_RVT)                         0.11       1.53 r
+  u_rv32_core/U293/Y (AND2X1_RVT)                         0.14       1.68 r
+  u_rv32_core/U330/Y (INVX1_RVT)                          0.06       1.74 f
+  u_rv32_core/U334/Y (INVX2_RVT)                          0.13       1.86 r
+  u_rv32_core/U292/Y (AO22X1_RVT)                         0.17       2.03 r
+  u_rv32_core/U291/Y (AO221X1_RVT)                        0.17       2.20 r
+  u_rv32_core/u_branch_unit/op_b[0] (branch_unit)         0.00       2.20 r
+  u_rv32_core/u_branch_unit/U85/Y (AND2X1_RVT)            0.12       2.32 r
+  u_rv32_core/u_branch_unit/U86/Y (AND2X1_RVT)            0.09       2.41 r
+  u_rv32_core/u_branch_unit/U87/Y (OA222X1_RVT)           0.16       2.57 r
+  u_rv32_core/u_branch_unit/U88/Y (AO221X1_RVT)           0.14       2.72 r
+  u_rv32_core/u_branch_unit/U89/Y (OA221X1_RVT)           0.13       2.85 r
+  u_rv32_core/u_branch_unit/U90/Y (AO221X1_RVT)           0.14       2.99 r
+  u_rv32_core/u_branch_unit/U91/Y (OA221X1_RVT)           0.13       3.12 r
+  u_rv32_core/u_branch_unit/U92/Y (AO221X1_RVT)           0.14       3.27 r
+  u_rv32_core/u_branch_unit/U93/Y (OA221X1_RVT)           0.13       3.40 r
+  u_rv32_core/u_branch_unit/U94/Y (AO221X1_RVT)           0.14       3.54 r
+  u_rv32_core/u_branch_unit/U95/Y (OA221X1_RVT)           0.13       3.67 r
+  u_rv32_core/u_branch_unit/U96/Y (AO221X1_RVT)           0.14       3.81 r
+  u_rv32_core/u_branch_unit/U97/Y (OA221X1_RVT)           0.13       3.95 r
+  u_rv32_core/u_branch_unit/U98/Y (AO221X1_RVT)           0.14       4.09 r
+  u_rv32_core/u_branch_unit/U99/Y (OA221X1_RVT)           0.13       4.22 r
+  u_rv32_core/u_branch_unit/U100/Y (AO221X1_RVT)          0.14       4.36 r
+  u_rv32_core/u_branch_unit/U101/Y (OA221X1_RVT)          0.13       4.49 r
+  u_rv32_core/u_branch_unit/U102/Y (AO221X1_RVT)          0.14       4.63 r
+  u_rv32_core/u_branch_unit/U103/Y (OA221X1_RVT)          0.13       4.77 r
+  u_rv32_core/u_branch_unit/U104/Y (AO221X1_RVT)          0.14       4.91 r
+  u_rv32_core/u_branch_unit/U105/Y (OA221X1_RVT)          0.13       5.04 r
+  u_rv32_core/u_branch_unit/U106/Y (AO221X1_RVT)          0.14       5.18 r
+  u_rv32_core/u_branch_unit/U107/Y (OA221X1_RVT)          0.13       5.32 r
+  u_rv32_core/u_branch_unit/U108/Y (AO221X1_RVT)          0.14       5.46 r
+  u_rv32_core/u_branch_unit/U109/Y (OA221X1_RVT)          0.13       5.59 r
+  u_rv32_core/u_branch_unit/U110/Y (AO221X1_RVT)          0.14       5.73 r
+  u_rv32_core/u_branch_unit/U111/Y (OA221X1_RVT)          0.13       5.86 r
+  u_rv32_core/u_branch_unit/U112/Y (AO221X1_RVT)          0.14       6.00 r
+  u_rv32_core/u_branch_unit/U113/Y (OA221X1_RVT)          0.13       6.14 r
+  u_rv32_core/u_branch_unit/U114/Y (AO221X1_RVT)          0.14       6.28 r
+  u_rv32_core/u_branch_unit/U115/Y (OA221X1_RVT)          0.13       6.41 r
+  u_rv32_core/u_branch_unit/U116/Y (AO21X1_RVT)           0.09       6.50 r
+  u_rv32_core/u_branch_unit/U118/Y (AO22X1_RVT)           0.13       6.63 r
+  u_rv32_core/u_branch_unit/U76/Y (INVX1_RVT)             0.04       6.67 f
+  u_rv32_core/u_branch_unit/U51/Y (AO22X1_RVT)            0.10       6.76 f
+  u_rv32_core/u_branch_unit/U49/Y (AO22X1_RVT)            0.14       6.91 f
+  u_rv32_core/u_branch_unit/U48/Y (AO221X1_RVT)           0.18       7.09 f
+  u_rv32_core/u_branch_unit/U80/Y (NBUFFX2_RVT)           0.12       7.21 f
+  u_rv32_core/u_branch_unit/branch_taken (branch_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/branch_taken (hazard_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/U3/Y (INVX1_RVT)              0.07       7.28 r
+  u_rv32_core/u_hazard_unit/U6/Y (NAND4X0_RVT)            0.16       7.44 f
+  u_rv32_core/u_hazard_unit/U4/Y (INVX0_RVT)              0.13       7.56 r
+  u_rv32_core/u_hazard_unit/stall_if_id (hazard_unit)     0.00       7.56 r
+  u_rv32_core/u_if_id/stall (if_id)                       0.00       7.56 r
+  u_rv32_core/u_if_id/U101/Y (NOR2X0_RVT)                 0.23       7.79 f
+  u_rv32_core/u_if_id/U108/Y (INVX0_RVT)                  0.09       7.88 r
+  u_rv32_core/u_if_id/U111/Y (INVX1_RVT)                  0.13       8.00 f
+  u_rv32_core/u_if_id/U110/Y (NBUFFX2_RVT)                0.20       8.20 f
+  u_rv32_core/u_if_id/U120/Y (NBUFFX2_RVT)                0.17       8.37 f
+  u_rv32_core/u_if_id/U109/Y (NOR2X0_RVT)                 0.21       8.57 r
+  u_rv32_core/u_if_id/U119/Y (NBUFFX2_RVT)                0.16       8.74 r
+  u_rv32_core/u_if_id/U112/Y (NBUFFX2_RVT)                0.17       8.90 r
+  u_rv32_core/u_if_id/U79/Y (AO22X1_RVT)                  0.18       9.08 r
+  u_rv32_core/u_if_id/id_pc_reg[12]/D (DFFARX1_RVT)       0.00       9.08 r
+  data arrival time                                                  9.08
+
+  clock CLK (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_rv32_core/u_if_id/id_pc_reg[12]/CLK (DFFARX1_RVT)     0.00      19.50 r
+  library setup time                                     -0.11      19.39
+  data required time                                                19.39
+  --------------------------------------------------------------------------
+  data required time                                                19.39
+  data arrival time                                                 -9.08
+  --------------------------------------------------------------------------
+  slack (MET)                                                       10.31
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]
+              (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_if_id/id_pc_reg[11]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  rv32ima_mcu        4000000               saed32rvt_ss0p75v125c
+  rv32_core          35000                 saed32rvt_ss0p75v125c
+  forwarding_unit    ForQA                 saed32rvt_ss0p75v125c
+  branch_unit        8000                  saed32rvt_ss0p75v125c
+  hazard_unit        ForQA                 saed32rvt_ss0p75v125c
+  if_id              8000                  saed32rvt_ss0p75v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/CLK (DFFARX1_RVT)
+                                                          0.00 #     0.00 r
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/Q (DFFARX1_RVT)
+                                                          0.40       0.40 r
+  u_rv32_core/u_ex_mem/mem_rd_addr[2] (ex_mem)            0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/mem_rd_addr[2] (forwarding_unit)
+                                                          0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/U32/Y (INVX0_RVT)         0.08       0.47 f
+  u_rv32_core/u_forwarding_unit/U12/Y (XOR2X1_RVT)        0.24       0.71 r
+  u_rv32_core/u_forwarding_unit/U9/Y (AND3X1_RVT)         0.12       0.83 r
+  u_rv32_core/u_forwarding_unit/U8/Y (NAND4X0_RVT)        0.16       0.99 f
+  u_rv32_core/u_forwarding_unit/U7/Y (NAND2X0_RVT)        0.15       1.13 r
+  u_rv32_core/u_forwarding_unit/U5/Y (NOR4X0_RVT)         0.22       1.36 f
+  u_rv32_core/u_forwarding_unit/forward_b[0] (forwarding_unit)
+                                                          0.00       1.36 f
+  u_rv32_core/U15/Y (INVX1_RVT)                           0.06       1.42 r
+  u_rv32_core/U295/Y (AND2X1_RVT)                         0.11       1.53 r
+  u_rv32_core/U293/Y (AND2X1_RVT)                         0.14       1.68 r
+  u_rv32_core/U330/Y (INVX1_RVT)                          0.06       1.74 f
+  u_rv32_core/U334/Y (INVX2_RVT)                          0.13       1.86 r
+  u_rv32_core/U292/Y (AO22X1_RVT)                         0.17       2.03 r
+  u_rv32_core/U291/Y (AO221X1_RVT)                        0.17       2.20 r
+  u_rv32_core/u_branch_unit/op_b[0] (branch_unit)         0.00       2.20 r
+  u_rv32_core/u_branch_unit/U85/Y (AND2X1_RVT)            0.12       2.32 r
+  u_rv32_core/u_branch_unit/U86/Y (AND2X1_RVT)            0.09       2.41 r
+  u_rv32_core/u_branch_unit/U87/Y (OA222X1_RVT)           0.16       2.57 r
+  u_rv32_core/u_branch_unit/U88/Y (AO221X1_RVT)           0.14       2.72 r
+  u_rv32_core/u_branch_unit/U89/Y (OA221X1_RVT)           0.13       2.85 r
+  u_rv32_core/u_branch_unit/U90/Y (AO221X1_RVT)           0.14       2.99 r
+  u_rv32_core/u_branch_unit/U91/Y (OA221X1_RVT)           0.13       3.12 r
+  u_rv32_core/u_branch_unit/U92/Y (AO221X1_RVT)           0.14       3.27 r
+  u_rv32_core/u_branch_unit/U93/Y (OA221X1_RVT)           0.13       3.40 r
+  u_rv32_core/u_branch_unit/U94/Y (AO221X1_RVT)           0.14       3.54 r
+  u_rv32_core/u_branch_unit/U95/Y (OA221X1_RVT)           0.13       3.67 r
+  u_rv32_core/u_branch_unit/U96/Y (AO221X1_RVT)           0.14       3.81 r
+  u_rv32_core/u_branch_unit/U97/Y (OA221X1_RVT)           0.13       3.95 r
+  u_rv32_core/u_branch_unit/U98/Y (AO221X1_RVT)           0.14       4.09 r
+  u_rv32_core/u_branch_unit/U99/Y (OA221X1_RVT)           0.13       4.22 r
+  u_rv32_core/u_branch_unit/U100/Y (AO221X1_RVT)          0.14       4.36 r
+  u_rv32_core/u_branch_unit/U101/Y (OA221X1_RVT)          0.13       4.49 r
+  u_rv32_core/u_branch_unit/U102/Y (AO221X1_RVT)          0.14       4.63 r
+  u_rv32_core/u_branch_unit/U103/Y (OA221X1_RVT)          0.13       4.77 r
+  u_rv32_core/u_branch_unit/U104/Y (AO221X1_RVT)          0.14       4.91 r
+  u_rv32_core/u_branch_unit/U105/Y (OA221X1_RVT)          0.13       5.04 r
+  u_rv32_core/u_branch_unit/U106/Y (AO221X1_RVT)          0.14       5.18 r
+  u_rv32_core/u_branch_unit/U107/Y (OA221X1_RVT)          0.13       5.32 r
+  u_rv32_core/u_branch_unit/U108/Y (AO221X1_RVT)          0.14       5.46 r
+  u_rv32_core/u_branch_unit/U109/Y (OA221X1_RVT)          0.13       5.59 r
+  u_rv32_core/u_branch_unit/U110/Y (AO221X1_RVT)          0.14       5.73 r
+  u_rv32_core/u_branch_unit/U111/Y (OA221X1_RVT)          0.13       5.86 r
+  u_rv32_core/u_branch_unit/U112/Y (AO221X1_RVT)          0.14       6.00 r
+  u_rv32_core/u_branch_unit/U113/Y (OA221X1_RVT)          0.13       6.14 r
+  u_rv32_core/u_branch_unit/U114/Y (AO221X1_RVT)          0.14       6.28 r
+  u_rv32_core/u_branch_unit/U115/Y (OA221X1_RVT)          0.13       6.41 r
+  u_rv32_core/u_branch_unit/U116/Y (AO21X1_RVT)           0.09       6.50 r
+  u_rv32_core/u_branch_unit/U118/Y (AO22X1_RVT)           0.13       6.63 r
+  u_rv32_core/u_branch_unit/U76/Y (INVX1_RVT)             0.04       6.67 f
+  u_rv32_core/u_branch_unit/U51/Y (AO22X1_RVT)            0.10       6.76 f
+  u_rv32_core/u_branch_unit/U49/Y (AO22X1_RVT)            0.14       6.91 f
+  u_rv32_core/u_branch_unit/U48/Y (AO221X1_RVT)           0.18       7.09 f
+  u_rv32_core/u_branch_unit/U80/Y (NBUFFX2_RVT)           0.12       7.21 f
+  u_rv32_core/u_branch_unit/branch_taken (branch_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/branch_taken (hazard_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/U3/Y (INVX1_RVT)              0.07       7.28 r
+  u_rv32_core/u_hazard_unit/U6/Y (NAND4X0_RVT)            0.16       7.44 f
+  u_rv32_core/u_hazard_unit/U4/Y (INVX0_RVT)              0.13       7.56 r
+  u_rv32_core/u_hazard_unit/stall_if_id (hazard_unit)     0.00       7.56 r
+  u_rv32_core/u_if_id/stall (if_id)                       0.00       7.56 r
+  u_rv32_core/u_if_id/U101/Y (NOR2X0_RVT)                 0.23       7.79 f
+  u_rv32_core/u_if_id/U108/Y (INVX0_RVT)                  0.09       7.88 r
+  u_rv32_core/u_if_id/U111/Y (INVX1_RVT)                  0.13       8.00 f
+  u_rv32_core/u_if_id/U110/Y (NBUFFX2_RVT)                0.20       8.20 f
+  u_rv32_core/u_if_id/U120/Y (NBUFFX2_RVT)                0.17       8.37 f
+  u_rv32_core/u_if_id/U109/Y (NOR2X0_RVT)                 0.21       8.57 r
+  u_rv32_core/u_if_id/U119/Y (NBUFFX2_RVT)                0.16       8.74 r
+  u_rv32_core/u_if_id/U112/Y (NBUFFX2_RVT)                0.17       8.90 r
+  u_rv32_core/u_if_id/U78/Y (AO22X1_RVT)                  0.18       9.08 r
+  u_rv32_core/u_if_id/id_pc_reg[11]/D (DFFARX1_RVT)       0.00       9.08 r
+  data arrival time                                                  9.08
+
+  clock CLK (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_rv32_core/u_if_id/id_pc_reg[11]/CLK (DFFARX1_RVT)     0.00      19.50 r
+  library setup time                                     -0.11      19.39
+  data required time                                                19.39
+  --------------------------------------------------------------------------
+  data required time                                                19.39
+  data arrival time                                                 -9.08
+  --------------------------------------------------------------------------
+  slack (MET)                                                       10.31
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]
+              (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_if_id/id_pc_reg[10]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  rv32ima_mcu        4000000               saed32rvt_ss0p75v125c
+  rv32_core          35000                 saed32rvt_ss0p75v125c
+  forwarding_unit    ForQA                 saed32rvt_ss0p75v125c
+  branch_unit        8000                  saed32rvt_ss0p75v125c
+  hazard_unit        ForQA                 saed32rvt_ss0p75v125c
+  if_id              8000                  saed32rvt_ss0p75v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/CLK (DFFARX1_RVT)
+                                                          0.00 #     0.00 r
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/Q (DFFARX1_RVT)
+                                                          0.40       0.40 r
+  u_rv32_core/u_ex_mem/mem_rd_addr[2] (ex_mem)            0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/mem_rd_addr[2] (forwarding_unit)
+                                                          0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/U32/Y (INVX0_RVT)         0.08       0.47 f
+  u_rv32_core/u_forwarding_unit/U12/Y (XOR2X1_RVT)        0.24       0.71 r
+  u_rv32_core/u_forwarding_unit/U9/Y (AND3X1_RVT)         0.12       0.83 r
+  u_rv32_core/u_forwarding_unit/U8/Y (NAND4X0_RVT)        0.16       0.99 f
+  u_rv32_core/u_forwarding_unit/U7/Y (NAND2X0_RVT)        0.15       1.13 r
+  u_rv32_core/u_forwarding_unit/U5/Y (NOR4X0_RVT)         0.22       1.36 f
+  u_rv32_core/u_forwarding_unit/forward_b[0] (forwarding_unit)
+                                                          0.00       1.36 f
+  u_rv32_core/U15/Y (INVX1_RVT)                           0.06       1.42 r
+  u_rv32_core/U295/Y (AND2X1_RVT)                         0.11       1.53 r
+  u_rv32_core/U293/Y (AND2X1_RVT)                         0.14       1.68 r
+  u_rv32_core/U330/Y (INVX1_RVT)                          0.06       1.74 f
+  u_rv32_core/U334/Y (INVX2_RVT)                          0.13       1.86 r
+  u_rv32_core/U292/Y (AO22X1_RVT)                         0.17       2.03 r
+  u_rv32_core/U291/Y (AO221X1_RVT)                        0.17       2.20 r
+  u_rv32_core/u_branch_unit/op_b[0] (branch_unit)         0.00       2.20 r
+  u_rv32_core/u_branch_unit/U85/Y (AND2X1_RVT)            0.12       2.32 r
+  u_rv32_core/u_branch_unit/U86/Y (AND2X1_RVT)            0.09       2.41 r
+  u_rv32_core/u_branch_unit/U87/Y (OA222X1_RVT)           0.16       2.57 r
+  u_rv32_core/u_branch_unit/U88/Y (AO221X1_RVT)           0.14       2.72 r
+  u_rv32_core/u_branch_unit/U89/Y (OA221X1_RVT)           0.13       2.85 r
+  u_rv32_core/u_branch_unit/U90/Y (AO221X1_RVT)           0.14       2.99 r
+  u_rv32_core/u_branch_unit/U91/Y (OA221X1_RVT)           0.13       3.12 r
+  u_rv32_core/u_branch_unit/U92/Y (AO221X1_RVT)           0.14       3.27 r
+  u_rv32_core/u_branch_unit/U93/Y (OA221X1_RVT)           0.13       3.40 r
+  u_rv32_core/u_branch_unit/U94/Y (AO221X1_RVT)           0.14       3.54 r
+  u_rv32_core/u_branch_unit/U95/Y (OA221X1_RVT)           0.13       3.67 r
+  u_rv32_core/u_branch_unit/U96/Y (AO221X1_RVT)           0.14       3.81 r
+  u_rv32_core/u_branch_unit/U97/Y (OA221X1_RVT)           0.13       3.95 r
+  u_rv32_core/u_branch_unit/U98/Y (AO221X1_RVT)           0.14       4.09 r
+  u_rv32_core/u_branch_unit/U99/Y (OA221X1_RVT)           0.13       4.22 r
+  u_rv32_core/u_branch_unit/U100/Y (AO221X1_RVT)          0.14       4.36 r
+  u_rv32_core/u_branch_unit/U101/Y (OA221X1_RVT)          0.13       4.49 r
+  u_rv32_core/u_branch_unit/U102/Y (AO221X1_RVT)          0.14       4.63 r
+  u_rv32_core/u_branch_unit/U103/Y (OA221X1_RVT)          0.13       4.77 r
+  u_rv32_core/u_branch_unit/U104/Y (AO221X1_RVT)          0.14       4.91 r
+  u_rv32_core/u_branch_unit/U105/Y (OA221X1_RVT)          0.13       5.04 r
+  u_rv32_core/u_branch_unit/U106/Y (AO221X1_RVT)          0.14       5.18 r
+  u_rv32_core/u_branch_unit/U107/Y (OA221X1_RVT)          0.13       5.32 r
+  u_rv32_core/u_branch_unit/U108/Y (AO221X1_RVT)          0.14       5.46 r
+  u_rv32_core/u_branch_unit/U109/Y (OA221X1_RVT)          0.13       5.59 r
+  u_rv32_core/u_branch_unit/U110/Y (AO221X1_RVT)          0.14       5.73 r
+  u_rv32_core/u_branch_unit/U111/Y (OA221X1_RVT)          0.13       5.86 r
+  u_rv32_core/u_branch_unit/U112/Y (AO221X1_RVT)          0.14       6.00 r
+  u_rv32_core/u_branch_unit/U113/Y (OA221X1_RVT)          0.13       6.14 r
+  u_rv32_core/u_branch_unit/U114/Y (AO221X1_RVT)          0.14       6.28 r
+  u_rv32_core/u_branch_unit/U115/Y (OA221X1_RVT)          0.13       6.41 r
+  u_rv32_core/u_branch_unit/U116/Y (AO21X1_RVT)           0.09       6.50 r
+  u_rv32_core/u_branch_unit/U118/Y (AO22X1_RVT)           0.13       6.63 r
+  u_rv32_core/u_branch_unit/U76/Y (INVX1_RVT)             0.04       6.67 f
+  u_rv32_core/u_branch_unit/U51/Y (AO22X1_RVT)            0.10       6.76 f
+  u_rv32_core/u_branch_unit/U49/Y (AO22X1_RVT)            0.14       6.91 f
+  u_rv32_core/u_branch_unit/U48/Y (AO221X1_RVT)           0.18       7.09 f
+  u_rv32_core/u_branch_unit/U80/Y (NBUFFX2_RVT)           0.12       7.21 f
+  u_rv32_core/u_branch_unit/branch_taken (branch_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/branch_taken (hazard_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/U3/Y (INVX1_RVT)              0.07       7.28 r
+  u_rv32_core/u_hazard_unit/U6/Y (NAND4X0_RVT)            0.16       7.44 f
+  u_rv32_core/u_hazard_unit/U4/Y (INVX0_RVT)              0.13       7.56 r
+  u_rv32_core/u_hazard_unit/stall_if_id (hazard_unit)     0.00       7.56 r
+  u_rv32_core/u_if_id/stall (if_id)                       0.00       7.56 r
+  u_rv32_core/u_if_id/U101/Y (NOR2X0_RVT)                 0.23       7.79 f
+  u_rv32_core/u_if_id/U108/Y (INVX0_RVT)                  0.09       7.88 r
+  u_rv32_core/u_if_id/U111/Y (INVX1_RVT)                  0.13       8.00 f
+  u_rv32_core/u_if_id/U110/Y (NBUFFX2_RVT)                0.20       8.20 f
+  u_rv32_core/u_if_id/U120/Y (NBUFFX2_RVT)                0.17       8.37 f
+  u_rv32_core/u_if_id/U109/Y (NOR2X0_RVT)                 0.21       8.57 r
+  u_rv32_core/u_if_id/U119/Y (NBUFFX2_RVT)                0.16       8.74 r
+  u_rv32_core/u_if_id/U112/Y (NBUFFX2_RVT)                0.17       8.90 r
+  u_rv32_core/u_if_id/U77/Y (AO22X1_RVT)                  0.18       9.08 r
+  u_rv32_core/u_if_id/id_pc_reg[10]/D (DFFARX1_RVT)       0.00       9.08 r
+  data arrival time                                                  9.08
+
+  clock CLK (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_rv32_core/u_if_id/id_pc_reg[10]/CLK (DFFARX1_RVT)     0.00      19.50 r
+  library setup time                                     -0.11      19.39
+  data required time                                                19.39
+  --------------------------------------------------------------------------
+  data required time                                                19.39
+  data arrival time                                                 -9.08
+  --------------------------------------------------------------------------
+  slack (MET)                                                       10.31
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]
+              (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_if_id/id_pc_reg[9]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  rv32ima_mcu        4000000               saed32rvt_ss0p75v125c
+  rv32_core          35000                 saed32rvt_ss0p75v125c
+  forwarding_unit    ForQA                 saed32rvt_ss0p75v125c
+  branch_unit        8000                  saed32rvt_ss0p75v125c
+  hazard_unit        ForQA                 saed32rvt_ss0p75v125c
+  if_id              8000                  saed32rvt_ss0p75v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/CLK (DFFARX1_RVT)
+                                                          0.00 #     0.00 r
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/Q (DFFARX1_RVT)
+                                                          0.40       0.40 r
+  u_rv32_core/u_ex_mem/mem_rd_addr[2] (ex_mem)            0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/mem_rd_addr[2] (forwarding_unit)
+                                                          0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/U32/Y (INVX0_RVT)         0.08       0.47 f
+  u_rv32_core/u_forwarding_unit/U12/Y (XOR2X1_RVT)        0.24       0.71 r
+  u_rv32_core/u_forwarding_unit/U9/Y (AND3X1_RVT)         0.12       0.83 r
+  u_rv32_core/u_forwarding_unit/U8/Y (NAND4X0_RVT)        0.16       0.99 f
+  u_rv32_core/u_forwarding_unit/U7/Y (NAND2X0_RVT)        0.15       1.13 r
+  u_rv32_core/u_forwarding_unit/U5/Y (NOR4X0_RVT)         0.22       1.36 f
+  u_rv32_core/u_forwarding_unit/forward_b[0] (forwarding_unit)
+                                                          0.00       1.36 f
+  u_rv32_core/U15/Y (INVX1_RVT)                           0.06       1.42 r
+  u_rv32_core/U295/Y (AND2X1_RVT)                         0.11       1.53 r
+  u_rv32_core/U293/Y (AND2X1_RVT)                         0.14       1.68 r
+  u_rv32_core/U330/Y (INVX1_RVT)                          0.06       1.74 f
+  u_rv32_core/U334/Y (INVX2_RVT)                          0.13       1.86 r
+  u_rv32_core/U292/Y (AO22X1_RVT)                         0.17       2.03 r
+  u_rv32_core/U291/Y (AO221X1_RVT)                        0.17       2.20 r
+  u_rv32_core/u_branch_unit/op_b[0] (branch_unit)         0.00       2.20 r
+  u_rv32_core/u_branch_unit/U85/Y (AND2X1_RVT)            0.12       2.32 r
+  u_rv32_core/u_branch_unit/U86/Y (AND2X1_RVT)            0.09       2.41 r
+  u_rv32_core/u_branch_unit/U87/Y (OA222X1_RVT)           0.16       2.57 r
+  u_rv32_core/u_branch_unit/U88/Y (AO221X1_RVT)           0.14       2.72 r
+  u_rv32_core/u_branch_unit/U89/Y (OA221X1_RVT)           0.13       2.85 r
+  u_rv32_core/u_branch_unit/U90/Y (AO221X1_RVT)           0.14       2.99 r
+  u_rv32_core/u_branch_unit/U91/Y (OA221X1_RVT)           0.13       3.12 r
+  u_rv32_core/u_branch_unit/U92/Y (AO221X1_RVT)           0.14       3.27 r
+  u_rv32_core/u_branch_unit/U93/Y (OA221X1_RVT)           0.13       3.40 r
+  u_rv32_core/u_branch_unit/U94/Y (AO221X1_RVT)           0.14       3.54 r
+  u_rv32_core/u_branch_unit/U95/Y (OA221X1_RVT)           0.13       3.67 r
+  u_rv32_core/u_branch_unit/U96/Y (AO221X1_RVT)           0.14       3.81 r
+  u_rv32_core/u_branch_unit/U97/Y (OA221X1_RVT)           0.13       3.95 r
+  u_rv32_core/u_branch_unit/U98/Y (AO221X1_RVT)           0.14       4.09 r
+  u_rv32_core/u_branch_unit/U99/Y (OA221X1_RVT)           0.13       4.22 r
+  u_rv32_core/u_branch_unit/U100/Y (AO221X1_RVT)          0.14       4.36 r
+  u_rv32_core/u_branch_unit/U101/Y (OA221X1_RVT)          0.13       4.49 r
+  u_rv32_core/u_branch_unit/U102/Y (AO221X1_RVT)          0.14       4.63 r
+  u_rv32_core/u_branch_unit/U103/Y (OA221X1_RVT)          0.13       4.77 r
+  u_rv32_core/u_branch_unit/U104/Y (AO221X1_RVT)          0.14       4.91 r
+  u_rv32_core/u_branch_unit/U105/Y (OA221X1_RVT)          0.13       5.04 r
+  u_rv32_core/u_branch_unit/U106/Y (AO221X1_RVT)          0.14       5.18 r
+  u_rv32_core/u_branch_unit/U107/Y (OA221X1_RVT)          0.13       5.32 r
+  u_rv32_core/u_branch_unit/U108/Y (AO221X1_RVT)          0.14       5.46 r
+  u_rv32_core/u_branch_unit/U109/Y (OA221X1_RVT)          0.13       5.59 r
+  u_rv32_core/u_branch_unit/U110/Y (AO221X1_RVT)          0.14       5.73 r
+  u_rv32_core/u_branch_unit/U111/Y (OA221X1_RVT)          0.13       5.86 r
+  u_rv32_core/u_branch_unit/U112/Y (AO221X1_RVT)          0.14       6.00 r
+  u_rv32_core/u_branch_unit/U113/Y (OA221X1_RVT)          0.13       6.14 r
+  u_rv32_core/u_branch_unit/U114/Y (AO221X1_RVT)          0.14       6.28 r
+  u_rv32_core/u_branch_unit/U115/Y (OA221X1_RVT)          0.13       6.41 r
+  u_rv32_core/u_branch_unit/U116/Y (AO21X1_RVT)           0.09       6.50 r
+  u_rv32_core/u_branch_unit/U118/Y (AO22X1_RVT)           0.13       6.63 r
+  u_rv32_core/u_branch_unit/U76/Y (INVX1_RVT)             0.04       6.67 f
+  u_rv32_core/u_branch_unit/U51/Y (AO22X1_RVT)            0.10       6.76 f
+  u_rv32_core/u_branch_unit/U49/Y (AO22X1_RVT)            0.14       6.91 f
+  u_rv32_core/u_branch_unit/U48/Y (AO221X1_RVT)           0.18       7.09 f
+  u_rv32_core/u_branch_unit/U80/Y (NBUFFX2_RVT)           0.12       7.21 f
+  u_rv32_core/u_branch_unit/branch_taken (branch_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/branch_taken (hazard_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/U3/Y (INVX1_RVT)              0.07       7.28 r
+  u_rv32_core/u_hazard_unit/U6/Y (NAND4X0_RVT)            0.16       7.44 f
+  u_rv32_core/u_hazard_unit/U4/Y (INVX0_RVT)              0.13       7.56 r
+  u_rv32_core/u_hazard_unit/stall_if_id (hazard_unit)     0.00       7.56 r
+  u_rv32_core/u_if_id/stall (if_id)                       0.00       7.56 r
+  u_rv32_core/u_if_id/U101/Y (NOR2X0_RVT)                 0.23       7.79 f
+  u_rv32_core/u_if_id/U108/Y (INVX0_RVT)                  0.09       7.88 r
+  u_rv32_core/u_if_id/U111/Y (INVX1_RVT)                  0.13       8.00 f
+  u_rv32_core/u_if_id/U110/Y (NBUFFX2_RVT)                0.20       8.20 f
+  u_rv32_core/u_if_id/U120/Y (NBUFFX2_RVT)                0.17       8.37 f
+  u_rv32_core/u_if_id/U109/Y (NOR2X0_RVT)                 0.21       8.57 r
+  u_rv32_core/u_if_id/U119/Y (NBUFFX2_RVT)                0.16       8.74 r
+  u_rv32_core/u_if_id/U112/Y (NBUFFX2_RVT)                0.17       8.90 r
+  u_rv32_core/u_if_id/U76/Y (AO22X1_RVT)                  0.18       9.08 r
+  u_rv32_core/u_if_id/id_pc_reg[9]/D (DFFARX1_RVT)        0.00       9.08 r
+  data arrival time                                                  9.08
+
+  clock CLK (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_rv32_core/u_if_id/id_pc_reg[9]/CLK (DFFARX1_RVT)      0.00      19.50 r
+  library setup time                                     -0.11      19.39
+  data required time                                                19.39
+  --------------------------------------------------------------------------
+  data required time                                                19.39
+  data arrival time                                                 -9.08
+  --------------------------------------------------------------------------
+  slack (MET)                                                       10.31
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]
+              (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_if_id/id_pc_reg[8]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  rv32ima_mcu        4000000               saed32rvt_ss0p75v125c
+  rv32_core          35000                 saed32rvt_ss0p75v125c
+  forwarding_unit    ForQA                 saed32rvt_ss0p75v125c
+  branch_unit        8000                  saed32rvt_ss0p75v125c
+  hazard_unit        ForQA                 saed32rvt_ss0p75v125c
+  if_id              8000                  saed32rvt_ss0p75v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/CLK (DFFARX1_RVT)
+                                                          0.00 #     0.00 r
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/Q (DFFARX1_RVT)
+                                                          0.40       0.40 r
+  u_rv32_core/u_ex_mem/mem_rd_addr[2] (ex_mem)            0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/mem_rd_addr[2] (forwarding_unit)
+                                                          0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/U32/Y (INVX0_RVT)         0.08       0.47 f
+  u_rv32_core/u_forwarding_unit/U12/Y (XOR2X1_RVT)        0.24       0.71 r
+  u_rv32_core/u_forwarding_unit/U9/Y (AND3X1_RVT)         0.12       0.83 r
+  u_rv32_core/u_forwarding_unit/U8/Y (NAND4X0_RVT)        0.16       0.99 f
+  u_rv32_core/u_forwarding_unit/U7/Y (NAND2X0_RVT)        0.15       1.13 r
+  u_rv32_core/u_forwarding_unit/U5/Y (NOR4X0_RVT)         0.22       1.36 f
+  u_rv32_core/u_forwarding_unit/forward_b[0] (forwarding_unit)
+                                                          0.00       1.36 f
+  u_rv32_core/U15/Y (INVX1_RVT)                           0.06       1.42 r
+  u_rv32_core/U295/Y (AND2X1_RVT)                         0.11       1.53 r
+  u_rv32_core/U293/Y (AND2X1_RVT)                         0.14       1.68 r
+  u_rv32_core/U330/Y (INVX1_RVT)                          0.06       1.74 f
+  u_rv32_core/U334/Y (INVX2_RVT)                          0.13       1.86 r
+  u_rv32_core/U292/Y (AO22X1_RVT)                         0.17       2.03 r
+  u_rv32_core/U291/Y (AO221X1_RVT)                        0.17       2.20 r
+  u_rv32_core/u_branch_unit/op_b[0] (branch_unit)         0.00       2.20 r
+  u_rv32_core/u_branch_unit/U85/Y (AND2X1_RVT)            0.12       2.32 r
+  u_rv32_core/u_branch_unit/U86/Y (AND2X1_RVT)            0.09       2.41 r
+  u_rv32_core/u_branch_unit/U87/Y (OA222X1_RVT)           0.16       2.57 r
+  u_rv32_core/u_branch_unit/U88/Y (AO221X1_RVT)           0.14       2.72 r
+  u_rv32_core/u_branch_unit/U89/Y (OA221X1_RVT)           0.13       2.85 r
+  u_rv32_core/u_branch_unit/U90/Y (AO221X1_RVT)           0.14       2.99 r
+  u_rv32_core/u_branch_unit/U91/Y (OA221X1_RVT)           0.13       3.12 r
+  u_rv32_core/u_branch_unit/U92/Y (AO221X1_RVT)           0.14       3.27 r
+  u_rv32_core/u_branch_unit/U93/Y (OA221X1_RVT)           0.13       3.40 r
+  u_rv32_core/u_branch_unit/U94/Y (AO221X1_RVT)           0.14       3.54 r
+  u_rv32_core/u_branch_unit/U95/Y (OA221X1_RVT)           0.13       3.67 r
+  u_rv32_core/u_branch_unit/U96/Y (AO221X1_RVT)           0.14       3.81 r
+  u_rv32_core/u_branch_unit/U97/Y (OA221X1_RVT)           0.13       3.95 r
+  u_rv32_core/u_branch_unit/U98/Y (AO221X1_RVT)           0.14       4.09 r
+  u_rv32_core/u_branch_unit/U99/Y (OA221X1_RVT)           0.13       4.22 r
+  u_rv32_core/u_branch_unit/U100/Y (AO221X1_RVT)          0.14       4.36 r
+  u_rv32_core/u_branch_unit/U101/Y (OA221X1_RVT)          0.13       4.49 r
+  u_rv32_core/u_branch_unit/U102/Y (AO221X1_RVT)          0.14       4.63 r
+  u_rv32_core/u_branch_unit/U103/Y (OA221X1_RVT)          0.13       4.77 r
+  u_rv32_core/u_branch_unit/U104/Y (AO221X1_RVT)          0.14       4.91 r
+  u_rv32_core/u_branch_unit/U105/Y (OA221X1_RVT)          0.13       5.04 r
+  u_rv32_core/u_branch_unit/U106/Y (AO221X1_RVT)          0.14       5.18 r
+  u_rv32_core/u_branch_unit/U107/Y (OA221X1_RVT)          0.13       5.32 r
+  u_rv32_core/u_branch_unit/U108/Y (AO221X1_RVT)          0.14       5.46 r
+  u_rv32_core/u_branch_unit/U109/Y (OA221X1_RVT)          0.13       5.59 r
+  u_rv32_core/u_branch_unit/U110/Y (AO221X1_RVT)          0.14       5.73 r
+  u_rv32_core/u_branch_unit/U111/Y (OA221X1_RVT)          0.13       5.86 r
+  u_rv32_core/u_branch_unit/U112/Y (AO221X1_RVT)          0.14       6.00 r
+  u_rv32_core/u_branch_unit/U113/Y (OA221X1_RVT)          0.13       6.14 r
+  u_rv32_core/u_branch_unit/U114/Y (AO221X1_RVT)          0.14       6.28 r
+  u_rv32_core/u_branch_unit/U115/Y (OA221X1_RVT)          0.13       6.41 r
+  u_rv32_core/u_branch_unit/U116/Y (AO21X1_RVT)           0.09       6.50 r
+  u_rv32_core/u_branch_unit/U118/Y (AO22X1_RVT)           0.13       6.63 r
+  u_rv32_core/u_branch_unit/U76/Y (INVX1_RVT)             0.04       6.67 f
+  u_rv32_core/u_branch_unit/U51/Y (AO22X1_RVT)            0.10       6.76 f
+  u_rv32_core/u_branch_unit/U49/Y (AO22X1_RVT)            0.14       6.91 f
+  u_rv32_core/u_branch_unit/U48/Y (AO221X1_RVT)           0.18       7.09 f
+  u_rv32_core/u_branch_unit/U80/Y (NBUFFX2_RVT)           0.12       7.21 f
+  u_rv32_core/u_branch_unit/branch_taken (branch_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/branch_taken (hazard_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/U3/Y (INVX1_RVT)              0.07       7.28 r
+  u_rv32_core/u_hazard_unit/U6/Y (NAND4X0_RVT)            0.16       7.44 f
+  u_rv32_core/u_hazard_unit/U4/Y (INVX0_RVT)              0.13       7.56 r
+  u_rv32_core/u_hazard_unit/stall_if_id (hazard_unit)     0.00       7.56 r
+  u_rv32_core/u_if_id/stall (if_id)                       0.00       7.56 r
+  u_rv32_core/u_if_id/U101/Y (NOR2X0_RVT)                 0.23       7.79 f
+  u_rv32_core/u_if_id/U108/Y (INVX0_RVT)                  0.09       7.88 r
+  u_rv32_core/u_if_id/U111/Y (INVX1_RVT)                  0.13       8.00 f
+  u_rv32_core/u_if_id/U110/Y (NBUFFX2_RVT)                0.20       8.20 f
+  u_rv32_core/u_if_id/U120/Y (NBUFFX2_RVT)                0.17       8.37 f
+  u_rv32_core/u_if_id/U109/Y (NOR2X0_RVT)                 0.21       8.57 r
+  u_rv32_core/u_if_id/U119/Y (NBUFFX2_RVT)                0.16       8.74 r
+  u_rv32_core/u_if_id/U112/Y (NBUFFX2_RVT)                0.17       8.90 r
+  u_rv32_core/u_if_id/U75/Y (AO22X1_RVT)                  0.18       9.08 r
+  u_rv32_core/u_if_id/id_pc_reg[8]/D (DFFARX1_RVT)        0.00       9.08 r
+  data arrival time                                                  9.08
+
+  clock CLK (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_rv32_core/u_if_id/id_pc_reg[8]/CLK (DFFARX1_RVT)      0.00      19.50 r
+  library setup time                                     -0.11      19.39
+  data required time                                                19.39
+  --------------------------------------------------------------------------
+  data required time                                                19.39
+  data arrival time                                                 -9.08
+  --------------------------------------------------------------------------
+  slack (MET)                                                       10.31
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]
+              (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_if_id/id_pc_reg[7]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  rv32ima_mcu        4000000               saed32rvt_ss0p75v125c
+  rv32_core          35000                 saed32rvt_ss0p75v125c
+  forwarding_unit    ForQA                 saed32rvt_ss0p75v125c
+  branch_unit        8000                  saed32rvt_ss0p75v125c
+  hazard_unit        ForQA                 saed32rvt_ss0p75v125c
+  if_id              8000                  saed32rvt_ss0p75v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/CLK (DFFARX1_RVT)
+                                                          0.00 #     0.00 r
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/Q (DFFARX1_RVT)
+                                                          0.40       0.40 r
+  u_rv32_core/u_ex_mem/mem_rd_addr[2] (ex_mem)            0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/mem_rd_addr[2] (forwarding_unit)
+                                                          0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/U32/Y (INVX0_RVT)         0.08       0.47 f
+  u_rv32_core/u_forwarding_unit/U12/Y (XOR2X1_RVT)        0.24       0.71 r
+  u_rv32_core/u_forwarding_unit/U9/Y (AND3X1_RVT)         0.12       0.83 r
+  u_rv32_core/u_forwarding_unit/U8/Y (NAND4X0_RVT)        0.16       0.99 f
+  u_rv32_core/u_forwarding_unit/U7/Y (NAND2X0_RVT)        0.15       1.13 r
+  u_rv32_core/u_forwarding_unit/U5/Y (NOR4X0_RVT)         0.22       1.36 f
+  u_rv32_core/u_forwarding_unit/forward_b[0] (forwarding_unit)
+                                                          0.00       1.36 f
+  u_rv32_core/U15/Y (INVX1_RVT)                           0.06       1.42 r
+  u_rv32_core/U295/Y (AND2X1_RVT)                         0.11       1.53 r
+  u_rv32_core/U293/Y (AND2X1_RVT)                         0.14       1.68 r
+  u_rv32_core/U330/Y (INVX1_RVT)                          0.06       1.74 f
+  u_rv32_core/U334/Y (INVX2_RVT)                          0.13       1.86 r
+  u_rv32_core/U292/Y (AO22X1_RVT)                         0.17       2.03 r
+  u_rv32_core/U291/Y (AO221X1_RVT)                        0.17       2.20 r
+  u_rv32_core/u_branch_unit/op_b[0] (branch_unit)         0.00       2.20 r
+  u_rv32_core/u_branch_unit/U85/Y (AND2X1_RVT)            0.12       2.32 r
+  u_rv32_core/u_branch_unit/U86/Y (AND2X1_RVT)            0.09       2.41 r
+  u_rv32_core/u_branch_unit/U87/Y (OA222X1_RVT)           0.16       2.57 r
+  u_rv32_core/u_branch_unit/U88/Y (AO221X1_RVT)           0.14       2.72 r
+  u_rv32_core/u_branch_unit/U89/Y (OA221X1_RVT)           0.13       2.85 r
+  u_rv32_core/u_branch_unit/U90/Y (AO221X1_RVT)           0.14       2.99 r
+  u_rv32_core/u_branch_unit/U91/Y (OA221X1_RVT)           0.13       3.12 r
+  u_rv32_core/u_branch_unit/U92/Y (AO221X1_RVT)           0.14       3.27 r
+  u_rv32_core/u_branch_unit/U93/Y (OA221X1_RVT)           0.13       3.40 r
+  u_rv32_core/u_branch_unit/U94/Y (AO221X1_RVT)           0.14       3.54 r
+  u_rv32_core/u_branch_unit/U95/Y (OA221X1_RVT)           0.13       3.67 r
+  u_rv32_core/u_branch_unit/U96/Y (AO221X1_RVT)           0.14       3.81 r
+  u_rv32_core/u_branch_unit/U97/Y (OA221X1_RVT)           0.13       3.95 r
+  u_rv32_core/u_branch_unit/U98/Y (AO221X1_RVT)           0.14       4.09 r
+  u_rv32_core/u_branch_unit/U99/Y (OA221X1_RVT)           0.13       4.22 r
+  u_rv32_core/u_branch_unit/U100/Y (AO221X1_RVT)          0.14       4.36 r
+  u_rv32_core/u_branch_unit/U101/Y (OA221X1_RVT)          0.13       4.49 r
+  u_rv32_core/u_branch_unit/U102/Y (AO221X1_RVT)          0.14       4.63 r
+  u_rv32_core/u_branch_unit/U103/Y (OA221X1_RVT)          0.13       4.77 r
+  u_rv32_core/u_branch_unit/U104/Y (AO221X1_RVT)          0.14       4.91 r
+  u_rv32_core/u_branch_unit/U105/Y (OA221X1_RVT)          0.13       5.04 r
+  u_rv32_core/u_branch_unit/U106/Y (AO221X1_RVT)          0.14       5.18 r
+  u_rv32_core/u_branch_unit/U107/Y (OA221X1_RVT)          0.13       5.32 r
+  u_rv32_core/u_branch_unit/U108/Y (AO221X1_RVT)          0.14       5.46 r
+  u_rv32_core/u_branch_unit/U109/Y (OA221X1_RVT)          0.13       5.59 r
+  u_rv32_core/u_branch_unit/U110/Y (AO221X1_RVT)          0.14       5.73 r
+  u_rv32_core/u_branch_unit/U111/Y (OA221X1_RVT)          0.13       5.86 r
+  u_rv32_core/u_branch_unit/U112/Y (AO221X1_RVT)          0.14       6.00 r
+  u_rv32_core/u_branch_unit/U113/Y (OA221X1_RVT)          0.13       6.14 r
+  u_rv32_core/u_branch_unit/U114/Y (AO221X1_RVT)          0.14       6.28 r
+  u_rv32_core/u_branch_unit/U115/Y (OA221X1_RVT)          0.13       6.41 r
+  u_rv32_core/u_branch_unit/U116/Y (AO21X1_RVT)           0.09       6.50 r
+  u_rv32_core/u_branch_unit/U118/Y (AO22X1_RVT)           0.13       6.63 r
+  u_rv32_core/u_branch_unit/U76/Y (INVX1_RVT)             0.04       6.67 f
+  u_rv32_core/u_branch_unit/U51/Y (AO22X1_RVT)            0.10       6.76 f
+  u_rv32_core/u_branch_unit/U49/Y (AO22X1_RVT)            0.14       6.91 f
+  u_rv32_core/u_branch_unit/U48/Y (AO221X1_RVT)           0.18       7.09 f
+  u_rv32_core/u_branch_unit/U80/Y (NBUFFX2_RVT)           0.12       7.21 f
+  u_rv32_core/u_branch_unit/branch_taken (branch_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/branch_taken (hazard_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/U3/Y (INVX1_RVT)              0.07       7.28 r
+  u_rv32_core/u_hazard_unit/U6/Y (NAND4X0_RVT)            0.16       7.44 f
+  u_rv32_core/u_hazard_unit/U4/Y (INVX0_RVT)              0.13       7.56 r
+  u_rv32_core/u_hazard_unit/stall_if_id (hazard_unit)     0.00       7.56 r
+  u_rv32_core/u_if_id/stall (if_id)                       0.00       7.56 r
+  u_rv32_core/u_if_id/U101/Y (NOR2X0_RVT)                 0.23       7.79 f
+  u_rv32_core/u_if_id/U108/Y (INVX0_RVT)                  0.09       7.88 r
+  u_rv32_core/u_if_id/U111/Y (INVX1_RVT)                  0.13       8.00 f
+  u_rv32_core/u_if_id/U110/Y (NBUFFX2_RVT)                0.20       8.20 f
+  u_rv32_core/u_if_id/U120/Y (NBUFFX2_RVT)                0.17       8.37 f
+  u_rv32_core/u_if_id/U109/Y (NOR2X0_RVT)                 0.21       8.57 r
+  u_rv32_core/u_if_id/U119/Y (NBUFFX2_RVT)                0.16       8.74 r
+  u_rv32_core/u_if_id/U112/Y (NBUFFX2_RVT)                0.17       8.90 r
+  u_rv32_core/u_if_id/U74/Y (AO22X1_RVT)                  0.18       9.08 r
+  u_rv32_core/u_if_id/id_pc_reg[7]/D (DFFARX1_RVT)        0.00       9.08 r
+  data arrival time                                                  9.08
+
+  clock CLK (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_rv32_core/u_if_id/id_pc_reg[7]/CLK (DFFARX1_RVT)      0.00      19.50 r
+  library setup time                                     -0.11      19.39
+  data required time                                                19.39
+  --------------------------------------------------------------------------
+  data required time                                                19.39
+  data arrival time                                                 -9.08
+  --------------------------------------------------------------------------
+  slack (MET)                                                       10.31
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]
+              (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_if_id/id_pc_reg[6]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  rv32ima_mcu        4000000               saed32rvt_ss0p75v125c
+  rv32_core          35000                 saed32rvt_ss0p75v125c
+  forwarding_unit    ForQA                 saed32rvt_ss0p75v125c
+  branch_unit        8000                  saed32rvt_ss0p75v125c
+  hazard_unit        ForQA                 saed32rvt_ss0p75v125c
+  if_id              8000                  saed32rvt_ss0p75v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/CLK (DFFARX1_RVT)
+                                                          0.00 #     0.00 r
+  u_rv32_core/u_ex_mem/mem_rd_addr_reg[2]/Q (DFFARX1_RVT)
+                                                          0.40       0.40 r
+  u_rv32_core/u_ex_mem/mem_rd_addr[2] (ex_mem)            0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/mem_rd_addr[2] (forwarding_unit)
+                                                          0.00       0.40 r
+  u_rv32_core/u_forwarding_unit/U32/Y (INVX0_RVT)         0.08       0.47 f
+  u_rv32_core/u_forwarding_unit/U12/Y (XOR2X1_RVT)        0.24       0.71 r
+  u_rv32_core/u_forwarding_unit/U9/Y (AND3X1_RVT)         0.12       0.83 r
+  u_rv32_core/u_forwarding_unit/U8/Y (NAND4X0_RVT)        0.16       0.99 f
+  u_rv32_core/u_forwarding_unit/U7/Y (NAND2X0_RVT)        0.15       1.13 r
+  u_rv32_core/u_forwarding_unit/U5/Y (NOR4X0_RVT)         0.22       1.36 f
+  u_rv32_core/u_forwarding_unit/forward_b[0] (forwarding_unit)
+                                                          0.00       1.36 f
+  u_rv32_core/U15/Y (INVX1_RVT)                           0.06       1.42 r
+  u_rv32_core/U295/Y (AND2X1_RVT)                         0.11       1.53 r
+  u_rv32_core/U293/Y (AND2X1_RVT)                         0.14       1.68 r
+  u_rv32_core/U330/Y (INVX1_RVT)                          0.06       1.74 f
+  u_rv32_core/U334/Y (INVX2_RVT)                          0.13       1.86 r
+  u_rv32_core/U292/Y (AO22X1_RVT)                         0.17       2.03 r
+  u_rv32_core/U291/Y (AO221X1_RVT)                        0.17       2.20 r
+  u_rv32_core/u_branch_unit/op_b[0] (branch_unit)         0.00       2.20 r
+  u_rv32_core/u_branch_unit/U85/Y (AND2X1_RVT)            0.12       2.32 r
+  u_rv32_core/u_branch_unit/U86/Y (AND2X1_RVT)            0.09       2.41 r
+  u_rv32_core/u_branch_unit/U87/Y (OA222X1_RVT)           0.16       2.57 r
+  u_rv32_core/u_branch_unit/U88/Y (AO221X1_RVT)           0.14       2.72 r
+  u_rv32_core/u_branch_unit/U89/Y (OA221X1_RVT)           0.13       2.85 r
+  u_rv32_core/u_branch_unit/U90/Y (AO221X1_RVT)           0.14       2.99 r
+  u_rv32_core/u_branch_unit/U91/Y (OA221X1_RVT)           0.13       3.12 r
+  u_rv32_core/u_branch_unit/U92/Y (AO221X1_RVT)           0.14       3.27 r
+  u_rv32_core/u_branch_unit/U93/Y (OA221X1_RVT)           0.13       3.40 r
+  u_rv32_core/u_branch_unit/U94/Y (AO221X1_RVT)           0.14       3.54 r
+  u_rv32_core/u_branch_unit/U95/Y (OA221X1_RVT)           0.13       3.67 r
+  u_rv32_core/u_branch_unit/U96/Y (AO221X1_RVT)           0.14       3.81 r
+  u_rv32_core/u_branch_unit/U97/Y (OA221X1_RVT)           0.13       3.95 r
+  u_rv32_core/u_branch_unit/U98/Y (AO221X1_RVT)           0.14       4.09 r
+  u_rv32_core/u_branch_unit/U99/Y (OA221X1_RVT)           0.13       4.22 r
+  u_rv32_core/u_branch_unit/U100/Y (AO221X1_RVT)          0.14       4.36 r
+  u_rv32_core/u_branch_unit/U101/Y (OA221X1_RVT)          0.13       4.49 r
+  u_rv32_core/u_branch_unit/U102/Y (AO221X1_RVT)          0.14       4.63 r
+  u_rv32_core/u_branch_unit/U103/Y (OA221X1_RVT)          0.13       4.77 r
+  u_rv32_core/u_branch_unit/U104/Y (AO221X1_RVT)          0.14       4.91 r
+  u_rv32_core/u_branch_unit/U105/Y (OA221X1_RVT)          0.13       5.04 r
+  u_rv32_core/u_branch_unit/U106/Y (AO221X1_RVT)          0.14       5.18 r
+  u_rv32_core/u_branch_unit/U107/Y (OA221X1_RVT)          0.13       5.32 r
+  u_rv32_core/u_branch_unit/U108/Y (AO221X1_RVT)          0.14       5.46 r
+  u_rv32_core/u_branch_unit/U109/Y (OA221X1_RVT)          0.13       5.59 r
+  u_rv32_core/u_branch_unit/U110/Y (AO221X1_RVT)          0.14       5.73 r
+  u_rv32_core/u_branch_unit/U111/Y (OA221X1_RVT)          0.13       5.86 r
+  u_rv32_core/u_branch_unit/U112/Y (AO221X1_RVT)          0.14       6.00 r
+  u_rv32_core/u_branch_unit/U113/Y (OA221X1_RVT)          0.13       6.14 r
+  u_rv32_core/u_branch_unit/U114/Y (AO221X1_RVT)          0.14       6.28 r
+  u_rv32_core/u_branch_unit/U115/Y (OA221X1_RVT)          0.13       6.41 r
+  u_rv32_core/u_branch_unit/U116/Y (AO21X1_RVT)           0.09       6.50 r
+  u_rv32_core/u_branch_unit/U118/Y (AO22X1_RVT)           0.13       6.63 r
+  u_rv32_core/u_branch_unit/U76/Y (INVX1_RVT)             0.04       6.67 f
+  u_rv32_core/u_branch_unit/U51/Y (AO22X1_RVT)            0.10       6.76 f
+  u_rv32_core/u_branch_unit/U49/Y (AO22X1_RVT)            0.14       6.91 f
+  u_rv32_core/u_branch_unit/U48/Y (AO221X1_RVT)           0.18       7.09 f
+  u_rv32_core/u_branch_unit/U80/Y (NBUFFX2_RVT)           0.12       7.21 f
+  u_rv32_core/u_branch_unit/branch_taken (branch_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/branch_taken (hazard_unit)
+                                                          0.00       7.21 f
+  u_rv32_core/u_hazard_unit/U3/Y (INVX1_RVT)              0.07       7.28 r
+  u_rv32_core/u_hazard_unit/U6/Y (NAND4X0_RVT)            0.16       7.44 f
+  u_rv32_core/u_hazard_unit/U4/Y (INVX0_RVT)              0.13       7.56 r
+  u_rv32_core/u_hazard_unit/stall_if_id (hazard_unit)     0.00       7.56 r
+  u_rv32_core/u_if_id/stall (if_id)                       0.00       7.56 r
+  u_rv32_core/u_if_id/U101/Y (NOR2X0_RVT)                 0.23       7.79 f
+  u_rv32_core/u_if_id/U108/Y (INVX0_RVT)                  0.09       7.88 r
+  u_rv32_core/u_if_id/U111/Y (INVX1_RVT)                  0.13       8.00 f
+  u_rv32_core/u_if_id/U110/Y (NBUFFX2_RVT)                0.20       8.20 f
+  u_rv32_core/u_if_id/U120/Y (NBUFFX2_RVT)                0.17       8.37 f
+  u_rv32_core/u_if_id/U109/Y (NOR2X0_RVT)                 0.21       8.57 r
+  u_rv32_core/u_if_id/U119/Y (NBUFFX2_RVT)                0.16       8.74 r
+  u_rv32_core/u_if_id/U112/Y (NBUFFX2_RVT)                0.17       8.90 r
+  u_rv32_core/u_if_id/U73/Y (AO22X1_RVT)                  0.18       9.08 r
+  u_rv32_core/u_if_id/id_pc_reg[6]/D (DFFARX1_RVT)        0.00       9.08 r
+  data arrival time                                                  9.08
+
+  clock CLK (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_rv32_core/u_if_id/id_pc_reg[6]/CLK (DFFARX1_RVT)      0.00      19.50 r
+  library setup time                                     -0.11      19.39
+  data required time                                                19.39
+  --------------------------------------------------------------------------
+  data required time                                                19.39
+  data arrival time                                                 -9.08
+  --------------------------------------------------------------------------
+  slack (MET)                                                       10.31
+
+
+1

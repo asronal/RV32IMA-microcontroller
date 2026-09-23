@@ -1,0 +1,31 @@
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : rv32ima_mcu
+Version: V-2023.12-SP5-3
+Date   : Sat Sep  5 01:38:59 2026
+****************************************
+
+
+   max_transition
+
+                             Required        Actual
+   Net                      Transition     Transition        Slack
+   -----------------------------------------------------------------
+   u_rv32_core/u_pc_reg/n2      0.17           0.18           0.00  (VIOLATED: increase significant digits)
+   u_uart/n232                  0.17           0.17           0.00  (VIOLATED: increase significant digits)
+
+   -----------------------------------------------------------------
+   Total                      2                  -0.00  
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   rv32ima_mcu                  0.00       6513130.00     -6513130.00
+                                                                    (VIOLATED)
+
+
+1

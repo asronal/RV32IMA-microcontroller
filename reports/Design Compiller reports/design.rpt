@@ -1,0 +1,97 @@
+ 
+****************************************
+Report : design
+Design : rv32ima_mcu
+Version: V-2023.12-SP5-3
+Date   : Sat Sep  5 01:39:03 2026
+****************************************
+
+Design allows ideal nets on clock nets.
+
+Library(s) Used:
+
+    saed32rvt_ss0p75v125c (File: /home/rithicks/ultra_syn/minimal_mcu/pdk/saed32rvt_ss0p75v125c.db)
+
+Local Link Library:
+
+    {saed32rvt_ss0p75v125c.db, /home/rithicks/ultra_syn/minimal_mcu/pdk/saed32rvt_ss0p75v125c.db}
+
+Flip-Flop Types:
+
+    No flip-flop types specified.
+
+Latch Types:
+
+    No latch types specified.
+
+Operating Conditions:
+
+
+    Operating Condition Name : ss0p75v125c
+    Library : saed32rvt_ss0p75v125c
+    Process :   0.99
+    Temperature : 125.00
+    Voltage :   0.75
+    Interconnect Model : best_case_tree
+
+Wire Loading Model:
+
+    Selected automatically from the total cell area.
+
+Name           :   4000000
+Location       :   saed32rvt_ss0p75v125c
+Resistance     :   0.011
+Capacitance    :   0.000157
+Area           :   0.01
+Slope          :   641.917
+Fanout   Length   Points Average Cap Std Deviation
+--------------------------------------------------------------
+     1    32.33
+     2    78.77
+     3   137.01
+     4   209.56
+     5   298.91
+     6   407.58
+     7   538.07
+     8   692.87
+     9   874.49
+    10  1085.45
+    11  1328.23
+    12  1605.34
+    13  1919.30
+    14  2272.59
+    15  2667.73
+    16  3107.22
+    17  3593.56
+    18  4129.25
+    19  4716.81
+    20  5358.72
+
+
+
+Wire Loading Model Mode: enclosed.
+
+Timing Ranges:
+
+    No timing ranges specified.
+
+Pin Input Delays:
+
+    None specified.
+
+Pin Output Delays:
+
+    None specified.
+
+Disabled Timing Arcs:
+
+    No arcs disabled.
+
+Required Licenses:
+
+    None Required
+
+Design Parameters:
+
+    None specified.
+1

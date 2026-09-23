@@ -1,0 +1,35 @@
+ 
+****************************************
+Report : cell
+Design : rv32ima_mcu
+Version: V-2023.12-SP5-3
+Date   : Sat Sep  5 01:39:03 2026
+****************************************
+
+Attributes:
+    b - black box (unknown)
+    h - hierarchical
+    n - noncombinational
+    p - parameterized
+    r - removable
+    u - contains unmapped logic
+
+Cell                      Reference       Library             Area  Attributes
+--------------------------------------------------------------------------------
+U1                        NBUFFX2_RVT     saed32rvt_ss0p75v125c
+                                                          2.033152  
+u_bus_decoder             bus_decoder                     256.177151
+                                                                    h
+u_gpio                    gpio_GPIO_WIDTH8                356.055749
+                                                                    h, n, p
+u_memory_wrapper          memory_wrapper_ROM_BYTES32768_RAM_BYTES32768_BOOT_HEX
+                                                          3051521.551530
+                                                                    h, n, p
+u_rv32_core               rv32_core                       25490.135129
+                                                                    h, n
+u_uart                    uart_CLK_HZ50000000_DEFAULT_BAUD115200
+                                                          1672.267544
+                                                                    h, n, p
+--------------------------------------------------------------------------------
+Total 6 cells                                             3079298.220255
+1
