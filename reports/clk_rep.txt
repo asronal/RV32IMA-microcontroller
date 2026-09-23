@@ -1,0 +1,60 @@
+ Info: Initializing timer in CLOCK_SYN_REPORT_MODE
+Information: The value of option cts.compile.enable_cell_relocation has been overridden to "leaf_only" to support latency-driven placement. (CTS-973)
+Information: Timer using 1 threads
+Information: RDE mode is turned on. (TIM-124)
+Warning: Corner default:  0 process number, 3 process label, 0 voltage, and 0 temperature mismatches. (PVT-030)
+Warning: 821210 cells affected for early, 821210 for late. (PVT-031)
+Warning: 0 port driving_cells affected for early, 0 for late. (PVT-034)
+Information: The stitching and editing of coupling caps is turned OFF for design 'riscv.nlib:clock_done.design'. (TIM-125)
+Information: Design clock_done has 821432 nets, 817306 global routed, 4124 detail routed. (NEX-024)
+Information: build GR coup map successfully (NEX-012)
+Information: The RC mode used is GR for design 'rv32ima_mcu'. (NEX-022)
+Information: Update timing completed net estimation for all the timing graph nets (TIM-111)
+Information: Net estimation statistics: timing graph nets = 821430, routed nets = 821430, across physical hierarchy nets = 0, parasitics cached nets = 821430, delay annotated nets = 0, parasitics annotated nets = 0, multi-voltage nets = 0. (TIM-112)
+************************************************************
+Timer Settings:
+Delay Calculation Style:                   auto
+Signal Integrity Analysis:                 disabled
+Timing Window Analysis:                    disabled
+Advanced Waveform Propagation:             disabled
+Variation Type:                            fixed_derate
+Clock Reconvergence Pessimism Removal:     disabled
+Advanced Receiver Model:                   disabled
+ML Acceleration:                           off
+************************************************************
+****************************************
+Report : clock qor
+        -type summary
+        -nosplit
+        -significant_digits 3
+Design : rv32ima_mcu
+Version: U-2022.12-SP6
+Date   : Thu Sep 17 14:04:01 2026
+****************************************
+
+Attributes
+===========
+M Master Clock
+G Generated Clock
+& Internal Generated Clock
+U User Defined Skew Group
+D Default Skew Group
+* Generated Clock Balanced Separately
+
+==============================================
+==== Summary Reporting for Corner default ====
+==============================================
+
+=========================================================== Summary Table for Corner default ===========================================================
+Clock /                               Attrs     Sinks Levels    Clock     Clock     Clock       Max    Global  Trans DRC  Cap DRC      Wire
+Skew Group                                                   Repeater  Repeater   Stdcell   Latency      Skew     Count     Count    Length
+                                                                Count      Area      Area
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+### Mode: default, Scenario: default
+CLK                                     M,D    263862     12     6137  23014.264 23024.938    1.355     0.805         6        10  1259733.750
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+All Clocks                                     263862     12     6137  23014.264 23024.938    1.355     0.805         6        10  1259733.750
+
+
+Warning: Please use -largest / -smallest / -all switches with -show_verbose_paths / -show_paths to report the clock paths. (CTS-956)
+1

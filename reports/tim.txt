@@ -1,0 +1,984 @@
+****************************************
+Report : timing
+        -path_type full
+        -delay_type max
+        -max_paths 10
+        -report_by design
+Design : rv32ima_mcu
+Version: U-2022.12-SP6
+Date   : Thu Sep 17 14:11:33 2026
+****************************************
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_alu_result_reg[7] (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_memory_wrapper/u_generic_ram/mem_reg[7254][24] (rising edge-triggered flip-flop clocked by CLK)
+  Mode: default
+  Corner: default
+  Scenario: default
+  Path Group: CLK
+  Path Type: max
+
+  Point                                            Incr      Path  
+  ------------------------------------------------------------------------
+  clock CLK (rise edge)                            0.00      0.00
+  clock network delay (propagated)                 0.78      0.78
+
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[7]/CLK (DFFARX1_HVT)
+                                                   0.00      0.78 r
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[7]/Q (DFFARX1_HVT)
+                                                   2.06      2.85 r
+  place_opt_ZBUF_17_inst_149068/Y (NBUFFX2_HVT)    0.83      3.67 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_108_91422/Y (IBUFFX4_HVT)
+                                                   0.54      4.21 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_170096/Y (NBUFFX8_HVT)
+                                                   0.32      4.53 f
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_94_inst_143485/Y (NBUFFX4_HVT)
+                                                   0.34      4.87 f
+  u_memory_wrapper/u_generic_ram/U26708/Y (AND3X1_RVT)
+                                                   0.23      5.10 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_193996/Y (NBUFFX4_HVT)
+                                                   0.25      5.36 f
+  u_memory_wrapper/u_generic_ram/U325384/Y (NAND2X0_RVT)
+                                                   0.28      5.63 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_208186/Y (NBUFFX16_HVT)
+                                                   0.31      5.94 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_208182/Y (NBUFFX4_HVT)
+                                                   0.31      6.25 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_9059_95443/Y (IBUFFX16_HVT)
+                                                   0.36      6.61 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_8372_95441/Y (INVX16_HVT)
+                                                   0.22      6.84 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_4526_f_95437/Y (INVX8_HVT)
+                                                   0.36      7.19 f
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_1832_inst_151275/Y (NBUFFX4_HVT)
+                                                   0.38      7.57 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_214928/Y (NBUFFX4_HVT)
+                                                   0.28      7.85 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_214927/Y (NBUFFX4_HVT)
+                                                   0.30      8.15 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_214926/Y (NBUFFX2_HVT)
+                                                   0.85      9.01 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_214925/Y (NBUFFX4_HVT)
+                                                   0.76      9.77 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_3917_95435/Y (INVX4_HVT)
+                                                   0.32     10.09 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_3908_f_95434/Y (INVX8_HVT)
+                                                   0.52     10.61 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_189155/Y (DELLN1X2_HVT)
+                                                   4.90     15.51 f
+  u_memory_wrapper/u_generic_ram/U148510/Y (NAND2X4_HVT)
+                                                   1.38     16.89 r
+  u_memory_wrapper/u_generic_ram/U246891/Y (AO22X2_HVT)
+                                                   1.87     18.76 r
+  u_memory_wrapper/u_generic_ram/mem_reg[7254][24]/D (DFFX1_HVT)
+                                                   0.00     18.76 r
+  data arrival time                                         18.76
+
+  clock CLK (rise edge)                           20.00     20.00
+  clock network delay (propagated)                 0.72     20.72
+  u_memory_wrapper/u_generic_ram/mem_reg[7254][24]/CLK (DFFX1_HVT)
+                                                   0.00     20.72 r
+  clock uncertainty                               -0.50     20.22
+  library setup time                              -1.81     18.41
+  data required time                                        18.41
+  ------------------------------------------------------------------------
+  data required time                                        18.41
+  data arrival time                                        -18.76
+  ------------------------------------------------------------------------
+  slack (VIOLATED)                                          -0.36
+
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_alu_result_reg[6] (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_mem_wb/wb_rdata_reg[5] (rising edge-triggered flip-flop clocked by CLK)
+  Mode: default
+  Corner: default
+  Scenario: default
+  Path Group: CLK
+  Path Type: max
+
+  Point                                            Incr      Path  
+  ------------------------------------------------------------------------
+  clock CLK (rise edge)                            0.00      0.00
+  clock network delay (propagated)                 0.78      0.78
+
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[6]/CLK (DFFARX1_HVT)
+                                                   0.00      0.78 r
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[6]/Q (DFFARX1_HVT)
+                                                   2.50      3.28 f
+  u_rv32_core/u_ex_mem/place_opt_HFSBUF_284_91420/Y (NBUFFX2_HVT)
+                                                   0.89      4.18 f
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_210_inst_146734/Y (NBUFFX32_HVT)
+                                                   0.37      4.55 f
+  u_memory_wrapper/u_generic_ram/U389789/Y (AND2X1_RVT)
+                                                   0.38      4.93 f
+  u_memory_wrapper/u_generic_ram/U389790/Y (NAND2X0_RVT)
+                                                   0.15      5.08 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_134306_97787/Y (NBUFFX8_HVT)
+                                                   0.27      5.35 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_24667_97786/Y (INVX8_HVT)
+                                                   0.50      5.85 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_170921/Y (NBUFFX4_HVT)
+                                                   0.63      6.48 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_21757_97785/Y (INVX32_HVT)
+                                                   0.26      6.74 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_17805_97784/Y (INVX8_HVT)
+                                                   0.50      7.24 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_17173_97783/Y (INVX32_HVT)
+                                                   0.20      7.44 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212483/Y (NBUFFX4_HVT)
+                                                   0.30      7.74 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212480/Y (NBUFFX4_HVT)
+                                                   0.26      8.00 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212479/Y (NBUFFX2_HVT)
+                                                   0.70      8.70 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212478/Y (NBUFFX2_HVT)
+                                                   1.02      9.72 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212476/Y (NBUFFX2_HVT)
+                                                   0.99     10.71 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212475/Y (NBUFFX2_HVT)
+                                                   0.99     11.69 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212474/Y (NBUFFX2_HVT)
+                                                   0.99     12.68 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212473/Y (NBUFFX2_HVT)
+                                                   0.99     13.68 r
+  u_memory_wrapper/u_generic_ram/U535916/Y (OA221X1_RVT)
+                                                   0.31     13.99 r
+  u_memory_wrapper/u_generic_ram/U536031/Y (NAND4X1_HVT)
+                                                   2.47     16.46 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_199122/Y (NBUFFX2_HVT)
+                                                   1.23     17.69 f
+  u_memory_wrapper/u_generic_ram/U536032/Y (AO22X2_RVT)
+                                                   0.37     18.06 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_194043/Y (NBUFFX4_HVT)
+                                                   0.23     18.29 f
+  u_memory_wrapper/u_generic_ram/U536033/Y (AO221X1_RVT)
+                                                   0.21     18.50 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_2_15502/Y (NBUFFX4_HVT)
+                                                   0.23     18.73 f
+  u_memory_wrapper/u_generic_ram/U537262/Y (NOR4X1_RVT)
+                                                   0.23     18.97 r
+  u_memory_wrapper/u_generic_ram/place_opt_ctmTdsLR_1_131597/Y (OAI22X1_RVT)
+                                                   0.15     19.11 f
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_2_inst_150781/Y (NBUFFX4_HVT)
+                                                   0.24     19.35 f
+  u_memory_wrapper/u_generic_ram/U32793/Y (AND2X1_RVT)
+                                                   0.22     19.57 f
+  u_bus_decoder/U49/Y (AO22X1_RVT)                 0.12     19.69 f
+  u_bus_decoder/U48/Y (AO221X1_RVT)                0.18     19.88 f
+  u_rv32_core/U44/Y (AO22X1_RVT)                   0.13     20.01 f
+  u_rv32_core/U43/Y (AO221X1_RVT)                  0.16     20.16 f
+  u_rv32_core/u_mem_wb/U17/Y (AO22X1_RVT)          0.14     20.30 f
+  u_rv32_core/u_mem_wb/wb_rdata_reg[5]/D (DFFARX1_HVT)
+                                                   0.00     20.30 f
+  data arrival time                                         20.30
+
+  clock CLK (rise edge)                           20.00     20.00
+  clock network delay (propagated)                 0.71     20.71
+  u_rv32_core/u_mem_wb/wb_rdata_reg[5]/CLK (DFFARX1_HVT)
+                                                   0.00     20.71 r
+  clock uncertainty                               -0.50     20.21
+  library setup time                              -0.26     19.96
+  data required time                                        19.96
+  ------------------------------------------------------------------------
+  data required time                                        19.96
+  data arrival time                                        -20.30
+  ------------------------------------------------------------------------
+  slack (VIOLATED)                                          -0.35
+
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_alu_result_reg[6] (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_mem_wb/wb_rdata_reg[13] (rising edge-triggered flip-flop clocked by CLK)
+  Mode: default
+  Corner: default
+  Scenario: default
+  Path Group: CLK
+  Path Type: max
+
+  Point                                            Incr      Path  
+  ------------------------------------------------------------------------
+  clock CLK (rise edge)                            0.00      0.00
+  clock network delay (propagated)                 0.78      0.78
+
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[6]/CLK (DFFARX1_HVT)
+                                                   0.00      0.78 r
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[6]/Q (DFFARX1_HVT)
+                                                   2.50      3.28 f
+  u_rv32_core/u_ex_mem/place_opt_HFSBUF_284_91420/Y (NBUFFX2_HVT)
+                                                   0.89      4.18 f
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_210_inst_146734/Y (NBUFFX32_HVT)
+                                                   0.37      4.55 f
+  u_memory_wrapper/u_generic_ram/U389789/Y (AND2X1_RVT)
+                                                   0.38      4.93 f
+  u_memory_wrapper/u_generic_ram/U389790/Y (NAND2X0_RVT)
+                                                   0.15      5.08 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_134306_97787/Y (NBUFFX8_HVT)
+                                                   0.27      5.35 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_24667_97786/Y (INVX8_HVT)
+                                                   0.50      5.85 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_170921/Y (NBUFFX4_HVT)
+                                                   0.63      6.48 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_21757_97785/Y (INVX32_HVT)
+                                                   0.26      6.74 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_17805_97784/Y (INVX8_HVT)
+                                                   0.50      7.24 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_17173_97783/Y (INVX32_HVT)
+                                                   0.20      7.44 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212483/Y (NBUFFX4_HVT)
+                                                   0.30      7.74 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212480/Y (NBUFFX4_HVT)
+                                                   0.26      8.00 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212479/Y (NBUFFX2_HVT)
+                                                   0.70      8.70 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212478/Y (NBUFFX2_HVT)
+                                                   1.02      9.72 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212476/Y (NBUFFX2_HVT)
+                                                   0.99     10.71 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212475/Y (NBUFFX2_HVT)
+                                                   0.99     11.69 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212474/Y (NBUFFX2_HVT)
+                                                   0.99     12.68 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212473/Y (NBUFFX2_HVT)
+                                                   0.99     13.68 r
+  u_memory_wrapper/u_generic_ram/U535916/Y (OA221X1_RVT)
+                                                   0.31     13.99 r
+  u_memory_wrapper/u_generic_ram/U536031/Y (NAND4X1_HVT)
+                                                   2.47     16.46 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_199122/Y (NBUFFX2_HVT)
+                                                   1.23     17.69 f
+  u_memory_wrapper/u_generic_ram/U536032/Y (AO22X2_RVT)
+                                                   0.37     18.06 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_194043/Y (NBUFFX4_HVT)
+                                                   0.23     18.29 f
+  u_memory_wrapper/u_generic_ram/U536033/Y (AO221X1_RVT)
+                                                   0.21     18.50 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_2_15502/Y (NBUFFX4_HVT)
+                                                   0.23     18.73 f
+  u_memory_wrapper/u_generic_ram/U537262/Y (NOR4X1_RVT)
+                                                   0.23     18.97 r
+  u_memory_wrapper/u_generic_ram/place_opt_ctmTdsLR_1_131597/Y (OAI22X1_RVT)
+                                                   0.15     19.11 f
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_2_inst_150781/Y (NBUFFX4_HVT)
+                                                   0.24     19.35 f
+  u_memory_wrapper/u_generic_ram/U32793/Y (AND2X1_RVT)
+                                                   0.22     19.57 f
+  u_bus_decoder/U49/Y (AO22X1_RVT)                 0.12     19.69 f
+  u_bus_decoder/U48/Y (AO221X1_RVT)                0.18     19.88 f
+  u_rv32_core/U74/Y (AO221X1_RVT)                  0.25     20.13 f
+  u_rv32_core/u_mem_wb/U25/Y (AO22X1_RVT)          0.14     20.27 f
+  u_rv32_core/u_mem_wb/wb_rdata_reg[13]/D (DFFARX1_HVT)
+                                                   0.00     20.27 f
+  data arrival time                                         20.27
+
+  clock CLK (rise edge)                           20.00     20.00
+  clock network delay (propagated)                 0.72     20.72
+  u_rv32_core/u_mem_wb/wb_rdata_reg[13]/CLK (DFFARX1_HVT)
+                                                   0.00     20.72 r
+  clock uncertainty                               -0.50     20.22
+  library setup time                              -0.28     19.94
+  data required time                                        19.94
+  ------------------------------------------------------------------------
+  data required time                                        19.94
+  data arrival time                                        -20.27
+  ------------------------------------------------------------------------
+  slack (VIOLATED)                                          -0.33
+
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_alu_result_reg[6] (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_mem_wb/wb_rdata_reg[29] (rising edge-triggered flip-flop clocked by CLK)
+  Mode: default
+  Corner: default
+  Scenario: default
+  Path Group: CLK
+  Path Type: max
+
+  Point                                            Incr      Path  
+  ------------------------------------------------------------------------
+  clock CLK (rise edge)                            0.00      0.00
+  clock network delay (propagated)                 0.78      0.78
+
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[6]/CLK (DFFARX1_HVT)
+                                                   0.00      0.78 r
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[6]/Q (DFFARX1_HVT)
+                                                   2.50      3.28 f
+  u_rv32_core/u_ex_mem/place_opt_HFSBUF_284_91420/Y (NBUFFX2_HVT)
+                                                   0.89      4.18 f
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_210_inst_146734/Y (NBUFFX32_HVT)
+                                                   0.37      4.55 f
+  u_memory_wrapper/u_generic_ram/U389789/Y (AND2X1_RVT)
+                                                   0.38      4.93 f
+  u_memory_wrapper/u_generic_ram/U389790/Y (NAND2X0_RVT)
+                                                   0.15      5.08 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_134306_97787/Y (NBUFFX8_HVT)
+                                                   0.27      5.35 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_24667_97786/Y (INVX8_HVT)
+                                                   0.50      5.85 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_170921/Y (NBUFFX4_HVT)
+                                                   0.63      6.48 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_21757_97785/Y (INVX32_HVT)
+                                                   0.26      6.74 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_17805_97784/Y (INVX8_HVT)
+                                                   0.50      7.24 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_17173_97783/Y (INVX32_HVT)
+                                                   0.20      7.44 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212483/Y (NBUFFX4_HVT)
+                                                   0.30      7.74 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212480/Y (NBUFFX4_HVT)
+                                                   0.26      8.00 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212479/Y (NBUFFX2_HVT)
+                                                   0.70      8.70 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212478/Y (NBUFFX2_HVT)
+                                                   1.02      9.72 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212476/Y (NBUFFX2_HVT)
+                                                   0.99     10.71 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212475/Y (NBUFFX2_HVT)
+                                                   0.99     11.69 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212474/Y (NBUFFX2_HVT)
+                                                   0.99     12.68 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212473/Y (NBUFFX2_HVT)
+                                                   0.99     13.68 r
+  u_memory_wrapper/u_generic_ram/U535916/Y (OA221X1_RVT)
+                                                   0.31     13.99 r
+  u_memory_wrapper/u_generic_ram/U536031/Y (NAND4X1_HVT)
+                                                   2.47     16.46 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_199122/Y (NBUFFX2_HVT)
+                                                   1.23     17.69 f
+  u_memory_wrapper/u_generic_ram/U536032/Y (AO22X2_RVT)
+                                                   0.37     18.06 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_194043/Y (NBUFFX4_HVT)
+                                                   0.23     18.29 f
+  u_memory_wrapper/u_generic_ram/U536033/Y (AO221X1_RVT)
+                                                   0.21     18.50 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_2_15502/Y (NBUFFX4_HVT)
+                                                   0.23     18.73 f
+  u_memory_wrapper/u_generic_ram/U537262/Y (NOR4X1_RVT)
+                                                   0.23     18.97 r
+  u_memory_wrapper/u_generic_ram/place_opt_ctmTdsLR_1_131597/Y (OAI22X1_RVT)
+                                                   0.15     19.11 f
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_2_inst_150781/Y (NBUFFX4_HVT)
+                                                   0.24     19.35 f
+  u_memory_wrapper/u_generic_ram/U32793/Y (AND2X1_RVT)
+                                                   0.22     19.57 f
+  u_bus_decoder/U49/Y (AO22X1_RVT)                 0.12     19.69 f
+  u_bus_decoder/U48/Y (AO221X1_RVT)                0.18     19.88 f
+  u_rv32_core/U53/Y (AO21X1_RVT)                   0.20     20.08 f
+  u_rv32_core/u_mem_wb/U41/Y (AO22X1_RVT)          0.15     20.23 f
+  u_rv32_core/u_mem_wb/wb_rdata_reg[29]/D (DFFARX1_HVT)
+                                                   0.00     20.23 f
+  data arrival time                                         20.23
+
+  clock CLK (rise edge)                           20.00     20.00
+  clock network delay (propagated)                 0.72     20.72
+  u_rv32_core/u_mem_wb/wb_rdata_reg[29]/CLK (DFFARX1_HVT)
+                                                   0.00     20.72 r
+  clock uncertainty                               -0.50     20.22
+  library setup time                              -0.28     19.94
+  data required time                                        19.94
+  ------------------------------------------------------------------------
+  data required time                                        19.94
+  data arrival time                                        -20.23
+  ------------------------------------------------------------------------
+  slack (VIOLATED)                                          -0.29
+
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_alu_result_reg[6] (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_memory_wrapper/u_generic_ram/mem_reg[1905][23] (rising edge-triggered flip-flop clocked by CLK)
+  Mode: default
+  Corner: default
+  Scenario: default
+  Path Group: CLK
+  Path Type: max
+
+  Point                                            Incr      Path  
+  ------------------------------------------------------------------------
+  clock CLK (rise edge)                            0.00      0.00
+  clock network delay (propagated)                 0.78      0.78
+
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[6]/CLK (DFFARX1_HVT)
+                                                   0.00      0.78 r
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[6]/Q (DFFARX1_HVT)
+                                                   2.39      3.17 r
+  u_rv32_core/u_ex_mem/place_opt_HFSBUF_284_91420/Y (NBUFFX2_HVT)
+                                                   0.89      4.06 r
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_210_inst_146734/Y (NBUFFX32_HVT)
+                                                   0.35      4.42 r
+  u_memory_wrapper/u_generic_ram/U26706/Y (AND3X1_HVT)
+                                                   1.53      5.95 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_441_17620/Y (NBUFFX8_HVT)
+                                                   0.44      6.39 r
+  u_memory_wrapper/u_generic_ram/place_opt_ctmTdsLR_1_143183/Y (AND2X1_HVT)
+                                                   0.96      7.35 r
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_1284_inst_151162/Y (NBUFFX2_HVT)
+                                                   0.90      8.24 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_4059_94648/Y (NBUFFX4_HVT)
+                                                   0.44      8.69 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_4017_94647/Y (INVX8_HVT)
+                                                   0.50      9.18 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_209187/Y (NBUFFX8_HVT)
+                                                   0.54      9.72 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_3724_f_94646/Y (INVX8_HVT)
+                                                   0.21      9.93 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_214954/Y (NBUFFX4_HVT)
+                                                   0.26     10.19 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_214953/Y (NBUFFX2_HVT)
+                                                   0.79     10.97 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_214952/Y (NBUFFX2_HVT)
+                                                   1.11     12.09 r
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_94_inst_151564/Y (NBUFFX4_HVT)
+                                                   0.44     12.53 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_189427/Y (NBUFFX4_HVT)
+                                                   0.30     12.83 r
+  u_memory_wrapper/u_generic_ram/U365014/Y (NAND2X4_HVT)
+                                                   1.45     14.28 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_308_70410/Y (INVX8_HVT)
+                                                   0.57     14.84 r
+  u_memory_wrapper/u_generic_ram/U144429/Y (AO22X2_HVT)
+                                                   2.12     16.97 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_206271/Y (NBUFFX2_HVT)
+                                                   1.31     18.28 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_206269/Y (NBUFFX2_HVT)
+                                                   0.90     19.18 r
+  u_memory_wrapper/u_generic_ram/mem_reg[1905][23]/D (DFFX1_HVT)
+                                                   0.00     19.18 r
+  data arrival time                                         19.18
+
+  clock CLK (rise edge)                           20.00     20.00
+  clock network delay (propagated)                 0.87     20.87
+  u_memory_wrapper/u_generic_ram/mem_reg[1905][23]/CLK (DFFX1_HVT)
+                                                   0.00     20.87 r
+  clock uncertainty                               -0.50     20.37
+  library setup time                              -1.39     18.99
+  data required time                                        18.99
+  ------------------------------------------------------------------------
+  data required time                                        18.99
+  data arrival time                                        -19.18
+  ------------------------------------------------------------------------
+  slack (VIOLATED)                                          -0.20
+
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_alu_result_reg[2] (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_mem_wb/wb_rdata_reg[6] (rising edge-triggered flip-flop clocked by CLK)
+  Mode: default
+  Corner: default
+  Scenario: default
+  Path Group: CLK
+  Path Type: max
+
+  Point                                            Incr      Path  
+  ------------------------------------------------------------------------
+  clock CLK (rise edge)                            0.00      0.00
+  clock network delay (propagated)                 0.66      0.66
+
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[2]/CLK (DFFARX1_HVT)
+                                                   0.00      0.66 r
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[2]/Q (DFFARX1_HVT)
+                                                   2.39      3.05 f
+  u_rv32_core/place_opt_HFSBUF_1695_91524/Y (NBUFFX4_RVT)
+                                                   0.38      3.43 f
+  u_bus_decoder/place_opt_HFSINV_535_91522/Y (INVX8_HVT)
+                                                   0.22      3.65 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_170008/Y (NBUFFX16_HVT)
+                                                   0.28      3.93 r
+  u_memory_wrapper/u_generic_ram/U389762/Y (AND2X1_RVT)
+                                                   0.25      4.18 r
+  u_memory_wrapper/u_generic_ram/U85/Y (NAND2X4_HVT)
+                                                   1.33      5.51 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_263673_117622/Y (INVX1_LVT)
+                                                   0.22      5.72 r
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_32_inst_143499/Y (NBUFFX32_HVT)
+                                                   0.32      6.04 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_214636_117482/Y (INVX8_HVT)
+                                                   0.52      6.56 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_170295/Y (NBUFFX4_HVT)
+                                                   0.53      7.09 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_208913_117480/Y (INVX8_HVT)
+                                                   0.31      7.40 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_192741/Y (NBUFFX8_HVT)
+                                                   0.36      7.76 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_192739/Y (NBUFFX16_HVT)
+                                                   0.29      8.05 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_203509_117462/Y (NBUFFX2_HVT)
+                                                   0.69      8.73 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_198731/Y (NBUFFX4_HVT)
+                                                   0.51      9.24 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_198730/Y (DELLN1X2_HVT)
+                                                   2.95     12.19 r
+  u_memory_wrapper/u_generic_ram/U539991/Y (AO221X1_RVT)
+                                                   0.39     12.58 r
+  u_memory_wrapper/u_generic_ram/place_opt_ctmTdsLR_1_140757/Y (NOR4X1_RVT)
+                                                   0.29     12.87 f
+  u_memory_wrapper/u_generic_ram/U539986/Y (OA22X1_RVT)
+                                                   0.23     13.11 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_204282/Y (NBUFFX4_HVT)
+                                                   0.32     13.42 f
+  u_memory_wrapper/u_generic_ram/U539987/Y (OA221X2_RVT)
+                                                   0.37     13.79 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_214908/Y (NBUFFX2_HVT)
+                                                   0.66     14.45 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_214907/Y (NBUFFX2_HVT)
+                                                   1.31     15.76 f
+  u_memory_wrapper/u_generic_ram/U540026/Y (NAND4X1_RVT)
+                                                   0.97     16.73 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_206317/Y (NBUFFX4_HVT)
+                                                   0.28     17.01 r
+  u_memory_wrapper/u_generic_ram/U540334/Y (AO221X1_RVT)
+                                                   0.25     17.26 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_2_15965/Y (NBUFFX4_HVT)
+                                                   0.29     17.55 r
+  u_memory_wrapper/u_generic_ram/U542177/Y (NOR4X0_RVT)
+                                                   0.27     17.82 f
+  u_memory_wrapper/u_generic_ram/place_opt_ctmTdsLR_1_131598/Y (OAI22X1_RVT)
+                                                   0.16     17.98 r
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_2_inst_150674/Y (NBUFFX4_HVT)
+                                                   0.24     18.22 r
+  u_memory_wrapper/u_generic_ram/U32791/Y (AND2X1_RVT)
+                                                   0.17     18.39 r
+  u_bus_decoder/U45/Y (AO22X1_RVT)                 0.14     18.52 r
+  u_bus_decoder/U44/Y (AO221X1_RVT)                0.21     18.74 r
+  u_rv32_core/U42/Y (AO22X1_RVT)                   0.15     18.89 r
+  u_rv32_core/U41/Y (AO221X1_RVT)                  0.17     19.06 r
+  u_rv32_core/u_mem_wb/U18/Y (AO22X1_RVT)          0.16     19.22 r
+  u_rv32_core/u_mem_wb/wb_rdata_reg[6]/D (DFFARX1_HVT)
+                                                   0.00     19.22 r
+  data arrival time                                         19.22
+
+  clock CLK (rise edge)                           20.00     20.00
+  clock network delay (propagated)                 0.71     20.71
+  u_rv32_core/u_mem_wb/wb_rdata_reg[6]/CLK (DFFARX1_HVT)
+                                                   0.00     20.71 r
+  clock uncertainty                               -0.50     20.21
+  library setup time                              -1.14     19.07
+  data required time                                        19.07
+  ------------------------------------------------------------------------
+  data required time                                        19.07
+  data arrival time                                        -19.22
+  ------------------------------------------------------------------------
+  slack (VIOLATED)                                          -0.15
+
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_alu_result_reg[2] (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_mem_wb/wb_rdata_reg[4] (rising edge-triggered flip-flop clocked by CLK)
+  Mode: default
+  Corner: default
+  Scenario: default
+  Path Group: CLK
+  Path Type: max
+
+  Point                                            Incr      Path  
+  ------------------------------------------------------------------------
+  clock CLK (rise edge)                            0.00      0.00
+  clock network delay (propagated)                 0.66      0.66
+
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[2]/CLK (DFFARX1_HVT)
+                                                   0.00      0.66 r
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[2]/Q (DFFARX1_HVT)
+                                                   2.30      2.96 r
+  u_rv32_core/place_opt_HFSBUF_1695_91524/Y (NBUFFX4_RVT)
+                                                   0.29      3.25 r
+  u_bus_decoder/place_opt_HFSINV_535_91522/Y (INVX8_HVT)
+                                                   0.32      3.57 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_170008/Y (NBUFFX16_HVT)
+                                                   0.39      3.96 f
+  u_memory_wrapper/u_generic_ram/U389765/Y (AND2X1_RVT)
+                                                   0.27      4.23 f
+  u_memory_wrapper/u_generic_ram/U91/Y (AND2X1_HVT)
+                                                   0.53      4.76 f
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_245_inst_143481/Y (NBUFFX8_HVT)
+                                                   0.48      5.24 f
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_145_inst_143480/Y (NBUFFX8_HVT)
+                                                   0.34      5.58 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_244893_123100/Y (NBUFFX4_HVT)
+                                                   0.28      5.86 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_170329/Y (NBUFFX4_HVT)
+                                                   0.27      6.13 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_229599_123099/Y (NBUFFX32_HVT)
+                                                   0.30      6.44 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_223866_123098/Y (NBUFFX8_HVT)
+                                                   0.23      6.67 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212558/Y (NBUFFX4_HVT)
+                                                   0.21      6.88 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212557/Y (NBUFFX2_HVT)
+                                                   0.67      7.54 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212556/Y (NBUFFX2_HVT)
+                                                   1.21      8.75 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212555/Y (NBUFFX4_HVT)
+                                                   0.63      9.38 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212554/Y (NBUFFX2_HVT)
+                                                   0.72     10.10 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_221594_123087/Y (NBUFFX8_HVT)
+                                                   0.56     10.67 f
+  u_memory_wrapper/u_generic_ram/U453622/Y (AO221X1_RVT)
+                                                   0.36     11.02 f
+  u_memory_wrapper/u_generic_ram/U453625/Y (NOR4X0_RVT)
+                                                   0.23     11.25 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_185490/Y (NBUFFX2_HVT)
+                                                   0.52     11.78 r
+  u_memory_wrapper/u_generic_ram/U453626/Y (OA22X2_HVT)
+                                                   1.86     13.63 r
+  u_memory_wrapper/u_generic_ram/U453627/Y (OA221X1_RVT)
+                                                   0.31     13.95 r
+  u_memory_wrapper/u_generic_ram/U453704/Y (NAND4X1_HVT)
+                                                   2.29     16.23 f
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_2_inst_147072/Y (NBUFFX8_HVT)
+                                                   0.40     16.64 f
+  u_memory_wrapper/u_generic_ram/place_opt_ctmTdsLR_2_125908/Y (AO221X1_RVT)
+                                                   0.38     17.02 f
+  u_memory_wrapper/u_generic_ram/U453707/Y (NOR4X0_RVT)
+                                                   0.23     17.25 r
+  u_memory_wrapper/u_generic_ram/U453708/Y (OAI22X2_HVT)
+                                                   1.28     18.53 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_2_6800/Y (NBUFFX8_HVT)
+                                                   0.47     19.00 f
+  u_memory_wrapper/u_generic_ram/U32811/Y (AND2X1_RVT)
+                                                   0.29     19.29 f
+  u_bus_decoder/U85/Y (AO22X1_RVT)                 0.14     19.43 f
+  u_bus_decoder/U84/Y (AO221X1_RVT)                0.15     19.58 f
+  u_rv32_core/U46/Y (AO22X1_RVT)                   0.19     19.77 f
+  u_rv32_core/U45/Y (AO221X1_RVT)                  0.16     19.93 f
+  u_rv32_core/u_mem_wb/U16/Y (AO22X1_RVT)          0.14     20.08 f
+  u_rv32_core/u_mem_wb/wb_rdata_reg[4]/D (DFFARX1_HVT)
+                                                   0.00     20.08 f
+  data arrival time                                         20.08
+
+  clock CLK (rise edge)                           20.00     20.00
+  clock network delay (propagated)                 0.71     20.71
+  u_rv32_core/u_mem_wb/wb_rdata_reg[4]/CLK (DFFARX1_HVT)
+                                                   0.00     20.71 r
+  clock uncertainty                               -0.50     20.21
+  library setup time                              -0.26     19.95
+  data required time                                        19.95
+  ------------------------------------------------------------------------
+  data required time                                        19.95
+  data arrival time                                        -20.08
+  ------------------------------------------------------------------------
+  slack (VIOLATED)                                          -0.12
+
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_alu_result_reg[2] (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_memory_wrapper/u_generic_ram/mem_reg[6618][11] (rising edge-triggered flip-flop clocked by CLK)
+  Mode: default
+  Corner: default
+  Scenario: default
+  Path Group: CLK
+  Path Type: max
+
+  Point                                            Incr      Path  
+  ------------------------------------------------------------------------
+  clock CLK (rise edge)                            0.00      0.00
+  clock network delay (propagated)                 0.66      0.66
+
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[2]/CLK (DFFARX1_HVT)
+                                                   0.00      0.66 r
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[2]/Q (DFFARX1_HVT)
+                                                   2.39      3.05 f
+  u_rv32_core/place_opt_HFSBUF_1695_91524/Y (NBUFFX4_RVT)
+                                                   0.38      3.43 f
+  u_bus_decoder/place_opt_HFSINV_535_91522/Y (INVX8_HVT)
+                                                   0.22      3.65 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_170008/Y (NBUFFX16_HVT)
+                                                   0.28      3.93 r
+  u_memory_wrapper/u_generic_ram/U328225/Y (AND2X2_HVT)
+                                                   1.32      5.25 r
+  u_memory_wrapper/u_generic_ram/U328224/Y (AND2X2_RVT)
+                                                   0.34      5.59 r
+  u_memory_wrapper/u_generic_ram/U325236/Y (NAND2X0_RVT)
+                                                   0.13      5.72 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_22244_95339/Y (NBUFFX4_HVT)
+                                                   0.30      6.02 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_17428_95322/Y (INVX4_HVT)
+                                                   0.21      6.23 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_213188/Y (NBUFFX2_HVT)
+                                                   0.60      6.83 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_213187/Y (NBUFFX2_HVT)
+                                                   0.91      7.74 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_185901/Y (NBUFFX4_HVT)
+                                                   0.48      8.22 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_185900/Y (NBUFFX4_HVT)
+                                                   0.33      8.55 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_185898/Y (NBUFFX4_HVT)
+                                                   0.32      8.87 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_13630_95316/Y (INVX32_HVT)
+                                                   0.31      9.17 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_10958_f_95307/Y (INVX32_HVT)
+                                                   0.36      9.54 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_215714/Y (NBUFFX8_HVT)
+                                                   0.28      9.82 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_215713/Y (NBUFFX2_HVT)
+                                                   0.65     10.47 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_215710/Y (NBUFFX2_HVT)
+                                                   1.11     11.58 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_215709/Y (NBUFFX4_HVT)
+                                                   0.55     12.13 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_215708/Y (NBUFFX4_HVT)
+                                                   0.34     12.47 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_215707/Y (NBUFFX4_HVT)
+                                                   0.30     12.77 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_215706/Y (NBUFFX2_HVT)
+                                                   0.68     13.46 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_215705/Y (NBUFFX2_HVT)
+                                                   0.99     14.45 r
+  u_memory_wrapper/u_generic_ram/U209490/Y (NAND2X2_HVT)
+                                                   1.58     16.03 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_369_27915/Y (IBUFFX4_HVT)
+                                                   0.51     16.53 r
+  u_memory_wrapper/u_generic_ram/U269798/Y (AO22X2_HVT)
+                                                   1.98     18.51 r
+  u_memory_wrapper/u_generic_ram/mem_reg[6618][11]/D (DFFX1_HVT)
+                                                   0.00     18.51 r
+  data arrival time                                         18.51
+
+  clock CLK (rise edge)                           20.00     20.00
+  clock network delay (propagated)                 0.74     20.74
+  u_memory_wrapper/u_generic_ram/mem_reg[6618][11]/CLK (DFFX1_HVT)
+                                                   0.00     20.74 r
+  clock uncertainty                               -0.50     20.24
+  library setup time                              -1.85     18.40
+  data required time                                        18.40
+  ------------------------------------------------------------------------
+  data required time                                        18.40
+  data arrival time                                        -18.51
+  ------------------------------------------------------------------------
+  slack (VIOLATED)                                          -0.12
+
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_alu_result_reg[3] (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_mem_wb/wb_rdata_reg[1] (rising edge-triggered flip-flop clocked by CLK)
+  Mode: default
+  Corner: default
+  Scenario: default
+  Path Group: CLK
+  Path Type: max
+
+  Point                                            Incr      Path  
+  ------------------------------------------------------------------------
+  clock CLK (rise edge)                            0.00      0.00
+  clock network delay (propagated)                 0.78      0.78
+
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[3]/CLK (DFFARX1_HVT)
+                                                   0.00      0.78 r
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[3]/Q (DFFARX1_HVT)
+                                                   2.13      2.91 r
+  u_rv32_core/u_ex_mem/place_opt_HFSBUF_636_91409/Y (NBUFFX4_RVT)
+                                                   0.25      3.17 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_85_91407/Y (NBUFFX4_HVT)
+                                                   0.30      3.46 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_169999/Y (NBUFFX16_HVT)
+                                                   0.30      3.76 r
+  u_memory_wrapper/u_generic_ram/U389763/Y (AND2X1_RVT)
+                                                   0.24      4.00 r
+  u_memory_wrapper/u_generic_ram/U88/Y (NAND2X2_RVT)
+                                                   0.17      4.17 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212288/Y (NBUFFX4_HVT)
+                                                   0.18      4.36 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_311566_119923/Y (NBUFFX32_HVT)
+                                                   0.19      4.55 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_214811/Y (NBUFFX4_HVT)
+                                                   0.23      4.78 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_214810/Y (NBUFFX4_HVT)
+                                                   0.29      5.07 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_214809/Y (NBUFFX4_HVT)
+                                                   0.25      5.32 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_311536_119656/Y (NBUFFX8_HVT)
+                                                   0.21      5.53 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_215259/Y (NBUFFX8_HVT)
+                                                   0.18      5.71 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_215258/Y (NBUFFX4_HVT)
+                                                   0.22      5.93 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_215257/Y (NBUFFX4_HVT)
+                                                   0.25      6.18 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_215256/Y (NBUFFX4_RVT)
+                                                   0.18      6.36 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_215255/Y (NBUFFX4_HVT)
+                                                   0.21      6.58 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_215253/Y (NBUFFX4_HVT)
+                                                   0.25      6.82 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_215251/Y (NBUFFX2_RVT)
+                                                   0.22      7.04 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_289270_119594/Y (INVX8_HVT)
+                                                   0.21      7.24 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_289239_119582/Y (NBUFFX16_HVT)
+                                                   0.31      7.55 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_284769_119576/Y (NBUFFX2_HVT)
+                                                   0.70      8.25 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212493/Y (NBUFFX4_HVT)
+                                                   0.48      8.72 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212492/Y (NBUFFX4_HVT)
+                                                   0.30      9.02 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_212491/Y (NBUFFX2_HVT)
+                                                   0.71      9.72 r
+  u_memory_wrapper/u_generic_ram/U395783/Y (AO22X1_RVT)
+                                                   0.28     10.01 r
+  u_memory_wrapper/u_generic_ram/U395784/Y (AO221X1_RVT)
+                                                   0.18     10.18 r
+  u_memory_wrapper/u_generic_ram/place_opt_ctmTdsLR_1_141669/Y (NOR4X0_RVT)
+                                                   0.23     10.42 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_185443/Y (NBUFFX2_HVT)
+                                                   0.42     10.84 f
+  u_memory_wrapper/u_generic_ram/U395724/Y (OA221X1_RVT)
+                                                   0.39     11.23 f
+  u_memory_wrapper/u_generic_ram/U395801/Y (NAND4X0_RVT)
+                                                   0.20     11.44 r
+  u_memory_wrapper/u_generic_ram/U395955/Y (AO22X2_HVT)
+                                                   2.07     13.51 r
+  u_memory_wrapper/u_generic_ram/U395956/Y (AO221X2_RVT)
+                                                   0.59     14.10 r
+  u_memory_wrapper/u_generic_ram/U397185/Y (NOR4X1_HVT)
+                                                   1.65     15.75 f
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_2_inst_144402/Y (NBUFFX4_HVT)
+                                                   0.35     16.10 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_2_856/Y (NBUFFX8_HVT)
+                                                   0.24     16.33 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_186239/Y (NBUFFX8_HVT)
+                                                   0.28     16.62 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_186233/Y (NBUFFX8_HVT)
+                                                   0.35     16.96 f
+  u_memory_wrapper/u_generic_ram/U399643/Y (OAI22X2_HVT)
+                                                   0.85     17.82 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_2_1148/Y (NBUFFX8_HVT)
+                                                   0.33     18.14 r
+  u_memory_wrapper/u_generic_ram/U32803/Y (AND2X1_RVT)
+                                                   0.22     18.37 r
+  u_bus_decoder/U69/Y (AO22X1_RVT)                 0.15     18.52 r
+  u_bus_decoder/U68/Y (AO221X1_RVT)                0.16     18.69 r
+  u_rv32_core/U63/Y (AO221X1_RVT)                  0.25     18.93 r
+  u_rv32_core/u_mem_wb/U13/Y (AO22X1_RVT)          0.17     19.10 r
+  u_rv32_core/u_mem_wb/wb_rdata_reg[1]/D (DFFARX1_HVT)
+                                                   0.00     19.10 r
+  data arrival time                                         19.10
+
+  clock CLK (rise edge)                           20.00     20.00
+  clock network delay (propagated)                 0.69     20.69
+  u_rv32_core/u_mem_wb/wb_rdata_reg[1]/CLK (DFFARX1_HVT)
+                                                   0.00     20.69 r
+  clock uncertainty                               -0.50     20.19
+  library setup time                              -1.18     19.01
+  data required time                                        19.01
+  ------------------------------------------------------------------------
+  data required time                                        19.01
+  data arrival time                                        -19.10
+  ------------------------------------------------------------------------
+  slack (VIOLATED)                                          -0.09
+
+
+
+  Startpoint: u_rv32_core/u_ex_mem/mem_alu_result_reg[2] (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: u_rv32_core/u_mem_wb/wb_rdata_reg[0] (rising edge-triggered flip-flop clocked by CLK)
+  Mode: default
+  Corner: default
+  Scenario: default
+  Path Group: CLK
+  Path Type: max
+
+  Point                                            Incr      Path  
+  ------------------------------------------------------------------------
+  clock CLK (rise edge)                            0.00      0.00
+  clock network delay (propagated)                 0.66      0.66
+
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[2]/CLK (DFFARX1_HVT)
+                                                   0.00      0.66 r
+  u_rv32_core/u_ex_mem/mem_alu_result_reg[2]/Q (DFFARX1_HVT)
+                                                   2.39      3.05 f
+  u_rv32_core/place_opt_HFSBUF_1695_91524/Y (NBUFFX4_RVT)
+                                                   0.38      3.43 f
+  u_bus_decoder/place_opt_HFSINV_535_91522/Y (INVX8_HVT)
+                                                   0.22      3.65 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_170008/Y (NBUFFX16_HVT)
+                                                   0.28      3.93 r
+  u_memory_wrapper/u_generic_ram/U389762/Y (AND2X1_RVT)
+                                                   0.25      4.18 r
+  u_memory_wrapper/u_generic_ram/U85/Y (NAND2X4_HVT)
+                                                   1.33      5.51 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_49688_117012/Y (NBUFFX8_HVT)
+                                                   0.50      6.00 f
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_38_inst_143527/Y (NBUFFX8_HVT)
+                                                   0.36      6.36 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSINV_43241_117010/Y (INVX16_RVT)
+                                                   0.18      6.54 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_170505/Y (NBUFFX8_HVT)
+                                                   0.32      6.86 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_170499/Y (NBUFFX8_HVT)
+                                                   0.33      7.19 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_170497/Y (NBUFFX8_HVT)
+                                                   0.31      7.51 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_170494/Y (NBUFFX8_HVT)
+                                                   0.29      7.80 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_170493/Y (NBUFFX2_RVT)
+                                                   0.21      8.01 r
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_170492/Y (NBUFFX16_HVT)
+                                                   0.23      8.25 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_31292_116975/Y (NBUFFX32_HVT)
+                                                   0.26      8.51 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_30751_116974/Y (NBUFFX8_HVT)
+                                                   0.30      8.81 r
+  u_memory_wrapper/u_generic_ram/U430334/Y (AO22X1_RVT)
+                                                   0.25      9.06 r
+  u_memory_wrapper/u_generic_ram/place_opt_ctmTdsLR_5_137707/Y (AO221X1_RVT)
+                                                   0.23      9.29 r
+  u_memory_wrapper/u_generic_ram/place_opt_ctmTdsLR_6_137708/Y (NOR4X0_HVT)
+                                                   1.19     10.48 f
+  u_memory_wrapper/u_generic_ram/place_opt_gre_a_BUF_4_inst_209629/Y (NBUFFX2_HVT)
+                                                   0.83     11.31 f
+  u_memory_wrapper/u_generic_ram/U430319/Y (OA22X1_RVT)
+                                                   0.42     11.73 f
+  u_memory_wrapper/u_generic_ram/U430320/Y (OA221X2_RVT)
+                                                   0.28     12.01 f
+  u_memory_wrapper/u_generic_ram/U430359/Y (NAND4X1_HVT)
+                                                   1.00     13.01 r
+  u_memory_wrapper/u_generic_ram/place_opt_ZBUF_2_inst_147028/Y (NBUFFX2_HVT)
+                                                   0.78     13.79 r
+  u_memory_wrapper/u_generic_ram/U430360/Y (AO22X2_HVT)
+                                                   1.81     15.60 r
+  u_memory_wrapper/u_generic_ram/U430361/Y (AO221X1_RVT)
+                                                   0.57     16.17 r
+  u_memory_wrapper/u_generic_ram/U431590/Y (NOR4X1_RVT)
+                                                   0.34     16.51 f
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_2_4448/Y (NBUFFX16_HVT)
+                                                   0.18     16.69 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_213496/Y (NBUFFX8_HVT)
+                                                   0.16     16.86 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_213495/Y (NBUFFX4_LVT)
+                                                   0.13     16.98 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_213494/Y (NBUFFX4_LVT)
+                                                   0.12     17.10 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_213493/Y (NBUFFX4_LVT)
+                                                   0.11     17.21 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_213492/Y (NBUFFX4_LVT)
+                                                   0.11     17.33 f
+  u_memory_wrapper/u_generic_ram/place_opt_copt_gre_mt_inst_213491/Y (NBUFFX8_LVT)
+                                                   0.10     17.42 f
+  u_memory_wrapper/u_generic_ram/U434048/Y (OAI22X1_RVT)
+                                                   0.22     17.64 r
+  u_memory_wrapper/u_generic_ram/place_opt_HFSBUF_2_4692/Y (NBUFFX8_HVT)
+                                                   0.24     17.88 r
+  u_memory_wrapper/u_generic_ram/U32784/Y (AND2X1_RVT)
+                                                   0.21     18.10 r
+  u_bus_decoder/U31/Y (AO22X1_RVT)                 0.15     18.24 r
+  u_bus_decoder/U30/Y (AO221X1_RVT)                0.18     18.43 r
+  u_rv32_core/U82/Y (AO22X1_RVT)                   0.21     18.63 r
+  u_rv32_core/U81/Y (AO221X1_RVT)                  0.19     18.83 r
+  u_rv32_core/u_mem_wb/U12/Y (AO22X1_RVT)          0.20     19.03 r
+  u_rv32_core/u_mem_wb/wb_rdata_reg[0]/D (DFFARX1_HVT)
+                                                   0.00     19.03 r
+  data arrival time                                         19.03
+
+  clock CLK (rise edge)                           20.00     20.00
+  clock network delay (propagated)                 0.68     20.68
+  u_rv32_core/u_mem_wb/wb_rdata_reg[0]/CLK (DFFARX1_HVT)
+                                                   0.00     20.68 r
+  clock uncertainty                               -0.50     20.18
+  library setup time                              -1.23     18.95
+  data required time                                        18.95
+  ------------------------------------------------------------------------
+  data required time                                        18.95
+  data arrival time                                        -19.03
+  ------------------------------------------------------------------------
+  slack (VIOLATED)                                          -0.08
+
+
+1

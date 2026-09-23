@@ -1,0 +1,470 @@
+Using libraries: riscv.nlib saed32_hvt saed32_lvt saed32_rvt
+Visiting block riscv.nlib:clock_done.design
+Design 'rv32ima_mcu' was successfully linked.
+
+Running global router for congestion map ...
+Info: Set app option 'route.global.deterministic' to on
+
+Start Global Route ... 
+[Init] Elapsed real time: 0:00:00 
+[Init] Elapsed cpu  time: sys=0:00:00 usr=0:00:00 total=0:00:00
+[Init] Stage (MB): Used    0  Alloctr    0  Proc    0 
+[Init] Total (MB): Used    7  Alloctr    7  Proc 10422 
+Printing options for 'route.common.*'
+common.net_max_layer_mode                               :	 hard                
+common.net_min_layer_mode                               :	 allow_pin_connection
+
+Printing options for 'route.global.*'
+global.deterministic                                    :	 on                  
+
+Begin global routing.
+Warning: Cell contains tie connections which are not connected to real PG. (ZRT-511)
+Cell Min-Routing-Layer = M2
+Cell Max-Routing-Layer = M6
+Turn off antenna since no rule is specified
+Information: Option route.detail.force_end_on_preferred_grid will be ignored since none of the layers have preferred grid. (ZRT-703)
+Warning: Cannot find a default contact code for layer CO. (ZRT-022)
+Info: number of net_type_blockage: 0 
+Information: Via ladder engine would be activated for pattern must join connection in certain commands. Please refer to man-page for the command list. (ZRT-619)
+Information: When applicable Min-max layer allow_pin_connection mode will allow paths of length 3.55 outside the layer range. (ZRT-707)
+Information: When applicable Min-max layer allow_pin_connection mode will allow paths of length 3.55 outside the layer range on clock nets. (ZRT-718)
+Information: When applicable layer based tapering will taper up to 0.00 in distance from the pin. (ZRT-706)
+Current Stage stats:
+[End of Read DB] Elapsed real time: 0:00:35 
+[End of Read DB] Elapsed cpu  time: sys=0:00:00 usr=0:00:34 total=0:00:35
+[End of Read DB] Stage (MB): Used 1659  Alloctr 1668  Proc 2035 
+[End of Read DB] Total (MB): Used 1666  Alloctr 1676  Proc 12457 
+Loading parastics information to the router ...
+parastics information loaded to the router.
+[End of Loading Timing] Elapsed real time: 0:00:07 
+[End of Loading Timing] Elapsed cpu  time: sys=0:00:00 usr=0:00:07 total=0:00:07
+Constructing data structure ...
+Design statistics:
+Design Bounding Box (0.00um,0.00um,2107.30um,2106.69um)
+Number of routing layers = 10
+layer M1, dir Hor, min width = 0.05um, min space = 0.05um pitch = 0.152um
+layer M2, dir Ver, min width = 0.056um, min space = 0.056um pitch = 0.152um
+layer M3, dir Hor, min width = 0.056um, min space = 0.056um pitch = 0.304um
+layer M4, dir Ver, min width = 0.056um, min space = 0.056um pitch = 0.304um
+layer M5, dir Hor, min width = 0.056um, min space = 0.056um pitch = 0.608um
+layer M6, dir Ver, min width = 0.056um, min space = 0.056um pitch = 0.608um
+layer M7, dir Hor, min width = 0.056um, min space = 0.056um pitch = 1.216um
+layer M8, dir Ver, min width = 0.056um, min space = 0.056um pitch = 1.216um
+layer M9, dir Hor, min width = 0.16um, min space = 0.16um pitch = 2.432um
+layer MRDL, dir Ver, min width = 2um, min space = 2um pitch = 4.864um
+Current Stage stats:
+[End of Build Tech Data] Elapsed real time: 0:00:00 
+[End of Build Tech Data] Elapsed cpu  time: sys=0:00:00 usr=0:00:00 total=0:00:00
+[End of Build Tech Data] Stage (MB): Used   35  Alloctr   35  Proc    0 
+[End of Build Tech Data] Total (MB): Used 1701  Alloctr 1711  Proc 13268 
+Net statistics:
+Total number of nets     = 821432
+Number of nets to route  = 821104
+Number of nets with min-layer-mode allow-pin-conn = 685
+Number of nets with max-layer-mode hard = 685
+821432 nets are fully connected,
+ of which 328 are detail routed and 815291 are global routed.
+685 nets have non-default rule dwds
+	 685 non-user-specified nets, 685 non-user-specified clock nets, 0 user-specified nets
+Net length statistics: 
+Net Count(Ignore Fully Rted) 821104, Total Half Perimeter Wire Length (HPWL) 25147812 microns
+HPWL   0 ~   50 microns: Net Count   713868	Total HPWL     10676981 microns
+HPWL  50 ~  100 microns: Net Count    59997	Total HPWL      4107218 microns
+HPWL 100 ~  200 microns: Net Count    33514	Total HPWL      4686753 microns
+HPWL 200 ~  300 microns: Net Count     5872	Total HPWL      1393777 microns
+HPWL 300 ~  400 microns: Net Count     2593	Total HPWL       895735 microns
+HPWL 400 ~  500 microns: Net Count     1620	Total HPWL       723930 microns
+HPWL 500 ~  600 microns: Net Count     1256	Total HPWL       687846 microns
+HPWL 600 ~  700 microns: Net Count      747	Total HPWL       482106 microns
+HPWL 700 ~  800 microns: Net Count      517	Total HPWL       386595 microns
+HPWL 800 ~  900 microns: Net Count      432	Total HPWL       366426 microns
+HPWL 900 ~ 1000 microns: Net Count      295	Total HPWL       279239 microns
+HPWL     > 1000 microns: Net Count      393	Total HPWL       461208 microns
+Current Stage stats:
+[End of Build All Nets] Elapsed real time: 0:00:04 
+[End of Build All Nets] Elapsed cpu  time: sys=0:00:00 usr=0:00:04 total=0:00:04
+[End of Build All Nets] Stage (MB): Used  -55  Alloctr  264  Proc  387 
+[End of Build All Nets] Total (MB): Used 1646  Alloctr 1976  Proc 13656 
+Number of partitions: 9 (3 x 3)
+Size of partitions: 448 gCells x 448 gCells
+Average gCell capacity  1.23	 on layer (1)	 M1
+Average gCell capacity  9.08	 on layer (2)	 M2
+Average gCell capacity  5.20	 on layer (3)	 M3
+Average gCell capacity  5.32	 on layer (4)	 M4
+Average gCell capacity  2.58	 on layer (5)	 M5
+Average gCell capacity  2.69	 on layer (6)	 M6
+Average gCell capacity  1.11	 on layer (7)	 M7
+Average gCell capacity  0.00	 on layer (8)	 M8
+Average gCell capacity  0.00	 on layer (9)	 M9
+Average gCell capacity  0.00	 on layer (10)	 MRDL
+Average number of tracks per gCell 11.00	 on layer (1)	 M1
+Average number of tracks per gCell 11.00	 on layer (2)	 M2
+Average number of tracks per gCell 5.50	 on layer (3)	 M3
+Average number of tracks per gCell 5.50	 on layer (4)	 M4
+Average number of tracks per gCell 2.75	 on layer (5)	 M5
+Average number of tracks per gCell 2.75	 on layer (6)	 M6
+Average number of tracks per gCell 1.38	 on layer (7)	 M7
+Average number of tracks per gCell 1.38	 on layer (8)	 M8
+Average number of tracks per gCell 0.69	 on layer (9)	 M9
+Average number of tracks per gCell 0.34	 on layer (10)	 MRDL
+Number of gCells = 15876000
+Current Stage stats:
+[End of Build Congestion Map] Elapsed real time: 0:00:14 
+[End of Build Congestion Map] Elapsed cpu  time: sys=0:00:00 usr=0:00:14 total=0:00:14
+[End of Build Congestion Map] Stage (MB): Used  164  Alloctr  156  Proc   52 
+[End of Build Congestion Map] Total (MB): Used 1810  Alloctr 2132  Proc 13708 
+Current Stage stats:
+[End of Add Nets Demand] Elapsed real time: 0:00:00 
+[End of Add Nets Demand] Elapsed cpu  time: sys=0:00:00 usr=0:00:00 total=0:00:00
+[End of Add Nets Demand] Stage (MB): Used    0  Alloctr    0  Proc    0 
+[End of Add Nets Demand] Total (MB): Used 1810  Alloctr 2133  Proc 13708 
+Number of user frozen nets = 0
+Information: RC layer preference is turned off for this design. (ZRT-613)
+Total stats:
+[End of Build Data] Elapsed real time: 0:00:19 
+[End of Build Data] Elapsed cpu  time: sys=0:00:00 usr=0:00:19 total=0:00:19
+[End of Build Data] Stage (MB): Used  143  Alloctr  456  Proc  440 
+[End of Build Data] Total (MB): Used 1810  Alloctr 2133  Proc 13708 
+Number of partitions: 9 (3 x 3)
+Size of partitions: 448 gCells x 448 gCells
+Current Stage stats:
+[End of Blocked Pin Detection] Elapsed real time: 0:00:28 
+[End of Blocked Pin Detection] Elapsed cpu  time: sys=0:00:00 usr=0:00:28 total=0:00:28
+[End of Blocked Pin Detection] Stage (MB): Used  176  Alloctr  176  Proc  170 
+[End of Blocked Pin Detection] Total (MB): Used 1986  Alloctr 2309  Proc 13879 
+Information: Using 1 threads for routing. (ZRT-444)
+Information: Multiple gcell levels ON
+Information: Buffer distance is estimated to be ~862.0000um (515 gCells)
+
+Start GR phase 0
+Number of partitions: 100 (10 x 10)
+Size of partitions: 128 gCells x 128 gCells
+10% of nets complete Elapsed cpu time: 0:00:08 Elapsed real time: 0:00:08
+20% of nets complete Elapsed cpu time: 0:00:12 Elapsed real time: 0:00:12
+30% of nets complete Elapsed cpu time: 0:00:15 Elapsed real time: 0:00:16
+40% of nets complete Elapsed cpu time: 0:00:19 Elapsed real time: 0:00:19
+50% of nets complete Elapsed cpu time: 0:00:28 Elapsed real time: 0:00:28
+60% of nets complete Elapsed cpu time: 0:00:40 Elapsed real time: 0:00:40
+70% of nets complete Elapsed cpu time: 0:00:54 Elapsed real time: 0:00:54
+80% of nets complete Elapsed cpu time: 0:01:05 Elapsed real time: 0:01:05
+90% of nets complete Elapsed cpu time: 0:01:14 Elapsed real time: 0:01:13
+[rtAllBotParts] Elapsed real time: 0:02:06 
+[rtAllBotParts] Elapsed cpu  time: sys=0:00:00 usr=0:02:06 total=0:02:07
+[rtTop] Elapsed real time: 0:00:00 
+[rtTop] Elapsed cpu  time: sys=0:00:00 usr=0:00:00 total=0:00:00
+Current Stage stats:
+[End of Initial Routing] Elapsed real time: 0:02:06 
+[End of Initial Routing] Elapsed cpu  time: sys=0:00:00 usr=0:02:06 total=0:02:07
+[End of Initial Routing] Stage (MB): Used  603  Alloctr  323  Proc  432 
+[End of Initial Routing] Total (MB): Used 2590  Alloctr 2630  Proc 14311 
+Initial. Routing result:
+Initial. Both Dirs: Dmd-Cap  = 160352 Max = 13 GRCs = 184545 (5.81%)
+Initial. H routing: Dmd-Cap  = 148430 Max = 13 (GRCs =  1) GRCs = 173976 (10.96%)
+Initial. V routing: Dmd-Cap  =  11922 Max =  9 (GRCs =  2) GRCs =  10569 (0.67%)
+Initial. Both Dirs: Overflow = 584837 Max = 12 GRCs = 777779 (24.50%)
+Initial. H routing: Overflow = 514599 Max = 12 (GRCs =  1) GRCs = 665115 (41.89%)
+Initial. V routing: Overflow =  70238 Max =  7 (GRCs =  6) GRCs = 112664 (7.10%)
+Initial. M1         Overflow =    144 Max =  2 (GRCs =  1) GRCs =    286 (0.02%)
+Initial. M2         Overflow =  62892 Max =  7 (GRCs =  6) GRCs =  86021 (5.42%)
+Initial. M3         Overflow = 416021 Max = 12 (GRCs =  1) GRCs = 573431 (36.12%)
+Initial. M4         Overflow =   5942 Max =  4 (GRCs =  3) GRCs =  25243 (1.59%)
+Initial. M5         Overflow =  98432 Max =  4 (GRCs =  2) GRCs =  91398 (5.76%)
+Initial. M6         Overflow =   1404 Max =  2 (GRCs =  4) GRCs =   1400 (0.09%)
+Initial. M7         Overflow =      0 Max =  0 (GRCs =  0) GRCs =      0 (0.00%)
+Initial. M8         Overflow =      0 Max =  0 (GRCs =  0) GRCs =      0 (0.00%)
+Initial. M9         Overflow =      0 Max =  0 (GRCs =  0) GRCs =      0 (0.00%)
+Initial. MRDL       Overflow =      0 Max =  0 (GRCs =  0) GRCs =      0 (0.00%)
+
+Initial. Total Wire Length = 27728037.18
+Initial. Layer M1 wire length = 1995.05
+Initial. Layer M2 wire length = 8030906.81
+Initial. Layer M3 wire length = 8023660.44
+Initial. Layer M4 wire length = 4754920.36
+Initial. Layer M5 wire length = 5031219.85
+Initial. Layer M6 wire length = 1885247.93
+Initial. Layer M7 wire length = 86.73
+Initial. Layer M8 wire length = 0.00
+Initial. Layer M9 wire length = 0.00
+Initial. Layer MRDL wire length = 0.00
+Initial. Total Number of Contacts = 7577644
+Initial. Via VIA12SQ_C count = 3094962
+Initial. Via VIA23SQ_C count = 3181916
+Initial. Via VIA34SQ_C count = 675536
+Initial. Via VIA45SQ_C count = 539359
+Initial. Via VIA56SQ_C count = 85769
+Initial. Via VIA67SQ_C count = 102
+Initial. Via VIA78SQ_C count = 0
+Initial. Via VIA89_C count = 0
+Initial. Via VIA9RDL count = 0
+Initial. completed.
+
+Start GR phase 1
+Fri Sep 18 08:55:08 2026
+Number of partitions: 100 (10 x 10)
+Size of partitions: 128 gCells x 128 gCells
+10% of nets complete Elapsed cpu time: 0:02:20 Elapsed real time: 0:02:19
+20% of nets complete Elapsed cpu time: 0:03:19 Elapsed real time: 0:03:18
+30% of nets complete Elapsed cpu time: 0:03:53 Elapsed real time: 0:03:51
+40% of nets complete Elapsed cpu time: 0:04:21 Elapsed real time: 0:04:20
+50% of nets complete Elapsed cpu time: 0:04:43 Elapsed real time: 0:04:41
+60% of nets complete Elapsed cpu time: 0:04:59 Elapsed real time: 0:04:57
+70% of nets complete Elapsed cpu time: 0:05:14 Elapsed real time: 0:05:11
+80% of nets complete Elapsed cpu time: 0:05:25 Elapsed real time: 0:05:23
+90% of nets complete Elapsed cpu time: 0:05:36 Elapsed real time: 0:05:33
+[rtAllParts] Elapsed real time: 0:05:59 
+[rtAllParts] Elapsed cpu  time: sys=0:00:02 usr=0:05:59 total=0:06:02
+Current Stage stats:
+[End of Phase1 Routing] Elapsed real time: 0:05:59 
+[End of Phase1 Routing] Elapsed cpu  time: sys=0:00:02 usr=0:05:59 total=0:06:02
+[End of Phase1 Routing] Stage (MB): Used  126  Alloctr  140  Proc   82 
+[End of Phase1 Routing] Total (MB): Used 2716  Alloctr 2770  Proc 14394 
+phase1. Routing result:
+phase1. Both Dirs: Dmd-Cap  =  74112 Max = 14 GRCs = 103006 (3.24%)
+phase1. H routing: Dmd-Cap  =  55247 Max =  8 (GRCs =   1) GRCs =  88300 (5.56%)
+phase1. V routing: Dmd-Cap  =  18864 Max = 14 (GRCs =   1) GRCs =  14706 (0.93%)
+phase1. Both Dirs: Overflow = 288840 Max = 13 GRCs = 490675 (15.45%)
+phase1. H routing: Overflow = 215919 Max =  7 (GRCs =   5) GRCs = 394817 (24.87%)
+phase1. V routing: Overflow =  72920 Max = 13 (GRCs =   1) GRCs =  95858 (6.04%)
+phase1. M1         Overflow =    483 Max =  2 (GRCs =   2) GRCs =    948 (0.06%)
+phase1. M2         Overflow =  68404 Max = 13 (GRCs =   1) GRCs =  73676 (4.64%)
+phase1. M3         Overflow = 188446 Max =  7 (GRCs =   5) GRCs = 367476 (23.15%)
+phase1. M4         Overflow =   3859 Max =  3 (GRCs =  39) GRCs =  21526 (1.36%)
+phase1. M5         Overflow =  26988 Max =  2 (GRCs = 599) GRCs =  26393 (1.66%)
+phase1. M6         Overflow =    656 Max =  1 (GRCs = 656) GRCs =    656 (0.04%)
+phase1. M7         Overflow =      0 Max =  0 (GRCs =   0) GRCs =      0 (0.00%)
+phase1. M8         Overflow =      0 Max =  0 (GRCs =   0) GRCs =      0 (0.00%)
+phase1. M9         Overflow =      0 Max =  0 (GRCs =   0) GRCs =      0 (0.00%)
+phase1. MRDL       Overflow =      0 Max =  0 (GRCs =   0) GRCs =      0 (0.00%)
+
+phase1. Total Wire Length = 29073879.94
+phase1. Layer M1 wire length = 6566.75
+phase1. Layer M2 wire length = 8633969.22
+phase1. Layer M3 wire length = 7654622.73
+phase1. Layer M4 wire length = 5499842.21
+phase1. Layer M5 wire length = 4989051.20
+phase1. Layer M6 wire length = 2289626.63
+phase1. Layer M7 wire length = 201.20
+phase1. Layer M8 wire length = 0.00
+phase1. Layer M9 wire length = 0.00
+phase1. Layer MRDL wire length = 0.00
+phase1. Total Number of Contacts = 7960911
+phase1. Via VIA12SQ_C count = 3100886
+phase1. Via VIA23SQ_C count = 3166510
+phase1. Via VIA34SQ_C count = 881955
+phase1. Via VIA45SQ_C count = 661252
+phase1. Via VIA56SQ_C count = 150071
+phase1. Via VIA67SQ_C count = 237
+phase1. Via VIA78SQ_C count = 0
+phase1. Via VIA89_C count = 0
+phase1. Via VIA9RDL count = 0
+phase1. completed.
+
+Start GR phase 2
+Fri Sep 18 09:01:08 2026
+Number of partitions: 100 (10 x 10)
+Size of partitions: 128 gCells x 128 gCells
+10% of nets complete Elapsed cpu time: 0:02:28 Elapsed real time: 0:02:27
+20% of nets complete Elapsed cpu time: 0:03:41 Elapsed real time: 0:03:39
+30% of nets complete Elapsed cpu time: 0:04:19 Elapsed real time: 0:04:18
+40% of nets complete Elapsed cpu time: 0:04:48 Elapsed real time: 0:04:46
+50% of nets complete Elapsed cpu time: 0:05:11 Elapsed real time: 0:05:09
+60% of nets complete Elapsed cpu time: 0:05:28 Elapsed real time: 0:05:25
+70% of nets complete Elapsed cpu time: 0:05:41 Elapsed real time: 0:05:39
+80% of nets complete Elapsed cpu time: 0:05:54 Elapsed real time: 0:05:51
+90% of nets complete Elapsed cpu time: 0:06:03 Elapsed real time: 0:06:00
+[rtAllParts] Elapsed real time: 0:06:22 
+[rtAllParts] Elapsed cpu  time: sys=0:00:02 usr=0:06:22 total=0:06:25
+[updNetsDmd] Elapsed real time: 0:00:07 
+[updNetsDmd] Elapsed cpu  time: sys=0:00:00 usr=0:00:07 total=0:00:07
+Current Stage stats:
+[End of Phase2 Routing] Elapsed real time: 0:06:30 
+[End of Phase2 Routing] Elapsed cpu  time: sys=0:00:02 usr=0:06:30 total=0:06:33
+[End of Phase2 Routing] Stage (MB): Used   59  Alloctr   58  Proc  113 
+[End of Phase2 Routing] Total (MB): Used 2775  Alloctr 2828  Proc 14507 
+phase2. Routing result:
+phase2. Both Dirs: Dmd-Cap  =  47480 Max = 6 GRCs =  34967 (1.10%)
+phase2. H routing: Dmd-Cap  =  37966 Max = 6 (GRCs =   5) GRCs =  27939 (1.76%)
+phase2. V routing: Dmd-Cap  =   9514 Max = 6 (GRCs =  10) GRCs =   7028 (0.44%)
+phase2. Both Dirs: Overflow = 167202 Max = 7 GRCs = 142749 (4.50%)
+phase2. H routing: Overflow = 149334 Max = 7 (GRCs =   1) GRCs = 124008 (7.81%)
+phase2. V routing: Overflow =  17867 Max = 5 (GRCs =   1) GRCs =  18741 (1.18%)
+phase2. M1         Overflow =    704 Max = 2 (GRCs =   2) GRCs =   1339 (0.08%)
+phase2. M2         Overflow =   9781 Max = 5 (GRCs =   1) GRCs =  11005 (0.69%)
+phase2. M3         Overflow = 130976 Max = 7 (GRCs =   1) GRCs = 105097 (6.62%)
+phase2. M4         Overflow =   7535 Max = 3 (GRCs =   3) GRCs =   7185 (0.45%)
+phase2. M5         Overflow =  17654 Max = 2 (GRCs =  82) GRCs =  17572 (1.11%)
+phase2. M6         Overflow =    551 Max = 1 (GRCs = 551) GRCs =    551 (0.03%)
+phase2. M7         Overflow =      0 Max = 0 (GRCs =   0) GRCs =      0 (0.00%)
+phase2. M8         Overflow =      0 Max = 0 (GRCs =   0) GRCs =      0 (0.00%)
+phase2. M9         Overflow =      0 Max = 0 (GRCs =   0) GRCs =      0 (0.00%)
+phase2. MRDL       Overflow =      0 Max = 0 (GRCs =   0) GRCs =      0 (0.00%)
+
+phase2. Total Wire Length = 29880713.90
+phase2. Layer M1 wire length = 12138.01
+phase2. Layer M2 wire length = 8901220.36
+phase2. Layer M3 wire length = 7559763.71
+phase2. Layer M4 wire length = 5867423.95
+phase2. Layer M5 wire length = 5002962.26
+phase2. Layer M6 wire length = 2533366.08
+phase2. Layer M7 wire length = 3839.53
+phase2. Layer M8 wire length = 0.00
+phase2. Layer M9 wire length = 0.00
+phase2. Layer MRDL wire length = 0.00
+phase2. Total Number of Contacts = 8192232
+phase2. Via VIA12SQ_C count = 3105641
+phase2. Via VIA23SQ_C count = 3187463
+phase2. Via VIA34SQ_C count = 991409
+phase2. Via VIA45SQ_C count = 718682
+phase2. Via VIA56SQ_C count = 185868
+phase2. Via VIA67SQ_C count = 3169
+phase2. Via VIA78SQ_C count = 0
+phase2. Via VIA89_C count = 0
+phase2. Via VIA9RDL count = 0
+phase2. completed.
+
+Start GR phase 3
+Fri Sep 18 09:07:38 2026
+Number of partitions: 100 (10 x 10)
+Size of partitions: 128 gCells x 128 gCells
+10% of nets complete Elapsed cpu time: 0:00:46 Elapsed real time: 0:00:46
+20% of nets complete Elapsed cpu time: 0:01:24 Elapsed real time: 0:01:23
+30% of nets complete Elapsed cpu time: 0:01:49 Elapsed real time: 0:01:49
+40% of nets complete Elapsed cpu time: 0:02:14 Elapsed real time: 0:02:13
+[rtAllParts] Elapsed real time: 0:02:19 
+[rtAllParts] Elapsed cpu  time: sys=0:00:00 usr=0:02:19 total=0:02:20
+[updNetsDmd] Elapsed real time: 0:00:07 
+[updNetsDmd] Elapsed cpu  time: sys=0:00:00 usr=0:00:07 total=0:00:07
+Current Stage stats:
+[End of Phase3 Routing] Elapsed real time: 0:02:27 
+[End of Phase3 Routing] Elapsed cpu  time: sys=0:00:00 usr=0:02:27 total=0:02:28
+[End of Phase3 Routing] Stage (MB): Used   13  Alloctr   12  Proc   12 
+[End of Phase3 Routing] Total (MB): Used 2788  Alloctr 2841  Proc 14520 
+phase3. Routing result:
+phase3. Both Dirs: Dmd-Cap  =  40354 Max = 7 GRCs =  30984 (0.98%)
+phase3. H routing: Dmd-Cap  =  26152 Max = 5 (GRCs =   6) GRCs =  19675 (1.24%)
+phase3. V routing: Dmd-Cap  =  14202 Max = 7 (GRCs =   1) GRCs =  11309 (0.71%)
+phase3. Both Dirs: Overflow = 130152 Max = 5 GRCs = 120146 (3.78%)
+phase3. H routing: Overflow = 103675 Max = 4 (GRCs =  33) GRCs =  91346 (5.75%)
+phase3. V routing: Overflow =  26477 Max = 5 (GRCs =   1) GRCs =  28800 (1.81%)
+phase3. M1         Overflow =    710 Max = 2 (GRCs =   2) GRCs =   1369 (0.09%)
+phase3. M2         Overflow =  21212 Max = 5 (GRCs =   1) GRCs =  23681 (1.49%)
+phase3. M3         Overflow =  93192 Max = 4 (GRCs =  33) GRCs =  80213 (5.05%)
+phase3. M4         Overflow =   4762 Max = 2 (GRCs = 146) GRCs =   4616 (0.29%)
+phase3. M5         Overflow =   9773 Max = 2 (GRCs =   9) GRCs =   9764 (0.62%)
+phase3. M6         Overflow =    503 Max = 1 (GRCs = 503) GRCs =    503 (0.03%)
+phase3. M7         Overflow =      0 Max = 0 (GRCs =   0) GRCs =      0 (0.00%)
+phase3. M8         Overflow =      0 Max = 0 (GRCs =   0) GRCs =      0 (0.00%)
+phase3. M9         Overflow =      0 Max = 0 (GRCs =   0) GRCs =      0 (0.00%)
+phase3. MRDL       Overflow =      0 Max = 0 (GRCs =   0) GRCs =      0 (0.00%)
+
+phase3. Total Wire Length = 30246658.76
+phase3. Layer M1 wire length = 16128.98
+phase3. Layer M2 wire length = 9286277.25
+phase3. Layer M3 wire length = 7564405.74
+phase3. Layer M4 wire length = 5865265.48
+phase3. Layer M5 wire length = 4963447.24
+phase3. Layer M6 wire length = 2527349.85
+phase3. Layer M7 wire length = 23784.22
+phase3. Layer M8 wire length = 0.00
+phase3. Layer M9 wire length = 0.00
+phase3. Layer MRDL wire length = 0.00
+phase3. Total Number of Contacts = 8223446
+phase3. Via VIA12SQ_C count = 3108585
+phase3. Via VIA23SQ_C count = 3203588
+phase3. Via VIA34SQ_C count = 996132
+phase3. Via VIA45SQ_C count = 720737
+phase3. Via VIA56SQ_C count = 185650
+phase3. Via VIA67SQ_C count = 8754
+phase3. Via VIA78SQ_C count = 0
+phase3. Via VIA89_C count = 0
+phase3. Via VIA9RDL count = 0
+phase3. completed.
+Warning: Net dmem_addr[14] has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/n35517 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/n57939 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_ZBUF_1415_354 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/ZCTSNET_1053 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_ZBUF_2510_689 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/ZCTSNET_1447 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/ZCTSNET_1860 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/ZCTSNET_3346 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/ZCTSNET_3429 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/ZCTSNET_5193 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_ZBUF_1041_336 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_ZBUF_496_364 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_84496 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_101502 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_102163 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_102175 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_104962 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_105082 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_105606 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_98514 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_99085 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_99271 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_99649 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_106702 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_106836 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_107910 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_108005 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_108420 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_111178 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_111955 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_112139 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_112166 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_80332 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_79363 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_95584 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_97338 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_94690 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_94819 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_93446 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_91458 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_91287 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_89972 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/copt_gre_net_32769 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_70490 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_17323 has unused floating user-enter shapes. (ZRT-113)
+Warning: Net u_memory_wrapper/u_generic_ram/place_opt_HFSNET_59398 has unused floating user-enter shapes. (ZRT-113)
+[End of Whole Chip Routing] Elapsed real time: 0:17:53 
+[End of Whole Chip Routing] Elapsed cpu  time: sys=0:00:07 usr=0:17:54 total=0:18:01
+[End of Whole Chip Routing] Stage (MB): Used 1122  Alloctr 1165  Proc 1251 
+[End of Whole Chip Routing] Total (MB): Used 2788  Alloctr 2841  Proc 14520 
+
+Congestion utilization per direction:
+Average vertical track utilization   = 54.68 %
+Peak    vertical track utilization   = 136.36 %
+Average horizontal track utilization = 63.53 %
+Peak    horizontal track utilization = 250.00 %
+
+[End of Global Routing] Elapsed real time: 0:17:56 
+[End of Global Routing] Elapsed cpu  time: sys=0:00:07 usr=0:17:56 total=0:18:04
+[End of Global Routing] Stage (MB): Used  957  Alloctr 1013  Proc 1251 
+[End of Global Routing] Total (MB): Used 2624  Alloctr 2689  Proc 14520 
+Writing out congestion map...
+Updating congestion ...
+Updating congestion ...
+[DBOUT] Elapsed real time: 0:00:01 
+[DBOUT] Elapsed cpu  time: sys=0:00:00 usr=0:00:01 total=0:00:01
+[DBOUT] Stage (MB): Used -1897  Alloctr -2048  Proc    0 
+[DBOUT] Total (MB): Used   36  Alloctr   37  Proc 14520 
+[End of dbOut] Elapsed real time: 0:00:01 
+[End of dbOut] Elapsed cpu  time: sys=0:00:00 usr=0:00:01 total=0:00:01
+[End of dbOut] Stage (MB): Used -1897  Alloctr -2048  Proc    0 
+[End of dbOut] Total (MB): Used   36  Alloctr   37  Proc 14520 
+
+****************************************
+Report : congestion
+Design : rv32ima_mcu
+Version: U-2022.12-SP6
+Date   : Fri Sep 18 09:10:10 2026
+****************************************
+
+Layer     |    overflow     |              # GRCs has
+Name      |  total  |  max  | overflow (%)      | max overflow
+---------------------------------------------------------------
+Both Dirs |  138067 |     5 |  120146  ( 3.78%) |       1
+H routing |  104336 |     4 |   91346  ( 5.75%) |      33
+V routing |   33731 |     5 |   28800  ( 1.81%) |       1
+
+1
