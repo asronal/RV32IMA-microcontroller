@@ -56,7 +56,7 @@ The UART provides asynchronous 8N1 serial transmission and reception with config
 | `+0x00` | `UART_TXDATA` | W | `0x0000_0000` | Transmit Data Register (`[7:0]` data byte to transmit) |
 | `+0x04` | `UART_RXDATA` | R | `0x0000_0000` | Receive Data Register (`[7:0]` received data byte; reading clears `RX_VALID`) |
 | `+0x08` | `UART_STATUS` | R | `0x0000_0001` | Controller Status Register (Bit 0: `TX_READY`, Bit 1: `RX_VALID`) |
-| `+0x0C` | `UART_BAUD` | R/W | `CLK_HZ/115200`| Clock Divisor Register ($\text{Divisor} = \frac{f_{\text{CLK}}}{\text{Baud Rate}}$) |
+| `+0x0C` | `UART_BAUD` | R/W | `CLK_HZ/115200`| Clock Divisor Register (`Divisor = CLK_HZ / BAUD_RATE`) |
 
 #### UART_STATUS Register Bitfields:
 ```
@@ -69,7 +69,9 @@ The UART provides asynchronous 8N1 serial transmission and reception with config
 - **`Bit 1 (RX_VALID)`**: `1` = Unread byte available in `UART_RXDATA`. `0` = No new data available.
 
 #### Baud Rate Calculation Example:
-$$\text{Divisor} = \frac{50\,000\,000\text{ Hz}}{115\,200\text{ Baud}} \approx 434\text{ (0x01B2)}$$
+```
+Divisor = 50,000,000 Hz / 115,200 Baud = 434 (0x01B2)
+```
 
 ---
 

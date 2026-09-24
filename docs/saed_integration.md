@@ -10,16 +10,14 @@
 
 ## 1. Overview & Vendor Neutrality
 
-The memory subsystem of the **Minimal RV32IMA MCU** is designed to provide complete isolation between high-level RTL logic and foundry-specific SRAM hard macros.
+The memory subsystem of the **Minimal RV32IMA MCU** provides complete isolation between the CPU core and foundry-specific SRAM hard macros:
 
 ```mermaid
 flowchart TD
-    CORE["rv32_core & bus_decoder\n(PDK-Agnostic Generic Bus)"] --> MW["memory_wrapper.sv\n(Compile-Time Multiplexer)"]
+    CPU["CPU Core & Bus Decoder"] --> MW["memory_wrapper.sv"]
     
-    MW -- "`ifndef USE_SAED_MEMORY\n(Default / Simulation)" --> RAM["ram.sv\n(Generic Synthesizable Behavioral Array)"]
-    MW -- "`ifdef USE_SAED_MEMORY\n(ASIC / Gate-Level)" --> SAED["saed_sram_wrapper.sv\n(SAED 32nm / 14nm Macro Instantiation)"]
-    
-    SAED --> MACRO["SAED32_SRAM_SP_8192X32\n(Foundry Hard IP Macro)"]
+    MW -->|"Simulation Mode (Default)"| RAM["ram.sv\n(Behavioral Generic RAM)"]
+    MW -->|"ASIC Mode (USE_SAED_MEMORY)"| SAED["saed_sram_wrapper.sv\n(SAED 32nm SRAM Macro)"]
 ```
 
 > [!NOTE]
@@ -52,18 +50,10 @@ The memory compiler generates:
 ## 3. Step-by-Step Integration Flow
 
 ```mermaid
-sequenceDiagram
-    autonumber
-    participant MC as SAED Memory Compiler
-    participant WRAP as saed_sram_wrapper.sv
-    participant DC as Synopsys Design Compiler
-    participant SIM as Simulation / VCS
-
-    MC->>WRAP: Generate .lib, .lef, and .v models
-    Note over WRAP: Hook macro instance pins (CLK, CEN, WEN, BWEN, A, D, Q)
-    WRAP->>SIM: Verify with +define+USE_SAED_MEMORY
-    WRAP->>DC: Link macro .db in syn/dc.tcl
-    Note over DC: Synthesize SoC and verify 0 unresolved references
+flowchart LR
+    S1["1. Memory Compiler\nGenerate SRAM macro"] --> S2["2. saed_sram_wrapper.sv\nInstantiate macro pins"]
+    S2 --> S3["3. syn/dc.tcl\nLink target .db library"]
+    S3 --> S4["4. VCS / DC Shell\nCompile +define+USE_SAED_MEMORY"]
 ```
 
 ---
@@ -140,5 +130,5 @@ vcs -sverilog +define+USE_SAED_MEMORY -f sim/filelist.f -top tb_mcu -R
 
 When placing the SRAM hard macro in **Synopsys IC Compiler II**:
 1. **Macro Orientation**: Place the macro along chip edges to minimize routing congestion over the core logic area.
-2. **Halo & Keepout Margins**: Maintain a minimum keep-out spacing of $5\,\mu\text{m}$ to prevent standard cell placement violations adjacent to macro pins.
-3. **Power Strapping**: Ensure robust $V_{DD}$ and $V_{SS}$ ring connections around the macro boundary to prevent dynamic IR drop during synchronous multi-bit write operations.
+2. **Halo & Keepout Margins**: Maintain a minimum keep-out spacing of 5 um to prevent standard cell placement violations adjacent to macro pins.
+3. **Power Strapping**: Ensure robust VDD and VSS ring connections around the macro boundary to prevent dynamic IR drop during synchronous multi-bit write operations.
