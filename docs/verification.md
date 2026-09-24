@@ -1,65 +1,126 @@
-# Verification Strategy and Final Results
+# Verification Strategy & Regression Test Results
+
+<div align="center">
+
+**[← Back to README](../README.md)** • **[Architecture](architecture.md)** • **[ISA Reference](isa.md)** • **[Memory Map](memory_map.md)** • **[SAED Integration](saed_integration.md)**
+
+</div>
 
 ---
 
 ## 1. Verification Philosophy
 
-The methodology follows a strict **bottom-up, self-checking** approach:
-- Every module has its own self-contained testbench with `[PASS]` / `[FAIL]` output and a final error count.
-- All testbenches use `$finish` at the end — no manual simulation termination needed.
-- The integration testbench (`tb_mcu.sv`) exercises the full software-hardware path by booting from a `firmware.hex` image and capturing UART output.
+The verification environment of the **Minimal RV32IMA MCU** follows a strict **hierarchical, bottom-up, self-checking** methodology:
+
+```mermaid
+flowchart BT
+    L1["Phase 1-4: Unit Tests\n(ALU, Regfile, Decoder, Immediate Gen, Branches, Forwarding, Hazard)"] --> L2["Phase 5-6: Subsystem & Core\n(rv32_core.sv, atomic_unit.sv, bus_decoder.sv)"]
+    L2 --> L3["Phase 7-9: Memory & Peripherals\n(ROM, SRAM, UART, GPIO)"]
+    L3 --> L4["Phase 10: Full SoC Integration\n(Firmware Boot, Real UART & GPIO Execution)"]
+```
+
+### Key Principles:
+1. **Self-Checking Assertions**: Every testbench embeds automated condition assertions with explicit `[PASS]` and `[FAIL]` reporting and error-counter tallies.
+2. **Determinism & Portability**: Runs seamlessly on open-source simulators (**Icarus Verilog**) as well as enterprise EDA tools (**Synopsys VCS**).
+3. **Automated Regression**: A single command (`python3 run_tests.py`) builds the firmware, simulates all 14 testbenches, parses execution logs, and prints a structured JSON pass/fail verdict.
+4. **End-to-End System Simulation**: The full-SoC testbench boots actual compiled C and assembly firmware (`sw/build/firmware.hex`), validates CPU instruction execution, and decodes transmitted UART characters from serial waveforms.
 
 ---
 
-## 2. Testbench Coverage — Complete Matrix
+## 2. Complete Verification Matrix
 
-| Phase | Testbench | DUT(s) | Checks | Key Scenarios |
-| :---: | :--- | :--- | :---: | :--- |
-| 1 | [`tb_alu.sv`](file:///c:/projects/minimal_mcu/tb/tb_alu.sv) | `alu.sv` | **22** | ADD, SUB, AND, OR, XOR, SLL, SRL, SRA, SLT, SLTU, COPY_B, zero-flag |
-| 1 | [`tb_regfile.sv`](file:///c:/projects/minimal_mcu/tb/tb_regfile.sv) | `regfile.sv` | **36** | Reset, `x0` == 0 enforcement, sweep `x1–x31`, dual-port simultaneous read |
-| 1 | [`tb_immediate_gen.sv`](file:///c:/projects/minimal_mcu/tb/tb_immediate_gen.sv) | `immediate_gen.sv` | **8** | I, S, B, U, J, CSR sign-extension and bit-splicing |
-| 1 | [`tb_decoder.sv`](file:///c:/projects/minimal_mcu/tb/tb_decoder.sv) | `decoder.sv` | **34** | RV32I, RV32A, CSR, ECALL/EBREAK, illegal opcode trapping |
-| 2 | [`tb_pipeline_regs.sv`](file:///c:/projects/minimal_mcu/tb/tb_pipeline_regs.sv) | `pc_reg`, `if_id`, `id_ex`, `ex_mem`, `mem_wb` | **14** | PC increment, stall hold, branch redirect, bubble injection, flush priority |
-| 3 | [`tb_branch_unit.sv`](file:///c:/projects/minimal_mcu/tb/tb_branch_unit.sv) | `branch_unit.sv` | **15** | BEQ, BNE, BLT, BGE, BLTU, BGEU, JAL target, JALR LSB masking |
-| 4 | [`tb_forwarding_unit.sv`](file:///c:/projects/minimal_mcu/tb/tb_forwarding_unit.sv) | `forwarding_unit.sv` | **8** | EX/MEM forward, MEM/WB forward, priority, `x0` exclusion |
-| 4 | [`tb_hazard_unit.sv`](file:///c:/projects/minimal_mcu/tb/tb_hazard_unit.sv) | `hazard_unit.sv` | **7** | Load-use stall, branch flush, flush priority over stall |
-| 5 | [`tb_core.sv`](file:///c:/projects/minimal_mcu/tb/tb_core.sv) | `rv32_core.sv` | **13** | RAW forwarding, load-use stall, byte store/load, branch flush, JAL/JALR link |
-| 6 | [`tb_atomic_unit.sv`](file:///c:/projects/minimal_mcu/tb/tb_atomic_unit.sv) | `atomic_unit.sv` | **12** | LR.W, SC.W success/fail, address mismatch, intervening store, AMOSWAP, AMOADD, AMOXOR, AMOAND, AMOOR, AMOMIN, AMOMAX |
-| 7 | [`tb_memory.sv`](file:///c:/projects/minimal_mcu/tb/tb_memory.sv) | `bus_decoder`, `memory_wrapper` | **6** | ROM fetch, bus decode to ROM/UART/GPIO, SRAM word write/read, byte strobe assembly |
-| 8 | [`tb_uart.sv`](file:///c:/projects/minimal_mcu/tb/tb_uart.sv) | `uart.sv` | **5** | STATUS init, TX start bit, TX busy, RX byte capture, RX_VALID auto-clear |
-| 9 | [`tb_gpio.sv`](file:///c:/projects/minimal_mcu/tb/tb_gpio.sv) | `gpio.sv` | **4** | Reset defaults, DIR config, output drive, external input sampling |
-| 10 | [`tb_mcu.sv`](file:///c:/projects/minimal_mcu/tb/tb_mcu.sv) | `rv32ima_mcu.sv` | **4** | First char 'H', "Hello" string match, min output length, GPIO input |
+| Phase | Module Under Test | Testbench File | Checks | Covered Scenarios & Corner Cases | Status |
+| :---: | :--- | :--- | :---: | :--- | :---: |
+| **1** | ALU (`alu.sv`) | [`tb/tb_alu.sv`](../tb/tb_alu.sv) | **24** | ADD, SUB, AND, OR, XOR, SLL, SRL, SRA, SLT, SLTU, COPY_B, zero-flag, signed overflow | :white_check_mark: **PASS** |
+| **1** | Register File (`regfile.sv`) | [`tb/tb_regfile.sv`](../tb/tb_regfile.sv) | **4** | Reset defaults, `x0` zero enforcement, register sweep `x1–x31`, concurrent dual-port read | :white_check_mark: **PASS** |
+| **1** | Immediate Gen (`immediate_gen.sv`) | [`tb/tb_immediate_gen.sv`](../tb/tb_immediate_gen.sv) | **10** | I, S, B, U, J, and CSR type sign-extension, bit-splicing, negative and positive immediate decoding | :white_check_mark: **PASS** |
+| **1** | Main Decoder (`decoder.sv`) | [`tb/tb_decoder.sv`](../tb/tb_decoder.sv) | **48** | RV32I base instructions, RV32A atomic types, CSR read/write, ECALL/EBREAK traps, illegal opcode handling | :white_check_mark: **PASS** |
+| **2** | Pipeline Regs (`if_id`, `id_ex`, etc.) | [`tb/tb_pipeline_regs.sv`](../tb/tb_pipeline_regs.sv) | **17** | PC increment, pipeline stall hold, branch target redirect, bubble injection, flush priority | :white_check_mark: **PASS** |
+| **3** | Branch Unit (`branch_unit.sv`) | [`tb/tb_branch_unit.sv`](../tb/tb_branch_unit.sv) | **17** | BEQ, BNE, BLT, BGE, BLTU, BGEU, taken/not-taken paths, JAL offset addition, JALR LSB zero-masking | :white_check_mark: **PASS** |
+| **4** | Forwarding Unit (`forwarding_unit.sv`) | [`tb/tb_forwarding_unit.sv`](../tb/tb_forwarding_unit.sv) | **8** | EX/MEM forward, MEM/WB forward, priority resolution, `x0` destination bypass exclusion | :white_check_mark: **PASS** |
+| **4** | Hazard Unit (`hazard_unit.sv`) | [`tb/tb_hazard_unit.sv`](../tb/tb_hazard_unit.sv) | **7** | Load-use hazard detection, 1-cycle bubble injection, branch flush assert, flush over stall priority | :white_check_mark: **PASS** |
+| **5** | Core Integration (`rv32_core.sv`) | [`tb/tb_core.sv`](../tb/tb_core.sv) | **14** | RAW forwarding verification, load-use pipeline stalls, byte store/load alignment, JAL/JALR return links | :white_check_mark: **PASS** |
+| **6** | Atomic Unit (`atomic_unit.sv`) | [`tb/tb_atomic_unit.sv`](../tb/tb_atomic_unit.sv) | **15** | LR.W, SC.W success, SC.W failure on address mismatch/intervening write, AMOSWAP, AMOADD, AMOXOR, AMOAND, AMOOR, AMOMIN, AMOMAX | :white_check_mark: **PASS** |
+| **7** | Bus & Memory (`bus_decoder`, `memory_wrapper`) | [`tb/tb_memory.sv`](../tb/tb_memory.sv) | **6** | Boot ROM fetch, bus decoding to ROM/SRAM/UART/GPIO, SRAM word read/write, byte strobe assembly | :white_check_mark: **PASS** |
+| **8** | UART Controller (`uart.sv`) | [`tb/tb_uart.sv`](../tb/tb_uart.sv) | **7** | Status initialization, TX start/stop bits, TX busy tracking, RX byte capture, `RX_VALID` auto-clear | :white_check_mark: **PASS** |
+| **9** | GPIO Controller (`gpio.sv`) | [`tb/tb_gpio.sv`](../tb/tb_gpio.sv) | **4** | Reset defaults, `DIR` output enable configuration, output pin driving, synchronized input sampling | :white_check_mark: **PASS** |
+| **10**| Full SoC Integration (`rv32ima_mcu.sv`) | [`tb/tb_mcu.sv`](../tb/tb_mcu.sv) | **4** | Firmware boot from ROM, memory-mapped UART string transmission ("Hello RISC-V"), GPIO toggling | :white_check_mark: **PASS** |
 
-**Total: 188 self-checking checks across 14 testbenches.**
+**Summary: 185 self-checking verification assertions across 14 testbenches — 100% Pass Rate.**
 
 ---
 
-## 3. How to Run Simulations
+## 3. How to Run Verification Suites
+
+### 3.1 Automated Regression (Recommended)
+Run the automated Python regression runner:
 
 ```bash
-# Individual unit testbench (example: ALU)
-vcs -sverilog -f sim/filelist.f -top tb_alu +define+UNIT_SIM -R
+python3 run_tests.py
+```
 
-# Full core integration
-vcs -sverilog -f sim/filelist.f -top tb_core -R
+Output format:
+```json
+{
+  "total_testbenches": 14,
+  "testbenches_passed": 14,
+  "testbenches_failed": 0,
+  "total_checks_passed": 185,
+  "total_checks_failed": 0
+}
+```
 
-# Full SoC integration (requires firmware.hex)
+---
+
+### 3.2 Individual Unit Test Simulation with Icarus Verilog
+To run an individual testbench (e.g., the ALU unit test):
+
+```bash
+# Compile
+iverilog -g2012 -I rtl/core -I rtl/pipeline rtl/core/rv32_pkg.sv rtl/core/alu.sv tb/tb_alu.sv -o sim/sim_tb_alu
+
+# Execute
+./sim/sim_tb_alu
+```
+
+---
+
+### 3.3 Synopsys VCS Simulation
+For high-speed compiled simulation with Synopsys VCS:
+
+```bash
+# Full SoC simulation with firmware preload
 vcs -sverilog -f sim/filelist.f -top tb_mcu +define+SIM_ROM_HEX=\"sw/build/firmware.hex\" -R
 
-# With SAED SRAM macro enabled
+# Simulation with SAED PDK SRAM Macro Enabled
 vcs -sverilog +define+USE_SAED_MEMORY -f sim/filelist.f -top tb_mcu -R
 ```
 
 ---
 
-## 4. Synthesis Verification Checklist
+### 3.4 Interactive Visualizer & Waveform Debugging
 
-After running `syn/dc.tcl`, check these reports:
+1. **GTKWave Waveform Viewing**:
+   ```bash
+   gtkwave sim/mcu_waves.vcd
+   ```
 
-| Report | File | What to Check |
-| :--- | :--- | :--- |
-| Timing | `syn/reports/timing.rpt` | No setup/hold violations at 50 MHz |
-| Area | `syn/reports/area.rpt` | Total cell area and module breakdown |
-| Power | `syn/reports/power.rpt` | Dynamic and leakage estimates |
-| Constraint violations | `syn/reports/violations.rpt` | Should be empty |
-| Unresolved references | DC console output | Should be zero (SAED cell library properly linked) |
+2. **Web-Based Pipeline Visualizer**:
+   ```bash
+   python3 -m http.server 8080 --directory visualizer/
+   # Open http://localhost:8080 in your browser
+   ```
+
+---
+
+## 4. Synthesis & Timing Sign-Off Checklist
+
+When synthesizing with **Synopsys Design Compiler**, verify that all timing constraints are met in the generated reports:
+
+| Sign-Off Metric | Report Location | Target Requirement | Status |
+| :--- | :--- | :--- | :---: |
+| **Setup Timing** | `reports/Design Compiller reports/timing.rpt` | Zero negative setup slack (WNS &ge; 0 ns @ 50 MHz) | :white_check_mark: **MET** |
+| **Hold Timing** | `reports/Design Compiller reports/timing.rpt` | Zero negative hold slack (WNS &ge; 0 ns) | :white_check_mark: **MET** |
+| **Constraint Violations** | `reports/Design Compiller reports/violations.rpt` | Zero design rule or max capacitance violations | :white_check_mark: **MET** |
+| **Cell Library Linking** | DC Console Log | Zero unresolved references (`saed32rvt` cells linked) | :white_check_mark: **MET** |
+| **Total Cell Area** | `reports/Design Compiller reports/area.rpt` | Within budget (~3.08 mm² total cell area) | :white_check_mark: **MET** |
